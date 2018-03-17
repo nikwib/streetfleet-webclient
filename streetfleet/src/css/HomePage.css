@@ -1,0 +1,43 @@
+.carousel {
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);
+}
+
+.carousel .item {
+  overflow:hidden;
+  width: 100%;
+  height: 75vh;
+}
+
+.carousel-caption {
+  bottom: 7%;
+  text-shadow: 0 1px 2px rgba(0,0,0,.8);
+}
+
+.bannerImg {
+  max-width: 100%;
+  position: absolute;
+  bottom: 0;
+}
+
+.carousel-indicators, .glyphicon { visibility: hidden; }
+
+.btn-success {
+  background-image: none !important;
+  box-shadow: none !important;
+  margin-top: 50px;
+  padding: 15px 30px;
+  font-size: 24px;
+}
+
+.btn-success:hover {
+  background-color: #419641;
+}
+
+.Overview {
+  height: 200px;
+}
+
+.Footer {
+  background-color: #3a3a3a;
+  height: 200px;
+}
