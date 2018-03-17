@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import NavBar from './components/Navbar';
+import HomePage from './components/HomePage';
 
 class App extends Component {
 
@@ -8,8 +9,9 @@ class App extends Component {
     return (
       <div className="App container-fluid">
         <div className="row">
-          <NavBar/>
+          <NavBar />
         </div>
+        <HomePage />
       </div>
     );
   }
