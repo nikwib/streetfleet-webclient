@@ -1,3 +1,5 @@
+/* Carousel */
+
 .carousel {
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35);
 }
@@ -31,11 +33,41 @@
   background-color: #419641;
 }
 
+/* Overview */
+
 .Overview {
-  height: 200px;
+  padding: 45px 0;
 }
+
+.OvImg {
+  width: 375px;
+}
+
+.Overview h2 {
+  margin-bottom: 20px;
+}
+
+.OvTxt {
+  text-align: left;
+  margin-top: 5%;
+}
+
+/* Footer */
 
 .Footer {
   background-color: #3a3a3a;
-  height: 200px;
+  margin: 0;
+  padding: 15px;
+}
+
+.Footer li {
+  display: inline;
+  list-style: none;
+  margin: 30px;
+  font-weight: 100;
+}
+
+.Footer a {
+  display: inline;
+  color: #b7b7b7;
 }

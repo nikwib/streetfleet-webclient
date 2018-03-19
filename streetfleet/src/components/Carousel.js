@@ -16,7 +16,7 @@ class HomePage extends Component {
     };
   }
 
-  handleSignIn = () => {
+  handleSignUp = () => {
     this.setState({ showModal: true });
   }
   handleClose = () => {
@@ -40,7 +40,7 @@ class HomePage extends Component {
           <img className="bannerImg" width={'100%'} alt="Vehicle Fleet" src={fleetBanner}/>
           <Carousel.Caption>
             <h1>Fast and easy solution for managing your fleets.</h1>
-            <Button bsStyle="success" bsSize="large" onClick={this.handleSignIn}>Try it!</Button>
+            <Button bsStyle="success" bsSize="large" onClick={this.handleSignUp}>Try it!</Button>
             <NewUser
               showModal={this.state.showModal}
               handleClose={this.handleClose}
