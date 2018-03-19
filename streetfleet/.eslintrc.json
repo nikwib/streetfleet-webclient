@@ -16,7 +16,7 @@
       }
     },
     "plugins": [
-      "json",
+      "json"
       
     ],
     "rules": {
