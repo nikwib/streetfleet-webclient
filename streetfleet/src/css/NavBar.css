@@ -21,3 +21,31 @@
 .Login {
   margin-top: 10px;
 }
+
+.MenuItem {
+  color: #7e7e7e;
+  padding: 7px 12px;
+  display: block;
+}
+
+
+.MenuItem:hover {
+  text-decoration: none;
+  background-color: #dcdcdc;
+  color: #7e7e7e;
+}
+
+.MenuItem:active {
+  color: #5a5a5a;
+  text-decoration: none;
+}
+
+.MenuItem:active {
+  color: #7e7e7e;
+  text-decoration: none;
+}
+
+
+ .divider {
+   margin: 0 !important;
+ }

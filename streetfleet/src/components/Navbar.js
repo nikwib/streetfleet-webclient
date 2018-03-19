@@ -41,9 +41,9 @@ class NavBar extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <a href="/">
+            <Link to="/HomePage">
               <img src={Logo} className="sf-logo" alt="StreetFleet Logo" />
-            </a>
+            </Link>
           </Navbar.Brand>
           <Navbar.Toggle />
         </Navbar.Header>
@@ -52,18 +52,16 @@ class NavBar extends Component {
             User Name
           </NavItem>
           <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
-            <MenuItem eventKey={1.1}> <Link to="/HomePage">Home</Link></MenuItem>
+            <Link  className="MenuItem" to="/HomePage">Home</Link>
             <MenuItem divider />
-            <MenuItem eventKey={1.2}> <Link to="/MapView">Live Map</Link></MenuItem>
-            <MenuItem eventKey={1.3}> <Link to="/FleetOverview">Fleet Overview</Link></MenuItem>
-            <MenuItem eventKey={1.4}> <Link to="/AddCar">Add Car</Link></MenuItem>
+            <Link  className="MenuItem" to="/MapView">Live Map</Link>
+            <Link  className="MenuItem" to="/FleetOverview">Fleet Overview</Link>
+            <a  className="MenuItem" onClick={this.handleAddVehicle}>Add Vehicle</a>
             <MenuItem divider />
-            <MenuItem eventKey={1.5}>Sign Out</MenuItem>
+            <a className="MenuItem" >Sign Out</a>
           </NavDropdown>
         </Nav>
-        <Nav pullRight>
-          <Button className="Login" bsSize="small" bsStyle="primary">Login</Button>
-        </Nav>
+        <Button className="Login pull-right" bsSize="small" bsStyle="primary">Login</Button>
         <AddCar
           showModal={this.state.showModal}
           handleClose={this.handleClose}
