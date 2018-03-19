@@ -14,7 +14,7 @@ class App extends Component {
         <div className="row">
           <NavBar />
         </div>
-        <Route path="/HomePage" component={HomePage}/>
+        <Route exact path="/" component={HomePage}/>
         <Route path="/FleetOverview" component={FleetOverview}/>
         <Route path="/MapView" component={MapView}/>
 

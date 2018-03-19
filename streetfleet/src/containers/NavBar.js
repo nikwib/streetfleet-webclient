@@ -41,7 +41,7 @@ class NavBar extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/HomePage">
+            <Link to="/">
               <img src={Logo} className="sf-logo" alt="StreetFleet Logo" />
             </Link>
           </Navbar.Brand>
@@ -52,7 +52,7 @@ class NavBar extends Component {
             User Name
           </NavItem>
           <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
-            <Link  className="MenuItem" to="/HomePage">Home</Link>
+            <Link  className="MenuItem" to="/">Home</Link>
             <MenuItem divider />
             <Link  className="MenuItem" to="/MapView">Live Map</Link>
             <Link  className="MenuItem" to="/FleetOverview">Fleet Overview</Link>
