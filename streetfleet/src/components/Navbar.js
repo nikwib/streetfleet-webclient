@@ -4,7 +4,9 @@ import Logo from '../img/street-fleet-logo.svg';
 
 import AddCar from './AddCar';
 import Success from './Success';
+import { Link } from 'react-router-dom';
 import '../css/NavBar.css';
+
 
 class NavBar extends Component {
 
@@ -50,11 +52,11 @@ class NavBar extends Component {
             User Name
           </NavItem>
           <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
-            <MenuItem eventKey={1.1}>Profile</MenuItem>
+            <MenuItem eventKey={1.1}> <Link to="/HomePage">Home</Link></MenuItem>
             <MenuItem divider />
-            <MenuItem eventKey={1.2}>Map</MenuItem>
-            <MenuItem eventKey={1.3}>Fleet Overview</MenuItem>
-            <MenuItem eventKey={1.4} onClick={this.handleAddVehicle}>Add Vehicle</MenuItem>
+            <MenuItem eventKey={1.2}> <Link to="/MapView">Live Map</Link></MenuItem>
+            <MenuItem eventKey={1.3}> <Link to="/FleetOverview">Fleet Overview</Link></MenuItem>
+            <MenuItem eventKey={1.4}> <Link to="/AddCar">Add Car</Link></MenuItem>
             <MenuItem divider />
             <MenuItem eventKey={1.5}>Sign Out</MenuItem>
           </NavDropdown>
