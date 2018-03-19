@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import NavBar from './components/NavBar';
+import NavBar from './containers/NavBar';
 import HomePage from './components/HomePage';
 import FleetOverview from './components/FleetOverview';
 import MapView from './components/MapView';

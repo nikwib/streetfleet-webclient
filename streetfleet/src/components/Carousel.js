@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Carousel, Button } from 'react-bootstrap';
-import  NewUser  from './NewUser';
+import  NewUser  from '../containers/NewUser';
 import  Success  from './Success';
 
 import '../css/HomePage.css';
