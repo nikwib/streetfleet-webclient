@@ -31,3 +31,7 @@ button {
   background-image: none !important;
   box-shadow: none !important;
 }
+
+button:focus {
+  outline: none !important;
+}

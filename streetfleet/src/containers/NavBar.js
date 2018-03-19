@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
+import Login from './Login';
 import AddCar from './AddCar';
 import Success from '../components/Success';
 import Logo from '../img/street-fleet-logo.svg';
@@ -14,6 +15,7 @@ class NavBar extends Component {
     super(props);
 
     this.state = {
+      showLogin: false,
       showModal: false,
       showSuccess: false
     };
@@ -22,14 +24,20 @@ class NavBar extends Component {
   handleAddVehicle = () => {
     this.setState({ showModal: true });
   }
+  handleLogin = () => {
+    this.setState({ showLogin: true });
+  }
+
   handleClose = () => {
     this.setState({
+      showLogin: false,
       showModal: false,
       showSuccess: false
     });
   }
   handleSuccess = () => {
     this.setState({
+      showLogin: false,
       showModal: false,
       showSuccess: true
     });
@@ -61,7 +69,19 @@ class NavBar extends Component {
             <a className="MenuItem" >Sign Out</a>
           </NavDropdown>
         </Nav>
-        <Button className="Login pull-right" bsSize="small" bsStyle="primary">Login</Button>
+        <Button
+          className="LoginButton pull-right"
+          bsSize="small"
+          bsStyle="primary"
+          onClick={this.handleLogin}
+        >
+          Login
+        </Button>
+        <Login
+          className="Test"
+          showLogin={this.state.showLogin}
+          handleClose={this.handleClose}
+        />
         <AddCar
           showModal={this.state.showModal}
           handleClose={this.handleClose}

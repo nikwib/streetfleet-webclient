@@ -18,8 +18,46 @@
   font-size: 1.5em;
 }
 
-.Login {
+.LoginButton {
   margin-top: 10px;
+}
+
+.Login .modal-dialog{
+  position: absolute;
+  right: 0;
+}
+
+.Login .form-group {
+  margin: 0;
+}
+
+.Login .modal-content {
+  padding: 10px 15px;
+  line-height: 0.3;
+  position: absolute;
+  box-shadow: none;
+  top: 25px;
+  background-color: #dfdfdf;
+}
+
+.Login .modal-body {
+  padding: 0;
+  width: 200px;
+}
+
+.Login button {
+  float: right;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+.Login .modal-backdrop {
+  opacity: 0;
+}
+
+.Login input {
+  font-size: 12px;
+  height: 32px;
 }
 
 .MenuItem {
@@ -28,23 +66,20 @@
   display: block;
 }
 
-
-.MenuItem:hover {
-  text-decoration: none;
+.MenuItem:hover{
   background-color: #dcdcdc;
-  color: #7e7e7e;
+  text-decoration: none !important;
+  color: #7e7e7e !important;
+}
+
+.MenuItem:focus {
+  text-decoration: none !important;
+  color: #7e7e7e !important;
 }
 
 .MenuItem:active {
   color: #5a5a5a;
-  text-decoration: none;
 }
-
-.MenuItem:active {
-  color: #7e7e7e;
-  text-decoration: none;
-}
-
 
  .divider {
    margin: 0 !important;

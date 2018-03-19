@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Button, FormGroup, ControlLabel, FormControl, HelpBlock } from 'react-bootstrap';
+import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class NewUser extends Component {
 
@@ -11,12 +11,11 @@ class NewUser extends Component {
     };
   }
 
-  FieldGroup = ({ id, label, help, ...props }) => {
+  FieldGroup = ({ id, label, ...props }) => {
     return (
       <FormGroup controlId={id}>
         <ControlLabel>{label}</ControlLabel>
         <FormControl {...props} />
-        {help && <HelpBlock>{help}</HelpBlock>}
       </FormGroup>
     );
   }
@@ -43,7 +42,7 @@ class NewUser extends Component {
       <Modal
         bsSize="small"
         show={this.props.showModal}
-        // onHide={this.props.handleClose}
+        onHide={this.props.handleClose}
       >
         <Modal.Header closeButton>
           <Modal.Title>Create New Account</Modal.Title>

@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 import { Carousel, Button } from 'react-bootstrap';
-import  NewUser  from '../containers/NewUser';
-import  Success  from './Success';
 
 import '../css/HomePage.css';
 import fleetBanner from '../img/fleet.jpg';
+import  NewUser  from '../containers/NewUser';
+import  Success  from './Success';
 
 class HomePage extends Component {
   constructor(props) {

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class AddCar extends Component {
+
   constructor(props, context) {
     super(props, context);
 
@@ -10,7 +11,7 @@ class AddCar extends Component {
     };
   }
 
-  FieldGroup = ({ id, label, help, ...props }) => {
+  FieldGroup = ({ id, label, ...props }) => {
     return (
       <FormGroup controlId={id}>
         <ControlLabel>{label}</ControlLabel>
