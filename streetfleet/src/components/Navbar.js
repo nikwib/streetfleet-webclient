@@ -10,7 +10,7 @@ class NavBar extends Component {
     return (
       <Navbar>
         <Nav>
-          <NavDropdown eventKey={1} className="button" title={<i class="fas fa-bars"></i>} id="basic-nav-dropdown">
+          <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
             <MenuItem eventKey={1.1}>Profile</MenuItem>
             <MenuItem divider />
             <MenuItem eventKey={1.2}>Map</MenuItem>
