@@ -1,25 +1,42 @@
 import React, {Component} from 'react';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import Logo from '../img/street-fleet-logo.svg';
 
+import AddCar from './AddCar';
+import Success from './Success';
 import '../css/NavBar.css';
 
 class NavBar extends Component {
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showModal: false,
+      showSuccess: false
+    };
+  }
+
+  handleAddVehicle = () => {
+    this.setState({ showModal: true });
+  }
+  handleClose = () => {
+    this.setState({
+      showModal: false,
+      showSuccess: false
+    });
+  }
+  handleSuccess = () => {
+    this.setState({
+      showModal: false,
+      showSuccess: true
+    });
+  }
+
   render() {
+    const msg = "Your new vehicle has been added. Please go to your mobile and enter the lisence plate to start tracking the trips."
     return (
       <Navbar>
-        <Nav>
-          <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
-            <MenuItem eventKey={1.1}>Profile</MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={1.2}>Map</MenuItem>
-            <MenuItem eventKey={1.3}>Fleet Overview</MenuItem>
-            <MenuItem eventKey={1.4}>Add Vehicle</MenuItem>
-            <MenuItem divider />
-            <MenuItem eventKey={1.5}>Sign Out</MenuItem>
-          </NavDropdown>
-        </Nav>
         <Navbar.Header>
           <Navbar.Brand>
             <a href="/">
@@ -32,7 +49,30 @@ class NavBar extends Component {
           <NavItem eventKey={1} href="#">
             User Name
           </NavItem>
+          <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
+            <MenuItem eventKey={1.1}>Profile</MenuItem>
+            <MenuItem divider />
+            <MenuItem eventKey={1.2}>Map</MenuItem>
+            <MenuItem eventKey={1.3}>Fleet Overview</MenuItem>
+            <MenuItem eventKey={1.4} onClick={this.handleAddVehicle}>Add Vehicle</MenuItem>
+            <MenuItem divider />
+            <MenuItem eventKey={1.5}>Sign Out</MenuItem>
+          </NavDropdown>
         </Nav>
+        <Nav pullRight>
+          <Button className="Login" bsSize="small" bsStyle="primary">Login</Button>
+        </Nav>
+        <AddCar
+          showModal={this.state.showModal}
+          handleClose={this.handleClose}
+          handleSuccess={this.handleSuccess}
+        />
+        <Success
+          showSuccess={this.state.showSuccess}
+          handleClose={this.handleClose}
+          handleSuccess={this.handleSuccess}
+          message={msg}
+        />
       </Navbar>
     )
   }

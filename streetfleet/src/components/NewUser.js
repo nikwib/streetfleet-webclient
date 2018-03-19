@@ -7,7 +7,6 @@ class NewUser extends Component {
     super(props, context);
 
     this.state = {
-      show: false,
       value: ''
     };
   }
@@ -40,12 +39,11 @@ class NewUser extends Component {
         <this.FieldGroup id="formControlsPassword" label="Password" type="password" />
       </form>
     );
-
     return (
       <Modal
         bsSize="small"
-        show={this.props.show}
-        onHide={this.props.handleClose}
+        show={this.props.showModal}
+        // onHide={this.props.handleClose}
       >
         <Modal.Header closeButton>
           <Modal.Title>Create New Account</Modal.Title>
@@ -55,7 +53,7 @@ class NewUser extends Component {
         </Modal.Body>
         <Modal.Footer>
         <Button onClick={this.props.handleClose}>Cancel</Button>
-          <Button type="submit">Submit</Button>
+          <Button type="submit" onClick={this.props.handleSuccess}>Submit</Button>
         </Modal.Footer>
       </Modal>
     );

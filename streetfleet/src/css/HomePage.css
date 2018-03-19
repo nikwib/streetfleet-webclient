@@ -19,11 +19,9 @@
   bottom: 0;
 }
 
-.carousel-indicators, .glyphicon { visibility: hidden; }
+.carousel-indicators, .carousel-control, .glyphicon { visibility: hidden; }
 
 .btn-success {
-  background-image: none !important;
-  box-shadow: none !important;
   margin-top: 50px;
   padding: 15px 30px;
   font-size: 24px;
