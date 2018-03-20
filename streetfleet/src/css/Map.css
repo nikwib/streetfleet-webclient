@@ -1,1 +1,25 @@
+.modal-dialog {
+  position: absolute;
+  width: 150px;
+  top: 40px;
+  right: 7px;
+}
 
+.modal-content {
+  box-shadow: 0 2px 10px rgba(0,0,0,.2);
+  text-align: left;
+}
+
+.vColor {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.vInfo {
+  display: inline-block;
+  line-height: 2.5;
+  margin-left: 10px;
+}

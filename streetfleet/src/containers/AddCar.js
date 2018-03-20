@@ -39,7 +39,7 @@ class AddCar extends Component {
           id="formControlsEmail"
           type="email"
           label="Lisence Plate"
-          placeholder="E.g. ABC 123"
+          placeholder="E.g. 1234 ACB"
         />
       </form>
     );
