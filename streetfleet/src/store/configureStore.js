@@ -1,15 +1,19 @@
-import { createStore, applyMiddleware, /*combineReducers*/ } from 'redux';
-import { createLogger } from 'redux-logger';
+import { createStore, applyMiddleware } from 'redux';
+// import { createLogger } from 'redux-logger';
+import reducers from './reducers';
+import api from './middlewares/api';
+import logger from './middlewares/logger';
 
-// import * as reducers from './reducers';
+
+
 
 const configureStore = () => {
-  const logger = createLogger();
+  // const logger = createLogger();
 
   const store = createStore(
-    // combineReducers(reducers),
-    applyMiddleware(logger),
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+    reducers,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+    applyMiddleware(api, logger),
   );
 
   return store;
