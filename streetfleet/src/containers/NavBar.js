@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { LinkContainer } from 'react-router-bootstrap';
 
 import Login from './Login';
 import AddCar from './AddCar';
@@ -60,13 +61,13 @@ class NavBar extends Component {
             User Name
           </NavItem>
           <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
-            <Link  className="MenuItem" to="/">Home</Link>
+            <LinkContainer to="/"><MenuItem className="MenuItem">Home</MenuItem></LinkContainer>
             <MenuItem divider />
-            <Link  className="MenuItem" to="/MapView">Live Map</Link>
-            <Link  className="MenuItem" to="/FleetOverview">Fleet Overview</Link>
-            <a  className="MenuItem" onClick={this.handleAddVehicle}>Add Vehicle</a>
+            <LinkContainer to="/MapView"><MenuItem className="MenuItem">Live Map</MenuItem></LinkContainer>
+            <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
+            <MenuItem className="MenuItem" onClick={this.handleAddVehicle}>Add Vehicle</MenuItem>
             <MenuItem divider />
-            <a className="MenuItem" >Sign Out</a>
+            <MenuItem className="MenuItem" >Sign Out</MenuItem>
           </NavDropdown>
         </Nav>
         <Button

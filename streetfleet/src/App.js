@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import './App.css';
+import { Route } from 'react-router-dom';
+
 import NavBar from './containers/NavBar';
 import HomePage from './components/HomePage';
 import FleetOverview from './components/FleetOverview';
 import MapView from './components/MapView';
-import { Route } from 'react-router-dom';
+import CarLog from './components/CarLog';
+import './App.css';
 
 class App extends Component {
 
@@ -17,7 +19,7 @@ class App extends Component {
         <Route exact path="/" component={HomePage}/>
         <Route path="/FleetOverview" component={FleetOverview}/>
         <Route path="/MapView" component={MapView}/>
-
+        <Route path="/CarLog" component={CarLog}/>
       </div>
     );
   }
