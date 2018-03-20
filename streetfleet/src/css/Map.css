@@ -1,13 +1,23 @@
-.modal-dialog {
+.VehicleModal .modal {
+  float: right;
+  position: static;
+}
+
+.VehicleModal .modal-dialog {
   position: absolute;
   width: 150px;
   top: 40px;
   right: 7px;
 }
 
-.modal-content {
+.VehicleModal .modal-content {
   box-shadow: 0 2px 10px rgba(0,0,0,.2);
   text-align: left;
+}
+
+.VehicleModal .modal-body a {
+  display: block;
+  color: #333;
 }
 
 .vColor {

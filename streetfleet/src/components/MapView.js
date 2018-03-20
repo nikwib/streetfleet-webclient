@@ -10,7 +10,6 @@ class MapView extends Component {
     return (
       <div className="row MapView">
         <MapContainer
-          isMarkerShown={false}
           googleMapURL={config.googleMapURL}
           loadingElement={<div style={{ height: `100%` }} />}
           containerElement={<div style={{ height: `calc(100vh - 62px)` }} />}

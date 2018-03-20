@@ -35,3 +35,8 @@ button {
 button:focus {
   outline: none !important;
 }
+
+.No-Link {
+  pointer-events: none;
+  cursor: default;
+}
