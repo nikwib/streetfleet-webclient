@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Table } from 'react-bootstrap';
+
 import { CarItem } from './CarItem';
 import { getAllCars } from './../store/actions';
 
@@ -9,11 +11,14 @@ class FleetOverview extends Component {
     this.props.getCars();
   }
 
-  renderCars = (props) => props.cars.map(car => {
-    return (
+  renderCars = (props) => props.cars.map((car, index) => {
+    index = index+1;
+      return (
       <CarItem
         key={car._id}
         car={car}
+        onClickDelete={props.onClickDelete}
+        onClickEdit={props.onClickEdit}
       />);
   });
 
@@ -21,7 +26,20 @@ class FleetOverview extends Component {
     return (
       <div>
         <h1>Fleet Overview</h1>
-        {this.renderCars(this.props)}
+        <Table  striped={true} bordered={true} condensed={true} hover={true}>
+          <thead>
+            <tr>
+              <th>License </th>
+              <th>Model </th>
+              <th>Driving time</th>
+              <th>Distance</th>
+              <th>Admin</th>              
+            </tr>
+          </thead>
+          <tbody>
+            {this.renderCars(this.props)}
+          </tbody>
+        </Table>
       </div>
     )
   }
