@@ -8,7 +8,7 @@ export const CarItem = (props) => (
     <td>{props.car.miles_driven}</td>
     <td>
       <button onClick={() => props.onClickDelete(props.car)}>Delete</button>
-      <button onClick={() => props.onClickEdit(props.car)}>Edit</button>
+      <button onClick={() => props.onClickEdit}>Edit</button>
     </td>
   </tr>
 )
