@@ -1,7 +1,7 @@
-import { baseUrl } from './../config';
+import config from './../config';
 
 export const getAllCars = {
   type: 'GET_CARS',
-  url: (baseUrl + '/fleet'),
+  url: (config.baseUrl + '/fleet'),
 };
 
