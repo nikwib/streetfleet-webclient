@@ -1,13 +1,12 @@
 export default store => next => action => {
 
   if (!action.url) return next(action);
-  
-  fetch(action.url, { 
+  fetch(action.url, {
     method: action.method,
     header: action.header,
-
   })
-    .then(response => response.json())
+    .then(response => (
+      response.json()))
     .then(response => {
       next({
         ...action,

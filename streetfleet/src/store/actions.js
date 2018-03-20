@@ -1,10 +1,8 @@
 import config from './../config';
 
 const getCars = {
-//  CALL_API: {
-    type: 'GET_CARS',
-    url: (config.baseUrl + '/fleet'),
-//  }
+  type: 'GET_CARS',
+  url: (config.baseUrl + '/fleet'),
 };
 
 const deleteCar = (car) => ({
@@ -14,8 +12,11 @@ const deleteCar = (car) => ({
   headers: {
     'Accept': 'application/json',
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + 'n4hu234gJSON_tokeh3u%T£$%£gyu',
+    'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
   },
 });
 
-export default { getCars, deleteCar }
+export default {
+  getCars,
+  deleteCar
+};
