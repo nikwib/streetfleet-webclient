@@ -23,6 +23,7 @@ const reducers = (state = defaultState, action) => {
     case 'DELETE_CAR_SUCCESS':
       return {
         ...state,
+        cars: state.cars.filter(car => car.license_number !== action.car.license_number),
         fetching: false,
       }
     case 'DELETE_CAR_REQUEST':

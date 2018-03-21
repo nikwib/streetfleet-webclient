@@ -14,6 +14,18 @@ const deleteCar = (car) => ({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
   },
+  car:car,
+});
+
+const addCar = (car) => ({
+  type: 'ADD_CAR',
+  url: (config.baseUrl + '/fleet/car/' + car.license_number),
+  method: 'PUT',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
+  },
 });
 
 export default {
