@@ -32,14 +32,22 @@ class AddCar extends Component {
         <this.FieldGroup
           id="formControlsText"
           type="text"
-          label="Description"
-          placeholder="E.g. Brand, Color..."
+          label="Make"
         />
         <this.FieldGroup
-          id="formControlsEmail"
-          type="email"
+          id="formControlsText"
+          type="text"
+          label="Model"
+        />
+        <this.FieldGroup
+          id="formControlsText"
+          type="text"
+          label="Year"
+        />
+        <this.FieldGroup
+          id="formControlsText"
+          type="text"
           label="Lisence Plate"
-          placeholder="E.g. 1234 ACB"
         />
       </form>
     );

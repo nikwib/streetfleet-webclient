@@ -1,36 +1,23 @@
 .navbar {
   margin-bottom: -1px;
-
   height: 62px;
 }
-.navbar .container {
-  margin: 5px auto;
-}
+.navbar .container { margin: 5px auto; }
 
-.navbar-brand {
-  padding-top: 5px;
-}
+.navbar-brand { padding-top: 5px; }
 
-.sf-logo {
-  height: 40px;
-}
+.sf-logo { height: 40px; }
 
-.navbar .dropdown {
-  font-size: 1.5em;
-}
+.navbar .dropdown { font-size: 1.5em; }
 
-.LoginButton {
-  margin-top: 10px;
-}
+.LoginButton { margin-top: 10px; }
 
 .Login .modal-dialog{
   position: absolute;
   right: 0;
 }
 
-.Login .form-group {
-  margin: 0;
-}
+.Login .form-group { margin: 0; }
 
 .Login .modal-content {
   padding: 10px 15px;
@@ -52,9 +39,7 @@
   margin-left: 8px;
 }
 
-.Login .modal-backdrop {
-  opacity: 0;
-}
+.Login .modal-backdrop { opacity: 0; }
 
 .Login input {
   font-size: 12px;
@@ -71,6 +56,4 @@
   cursor: pointer;
 }
 
-.divider {
-  margin: 0 !important;
-}
+.divider { margin: 0 !important; }

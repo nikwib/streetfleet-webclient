@@ -1,0 +1,44 @@
+.CarLog {
+  line-height: 1.65;
+  margin-top: 35px;
+}
+
+.CarLog span {
+  color: #3c763d;
+  font-weight: 600;
+}
+
+.LogLeft { text-align: right; }
+
+.LogRight { text-align: left; }
+
+.InfoSummary {
+  margin: 10px auto;
+  width: 320px;
+}
+
+.LogRight h2 { margin-top: 5px; }
+
+.logButtons {
+  position: absolute;
+  right: 30px;
+  top: 5px;
+}
+
+.logButtons .btn {
+  font-size: 24px;
+  padding-left: 0;
+}
+
+.nav-tabs { margin: 10px 0; }
+
+.nav-tabs li a { line-height: 0.9; }
+
+.tab-content { padding: 0 20px; }
+
+.tab-content h3 { font-size: 21px; }
+
+.VehicleInfo {
+  margin-top: 20px;
+  line-height: 1.1;
+}
