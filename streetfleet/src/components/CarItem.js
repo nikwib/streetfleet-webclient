@@ -1,10 +1,14 @@
 import React from 'react';
 
 export const CarItem = (props) => (
-  <div className="car-item">
-    <div className="license"> {props.car.license}</div> 
-    <div className="model"> {props.car.model}</div> 
-    <div className="driving_time"> {props.car.driving_time}</div> 
-    <div className="miles_driven"> {props.car.miles_driven}</div> 
-  </div>
+  <tr>
+    <td>{props.car.license_number.toUpperCase()}</td>
+    <td>{props.car.model}</td>
+    <td>{props.car.driving_time}</td>
+    <td>{props.car.miles_driven}</td>
+    <td>
+      <button onClick={() => props.onClickDelete(props.car)}>Delete</button>
+      <button onClick={() => props.onClickEdit}>Edit</button>
+    </td>
+  </tr>
 )
