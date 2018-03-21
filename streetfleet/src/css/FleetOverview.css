@@ -1,0 +1,12 @@
+.FleetOverview { text-align: left; }
+
+.FleetOverview h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+.OverviewButtons { width: 70px; }
+
+.OverviewButtons { text-align: center; }
+
+.OverviewButtons button { padding: 0 4px; }

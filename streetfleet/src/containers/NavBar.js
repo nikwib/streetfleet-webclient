@@ -67,7 +67,7 @@ class NavBar extends Component {
             <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
             <MenuItem className="MenuItem" onClick={this.handleAddVehicle}>Add Vehicle</MenuItem>
             <MenuItem divider />
-            <MenuItem className="MenuItem" >Sign Out</MenuItem>
+            <MenuItem className="MenuItem">Sign Out</MenuItem>
           </NavDropdown>
         </Nav>
         <Button

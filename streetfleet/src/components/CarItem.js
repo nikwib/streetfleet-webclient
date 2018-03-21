@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 
 export const CarItem = (props) => (
   <tr>
@@ -6,9 +7,9 @@ export const CarItem = (props) => (
     <td>{props.car.model}</td>
     <td>{props.car.driving_time}</td>
     <td>{props.car.miles_driven}</td>
-    <td>
-      <button onClick={() => props.onClickDelete(props.car)}>Delete</button>
-      <button onClick={() => props.onClickEdit}>Edit</button>
+    <td class="OverviewButtons">
+      <Button bsStyle="link" onClick={() => props.onClickEdit}><i className="fas fa-pencil-alt text-success"></i></Button>
+      <Button bsStyle="link" onClick={() => props.onClickDelete(props.car)}><i className="fas fa-trash-alt text-success"></i></Button>
     </td>
   </tr>
 )

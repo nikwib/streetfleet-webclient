@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Table } from 'react-bootstrap';
+import { Grid, Row, Col, Table } from 'react-bootstrap';
 
 import { CarItem } from './CarItem';
 import Actions from './../store/actions';
-
-console.log(Actions.getCars);
-
+import '../css/FleetOverview.css';
 
 class FleetOverview extends Component {
 
   componentWillMount = async () => {
     this.props.getCars();
   }
-
 
   deleteCar = (car) => {
     this.props.deleteCar(car);
@@ -34,23 +31,27 @@ class FleetOverview extends Component {
 
   render() {
     return (
-      <div>
-        <h1>Fleet Overview</h1>
-        <Table striped={true} bordered={true} condensed={true} hover={true}>
-          <thead>
-            <tr>
-              <th>License </th>
-              <th>Model </th>
-              <th>Driving time</th>
-              <th>Distance</th>
-              <th>Admin</th>
-            </tr>
-          </thead>
-          <tbody>
-            {this.renderCars(this.props)}
-          </tbody>
-        </Table>
-      </div>
+      <Grid>
+        <Row className="show-grid CarLog">
+          <Col md={10} mdOffset={1} className="FleetOverview">
+            <h2 className="text-success">Fleet Overview</h2>
+            <Table striped bordered condensed hover>
+              <thead>
+                <tr>
+                  <th>License </th>
+                  <th>Model </th>
+                  <th>Driving time</th>
+                  <th>Distance</th>
+                  <th>Options</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.renderCars(this.props)}
+              </tbody>
+            </Table>
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }
@@ -61,7 +62,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getCars: () => { dispatch(Actions.getCars) },
-  deleteCar: (car) => { dispatch(Actions.deleteCar(car)) }, 
+  deleteCar: (car) => { dispatch(Actions.deleteCar(car)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FleetOverview);
