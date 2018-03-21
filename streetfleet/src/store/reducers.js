@@ -1,11 +1,15 @@
 const defaultState = {
   cars: [],
   fetching: false,
+  showSignUp: false,
+  signUpFailure: false,
+  signUpSuccess: false,
 }
 const reducers = (state = defaultState, action) => {
   switch (action.type) {
     case 'GET_CARS_SUCCESS':   
       return {
+        ...state,
         cars: action.response,
         fetching: false,
       }
@@ -31,10 +35,33 @@ const reducers = (state = defaultState, action) => {
         ...state,
         fetching: true,
       }
-    case 'DELETE_CAR_FAILURE':
+      case 'DELETE_CAR_FAILURE':
       return {
         ...state,
         fetching: false,
+      }
+
+    case 'SHOW_SIGN_UP':
+      return {
+        ...state,
+        showSignUp: true,
+      }
+    case 'CANCEL_SIGN_UP':
+      return {
+        ...state,
+        showSignUp: false,
+      }
+    case 'CREATE_ACCOUNT_SUCCESS':
+      return {
+        ...state,
+        signUpSuccess: true,
+        signUpFailure: false,
+      }
+    case 'CREATE_ACCOUNT_FAILURE':
+      return {
+        ...state,
+        signUpSuccess: false,
+        signUpFailure: true,
       }
       break;
     default:
