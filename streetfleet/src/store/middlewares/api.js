@@ -1,12 +1,17 @@
 export default store => next => action => {
+
   if (!action.url) return next(action);
-  fetch(action.url)
-    .then(res => res.json())
-    .then(cars => {
+  fetch(action.url, {
+    method: action.method,
+    header: action.header,
+  })
+    .then(response => (
+      response.json()))
+    .then(response => {
       next({
         ...action,
         type: action.type + '_SUCCESS',
-        cars,
+        response,
       });
     })
     .catch(err => {
