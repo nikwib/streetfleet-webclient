@@ -18,7 +18,7 @@ class Success extends Component {
         onHide={this.props.handleClose}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Success!</Modal.Title>
+          <Modal.Title>Alert!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>{this.props.message}</p>
