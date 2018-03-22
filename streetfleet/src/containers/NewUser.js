@@ -18,13 +18,11 @@ class NewUser extends Component {
 
   onChange = (e) => {
     this.newAccount[e.target.name] = e.target.value;
-    console.log(this.newAccount);
   }
 
   onSubmit = (e) => {
     e.preventDefault();
     this.props.createAccount(this.newAccount);
-
   }
 
   FieldGroup = ({ id, label, ...props }) => {
@@ -75,8 +73,8 @@ class NewUser extends Component {
     return (
       <Modal
         bsSize="small"
-        show={this.props.showModal}
         onHide={this.props.handleClose}
+        show={this.props.showModal}
       >
         <Modal.Header closeButton>
           <Modal.Title>Create New Account</Modal.Title>

@@ -50,16 +50,25 @@ const reducers = (state = defaultState, action) => {
       return {
         ...state,
         showSignUp: false,
+        signUpSuccess: false,
+        signUpFailure: false,
       }
     case 'CREATE_ACCOUNT_SUCCESS':
       return {
         ...state,
+        fetching: false,
         signUpSuccess: true,
         signUpFailure: false,
+      }
+      case 'CREATE_ACCOUNT_REQUEST':
+      return {
+        ...state,
+        fetching: true,
       }
     case 'CREATE_ACCOUNT_FAILURE':
       return {
         ...state,
+        fetching: false,
         signUpSuccess: false,
         signUpFailure: true,
       }

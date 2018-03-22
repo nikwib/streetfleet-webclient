@@ -48,9 +48,7 @@ const createAccount = (body) => ({
   url: config.baseUrl + '/user/sign-up',
   method: 'POST',
   body,
-
 });
-
 
 
 export default {
