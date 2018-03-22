@@ -6,7 +6,7 @@ import '../css/HomePage.css';
 import fleetBanner from '../img/fleet.jpg';
 import NewUser from '../containers/NewUser';
 import Success from './Success';
-import Actions from './../store/actions';
+import Actions from './../store/actions/auth.actions';
 
 class HomePage extends Component {
 
@@ -45,10 +45,10 @@ class HomePage extends Component {
 
 
 const mapStateToProps = (state) => ({
-  showModal: state.showSignUp,
-  loading: state.fetching,
-  signUpSuccess: state.signUpSuccess,
-  signUpFailure: state.signUpFailure,
+  showModal: state.auth.showSignUp,
+  loading: state.auth.fetching,
+  signUpSuccess: state.auth.signUpSuccess,
+  signUpFailure: state.auth.signUpFailure,
 });
 
 const mapDispatchToProps = (dispatch) => ({

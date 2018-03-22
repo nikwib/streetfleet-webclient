@@ -1,46 +1,13 @@
+
 const defaultState = {
-  cars: [],
+  authentication: {},
   fetching: false,
   showSignUp: false,
   signUpFailure: false,
   signUpSuccess: false,
 }
-const reducers = (state = defaultState, action) => {
+export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'GET_CARS_SUCCESS':   
-      return {
-        ...state,
-        cars: action.response,
-        fetching: false,
-      }
-    case 'GET_CARS_REQUEST':
-      return {
-        ...state,
-        fetching: true,
-      }
-    case 'GET_CARS_FAILURE':
-      return {
-        ...state,
-        fetching: false,
-      }
-
-    case 'DELETE_CAR_SUCCESS':
-      return {
-        ...state,
-        cars: state.cars.filter(car => car.license_number !== action.car.license_number),
-        fetching: false,
-      }
-    case 'DELETE_CAR_REQUEST':
-      return {
-        ...state,
-        fetching: true,
-      }
-      case 'DELETE_CAR_FAILURE':
-      return {
-        ...state,
-        fetching: false,
-      }
-
     case 'SHOW_SIGN_UP':
       return {
         ...state,
@@ -77,5 +44,3 @@ const reducers = (state = defaultState, action) => {
   }
   return state;
 };
-
-export default reducers;
