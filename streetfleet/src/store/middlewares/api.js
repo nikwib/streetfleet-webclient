@@ -1,29 +1,30 @@
-export default store => next => action => {
+export default (baseUrl) => {
+  return store => next => action => {
 
-  if (!action.url) return next(action);
-  fetch(action.url, {
-    method: action.method,
-    header: action.header,
-    body: JSON.stringify(action.body),
-  })
-    .then(response => (
-      response.json()))
-    .then(response => {
-      next({
-        ...action,
-        type: action.type + '_SUCCESS',
-        response,
-      });
+    if (!action.url) return next(action);
+    fetch(baseUrl + action.url, {
+      method: action.method,
+      headers: action.headers,
+      body: JSON.stringify(action.body),
     })
-    .catch(err => {
-      console.log(err);
-      return next({
-        ...action,
-        type: action.type + '_FAILURE',
+      .then(response => (response.json()))
+      .then(response => {
+        next({
+          ...action,
+          type: action.type + '_SUCCESS',
+          response,
+        });
       })
-    });
-  next({
-    ...action,
-    type: action.type + '_REQUEST',
-  })
+      .catch(err => {
+        console.log('ERROR: ',err);
+        return next({
+          ...action,
+          type: action.type + '_FAILURE',
+        })
+      });
+    next({
+      ...action,
+      type: action.type + '_REQUEST',
+    })
+  }
 }

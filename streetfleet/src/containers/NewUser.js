@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-import Actions from './../store/actions';
+import Actions from './../store/actions/auth.actions';
 
 class NewUser extends Component {
 
