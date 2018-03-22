@@ -4,6 +4,7 @@ export default store => next => action => {
   fetch(action.url, {
     method: action.method,
     header: action.header,
+    body: JSON.stringify(action.body),
   })
     .then(response => (
       response.json()))

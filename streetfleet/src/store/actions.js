@@ -18,7 +18,7 @@ const deleteCar = (car) => ({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
   },
-  car:car,
+  car: car,
 });
 
 const addCar = (car) => ({
@@ -30,12 +30,13 @@ const addCar = (car) => ({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
   },
+  body: car,
 });
 
 //========================
 // ACCOUNT / Authorization
 //========================
-const showSignUp ={
+const showSignUp = {
   type: 'SHOW_SIGN_UP',
 };
 
@@ -43,10 +44,15 @@ const cancelSignUp = {
   type: 'CANCEL_SIGN_UP',
 };
 
+
 const createAccount = (body) => ({
   type: 'CREATE_ACCOUNT',
-  url: config.baseUrl + '/user/sign-up',
+  url: config.baseUrl + '/company/sign-up',
   method: 'POST',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  },
   body,
 });
 
