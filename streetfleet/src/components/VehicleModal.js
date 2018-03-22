@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { colors } from './colors';
-import Actions from './../store/actions';
+import Actions from './../store/actions/cars.actions';
 import '../css/Map.css';
 
 class VehicleModal extends Component {
@@ -37,7 +37,7 @@ class VehicleModal extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  cars: state.cars,
+  cars: state.cars.cars,
 });
 
 const mapDispatchToProps = (dispatch) => ({

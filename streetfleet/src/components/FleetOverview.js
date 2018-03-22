@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 
 import { CarItem } from './CarItem';
-import Actions from './../store/actions';
+import Actions from './../store/actions/cars.actions';
 import '../css/FleetOverview.css';
 
 class FleetOverview extends Component {
@@ -14,8 +14,6 @@ class FleetOverview extends Component {
 
   deleteCar = (car) => {
     this.props.deleteCar(car);
-    // fetch((baseUrl + '/' + topic._id), { method: 'DELETE' })
-    // .then(this.fetchTopics)
   }
 
   renderCars = (props) => props.cars.map((car, i) => {
@@ -58,7 +56,7 @@ class FleetOverview extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  cars: state.cars,
+  cars: state.cars.cars,
 });
 
 const mapDispatchToProps = (dispatch) => ({

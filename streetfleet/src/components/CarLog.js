@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import config from '../config';
 import MapContainer from './MapContainer';
 import SingleDate from './SingleDate';
-import Actions from './../store/actions';
+import Actions from './../store/actions/cars.actions';
 import '../css/Map.css';
 import '../css/CarLog.css';
 
@@ -76,7 +76,7 @@ class CarLog extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  trips: state.trips,
+  trips: state.cars.trips,
 });
 
 const mapDispatchToProps = (dispatch) => ({
