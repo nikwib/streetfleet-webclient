@@ -9,6 +9,17 @@ const getCars = {
   url: (config.baseUrl + '/fleet'),
 };
 
+const addCar = (car) => ({
+  type: 'ADD_CAR',
+  url: (config.baseUrl + '/fleet/car/' + car.license_number),
+  method: 'PUT',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
+  },
+});
+
 const deleteCar = (car) => ({
   type: 'DELETE_CAR',
   url: (config.baseUrl + '/fleet/car/' + car.license_number),
@@ -21,15 +32,13 @@ const deleteCar = (car) => ({
   car:car,
 });
 
-const addCar = (car) => ({
-  type: 'ADD_CAR',
-  url: (config.baseUrl + '/fleet/car/' + car.license_number),
-  method: 'PUT',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
-  },
+//=======================
+// TRIPS
+//=======================
+
+const getTrips = (trip) => ({
+  type: 'GET_TRIPS',
+  url: (config.baseUrl + '/vehicle/trips/' + trip.license_number),
 });
 
 //========================
@@ -55,6 +64,7 @@ export default {
   getCars,
   deleteCar,
   addCar,
+  getTrips,
   showSignUp,
   cancelSignUp,
   createAccount,

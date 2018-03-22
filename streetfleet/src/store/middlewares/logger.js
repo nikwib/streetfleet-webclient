@@ -6,5 +6,4 @@ const middleware = store => next => action => {
   console.log('================');
 }
 
-
 export default middleware;

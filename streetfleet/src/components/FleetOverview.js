@@ -18,15 +18,16 @@ class FleetOverview extends Component {
     // .then(this.fetchTopics)
   }
 
-  renderCars = (props) => props.cars.map((car, index) => {
-    index = index + 1;
+  renderCars = (props) => props.cars.map((car, i) => {
+    i++;
     return (
       <CarItem
         key={car._id}
         car={car}
         onClickDelete={this.deleteCar}
       //onClickEdit={props.onClickEdit(car)}
-      />);
+      />
+    );
   });
 
   render() {

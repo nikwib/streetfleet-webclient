@@ -1,13 +1,39 @@
-import React, {Component} from 'react';
-import { Grid, Row, Col, Tabs, Tab, Table, Button } from 'react-bootstrap';
+import React, { Component } from 'react';
+import { Grid, Row, Col, Tabs, Tab, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
 
 import config from '../config';
 import MapContainer from './MapContainer';
+import SingleDate from './SingleDate';
+import Actions from './../store/actions';
 import '../css/Map.css';
 import '../css/CarLog.css';
 
 class CarLog extends Component {
+
+  componentWillMount = async () => {
+    const trip = this.props.match.params.id;
+    this.props.getTrips(trip);
+  }
+
+  renderDates = (props) => {
+    if (props.trips.days) {
+      return props.trips.days.map((trip, i) => {
+        i++;
+        return (
+          <div>
+          <SingleDate
+            key={i}
+            trip={trip}
+          />
+          </div>
+        );
+      });
+    }
+  }
+
   render() {
+    const trips = this.props.trips;
     return (
       <Grid>
         <Row className="show-grid CarLog">
@@ -25,127 +51,16 @@ class CarLog extends Component {
             </div>
           </Col>
           <Col md={8} className="LogRight">
-            <h2 className="text-success">6460 CBW</h2>
+            <h2 className="text-success text-uppercase">{trips.license_number}</h2>
             <div className="logButtons pull-right">
               <Button bsStyle="link"><i className="fas fa-pencil-alt text-success"></i></Button>
               <Button bsStyle="link"><i className="fas fa-trash-alt text-success"></i></Button>
             </div>
             <Tabs className="InfoOverview" defaultActiveKey={1} id="uncontrolled-tab-example">
               <Tab eventKey={1} title="Trips">
-                <h3 className="text-success">DD/MM/AAAA</h3>
-                <Table striped bordered condensed hover>
-                  <thead>
-                    <tr>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Distance</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <h3 className="text-success">DD/MM/AAAA</h3>
-                <Table striped bordered condensed hover>
-                  <thead>
-                    <tr>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Distance</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                  </tbody>
-                </Table>
-                <h3 className="text-success">DD/MM/AAAA</h3>
-                <Table striped bordered condensed hover>
-                  <thead>
-                    <tr>
-                      <th>Start Time</th>
-                      <th>End Time</th>
-                      <th>Distance</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                    <tr>
-                      <td>HH:MM</td>
-                      <td>HH:MM</td>
-                      <td>## Km</td>
-                    </tr>
-                  </tbody>
-                </Table>
+                {this.renderDates(this.props)}
               </Tab>
-              <Tab eventKey={2} title="Vehicle Info" c
-              lassName="VehicleInfo">
+              <Tab eventKey={2} title="Vehicle Info" className="VehicleInfo">
                 <p><span>Type: </span></p>
                 <p><span>Make: </span></p>
                 <p><span>Model: </span></p>
@@ -160,4 +75,12 @@ class CarLog extends Component {
   }
 }
 
-export default CarLog;
+const mapStateToProps = (state) => ({
+  trips: state.trips,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getTrips: (trip) => { dispatch(Actions.getTrips(trip)) },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CarLog);

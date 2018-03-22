@@ -1,5 +1,6 @@
 const defaultState = {
   cars: [],
+  trips: [],
   fetching: false,
   showSignUp: false,
   signUpFailure: false,
@@ -7,7 +8,7 @@ const defaultState = {
 }
 const reducers = (state = defaultState, action) => {
   switch (action.type) {
-    case 'GET_CARS_SUCCESS':   
+    case 'GET_CARS_SUCCESS':
       return {
         ...state,
         cars: action.response,
@@ -27,7 +28,7 @@ const reducers = (state = defaultState, action) => {
     case 'DELETE_CAR_SUCCESS':
       return {
         ...state,
-        cars: state.cars.filter(car => car.license_number !== action.car.license_number),
+        cars: state.cars.filter((car) => car.license_number !== action.car.license_number),
         fetching: false,
       }
     case 'DELETE_CAR_REQUEST':
@@ -40,6 +41,23 @@ const reducers = (state = defaultState, action) => {
         ...state,
         fetching: false,
       }
+
+      case 'GET_TRIPS_SUCCESS':
+        return {
+          ...state,
+          trips: action.response,
+          fetching: false,
+        }
+      case 'GET_TRIPS_REQUEST':
+        return {
+          ...state,
+          fetching: true,
+        }
+      case 'GET_TRIPS_FAILURE':
+        return {
+          ...state,
+          fetching: false,
+        }
 
     case 'SHOW_SIGN_UP':
       return {
