@@ -1,5 +1,6 @@
 
 const defaultState = {
+
   authentication: {},
   username: '',
   loggedIn: false,

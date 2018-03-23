@@ -1,3 +1,7 @@
+//=======================
+// CAR
+//=======================
+
 const getCars = {
   type: 'GET_CARS',
   url: ('/fleet'),
@@ -7,9 +11,14 @@ const getCars = {
   }
 };
 
+const getCar = (car) => ({
+  type: 'GET_CAR',
+  url: ('/vehicle/' + car.vehicle_id),
+});
+
 const deleteCar = (car) => ({
   type: 'DELETE_CAR',
-  url: ('/fleet/vehicle/' + car.license_number),
+  url: ('/vehicle/' + car.vehicle_id),
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
@@ -20,7 +29,7 @@ const deleteCar = (car) => ({
 
 const addCar = (car) => ({
   type: 'ADD_CAR',
-  url: ('/fleet/car/' + car.license_number),
+  url: ('/vehicle' + car.vehicle_id),
   method: 'PUT',
   headers: {
     'Accept': 'application/json',
@@ -30,8 +39,19 @@ const addCar = (car) => ({
   body: car,
 });
 
+//=======================
+// TRIPS
+//=======================
+
+const getTrips = (trip) => ({
+  type: 'GET_TRIPS',
+  url: ('/vehicle/trips/' + trip.vehicle_id),
+});
+
 export default {
   getCars,
+  getCar,
   deleteCar,
   addCar,
+  getTrips,
 };
