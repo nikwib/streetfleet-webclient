@@ -5,6 +5,10 @@
 const getCars = {
   type: 'GET_CARS',
   url: ('/fleet'),
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': 'Bearer ' + localStorage.getItem('JWT')  
+  }
 };
 
 const getCar = (car) => ({

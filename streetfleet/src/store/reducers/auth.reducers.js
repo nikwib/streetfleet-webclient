@@ -2,6 +2,8 @@
 const defaultState = {
 
   authentication: {},
+  username: '',
+  loggedIn: false,
   fetching: false,
   showSignUp: false,
   signUpFailure: false,
@@ -28,7 +30,7 @@ export default (state = defaultState, action) => {
         signUpSuccess: true,
         signUpFailure: false,
       }
-      case 'CREATE_ACCOUNT_REQUEST':
+    case 'CREATE_ACCOUNT_REQUEST':
       return {
         ...state,
         fetching: true,
@@ -40,6 +42,49 @@ export default (state = defaultState, action) => {
         signUpSuccess: false,
         signUpFailure: true,
       }
+
+    case 'LOGIN_SUCCESS':
+    // sessionStorage.setItem('JWT', action.response.json_token);
+    // sessionStorage.setItem('username', action.response.username);
+    
+   localStorage.setItem('JWT', action.response.json_token);
+   localStorage.setItem('username', action.response.username);
+    return {
+        ...state,
+        username: localStorage.getItem('username'),
+        loggedIn: true,
+        fetching: false,
+      }
+    case 'LOGIN_REQUEST':
+      return {
+        ...state,
+        fetching: true,
+      }
+    case 'LOGIN_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+      }
+
+    case 'LOGOUT':
+      localStorage.setItem('JWT', '');
+      localStorage.setItem('username', '');      
+      return {
+        ...state,
+        loggedIn: false,   
+        username: '',     
+      }
+
+      case 'LOAD_USER_FROM_TOKEN':
+      const username = localStorage.getItem('username');
+      if (username) {
+        return{
+          ...state,
+          username: username,
+          loggedIn: true,
+        }
+      }
+
       break;
     default:
   }
