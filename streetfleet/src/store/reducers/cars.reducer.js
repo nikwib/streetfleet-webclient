@@ -1,11 +1,12 @@
 const defaultState = {
   cars: [],
+  trips: [],
   fetching: false,
 }
 
 export default (state = defaultState, action) => {
   switch (action.type) {
-    case 'GET_CARS_SUCCESS':   
+    case 'GET_CARS_SUCCESS':
       return {
         ...state,
         cars: action.response,
@@ -17,6 +18,23 @@ export default (state = defaultState, action) => {
         fetching: true,
       }
     case 'GET_CARS_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+      }
+
+    case 'GET_CAR_SUCCESS':
+      return {
+        ...state,
+        cars: action.response,
+        fetching: false,
+      }
+    case 'GET_CAR_REQUEST':
+      return {
+        ...state,
+        fetching: true,
+      }
+    case 'GET_CAR_FAILURE':
       return {
         ...state,
         fetching: false,
@@ -38,6 +56,23 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: false,
       }
+
+      case 'GET_TRIPS_SUCCESS':
+        return {
+          ...state,
+          trips: action.response,
+          fetching: false,
+        }
+      case 'GET_TRIPS_REQUEST':
+        return {
+          ...state,
+          fetching: true,
+        }
+      case 'GET_TRIPS_FAILURE':
+        return {
+          ...state,
+          fetching: false,
+        }
 
       break;
     default:

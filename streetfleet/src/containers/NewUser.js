@@ -43,7 +43,7 @@ class NewUser extends Component {
           label="Company"
           name="company_name"
           onChange={this.onChange}
-          placeholder="Enter name"
+          placeholder="Enter company name"
         />
         <this.FieldGroup
           id="formControlsText"
@@ -51,7 +51,7 @@ class NewUser extends Component {
           label="User Name"
           name="username"
           onChange={this.onChange}
-          placeholder="Enter text"
+          placeholder="Enter your user name"
         />
         <this.FieldGroup
           id="formControlsEmail"
@@ -59,7 +59,7 @@ class NewUser extends Component {
           label="Email address"
           name="email"
           onChange={this.onChange}
-          placeholder="Enter email"
+          placeholder="Enter email address"
         />
         <this.FieldGroup
           id="formControlsPassword"

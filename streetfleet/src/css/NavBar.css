@@ -1,4 +1,7 @@
 .navbar {
+  background-color: #f2f2f2;
+  border-color: #ddd;
+  background-image: none;
   margin-bottom: -1px;
   height: 62px;
 }

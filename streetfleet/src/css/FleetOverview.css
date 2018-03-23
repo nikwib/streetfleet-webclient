@@ -1,8 +1,16 @@
-.FleetOverview { text-align: left; }
+.FleetOverview {
+  text-align: left;
+  margin-top: 35px;
+}
 
 .FleetOverview h2 {
   margin-top: 0;
   margin-bottom: 15px;
+}
+
+.FleetOverview a {
+  color: #3c3c3c;
+  text-decoration: none;
 }
 
 .OverviewButtons { width: 70px; }

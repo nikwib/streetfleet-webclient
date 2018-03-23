@@ -1,23 +1,25 @@
 .CarLog {
   line-height: 1.65;
   margin-top: 35px;
+  text-align: left;
 }
+
+.CarLog h2 { margin-top: 5px; }
 
 .CarLog span {
   color: #3c763d;
   font-weight: 600;
 }
 
-.LogLeft { text-align: right; }
-
-.LogRight { text-align: left; }
+.CarInfo {
+  line-height: 1;
+  margin-top: 20px;
+}
 
 .InfoSummary {
   margin: 10px auto;
   width: 320px;
 }
-
-.LogRight h2 { margin-top: 5px; }
 
 .logButtons {
   position: absolute;
@@ -37,8 +39,3 @@
 .tab-content { padding: 0 20px; }
 
 .tab-content h3 { font-size: 21px; }
-
-.VehicleInfo {
-  margin-top: 20px;
-  line-height: 1.1;
-}

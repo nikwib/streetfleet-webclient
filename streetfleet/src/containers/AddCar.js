@@ -47,7 +47,7 @@ class AddCar extends Component {
         <this.FieldGroup
           id="formControlsText"
           type="text"
-          label="Lisence Plate"
+          label="License Plate"
         />
       </form>
     );

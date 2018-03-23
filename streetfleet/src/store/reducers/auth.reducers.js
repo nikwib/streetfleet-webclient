@@ -1,5 +1,6 @@
 
 const defaultState = {
+
   authentication: {},
   fetching: false,
   showSignUp: false,

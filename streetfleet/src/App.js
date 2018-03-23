@@ -6,6 +6,7 @@ import HomePage from './components/HomePage';
 import FleetOverview from './components/FleetOverview';
 import MapView from './components/MapView';
 import CarLog from './components/CarLog';
+// import PageNotFound from './components/PageNotFound';
 import './App.css';
 
 class App extends Component {
@@ -19,7 +20,7 @@ class App extends Component {
         <Route exact path="/" component={HomePage}/>
         <Route path="/FleetOverview" component={FleetOverview}/>
         <Route path="/MapView" component={MapView}/>
-        <Route path="/CarLog" component={CarLog}/>
+        <Route path="/CarLog/:id" component={CarLog}/>
       </div>
     );
   }
