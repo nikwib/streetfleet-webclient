@@ -4,7 +4,8 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-boots
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
-import Actions from './../store/actions/auth.actions';
+import authActions from './../store/actions/auth.actions';
+import carsActions from './../store/actions/cars.actions';
 
 import Login from './Login';
 import AddCar from './AddCar';
@@ -27,6 +28,7 @@ class NavBar extends Component {
 
   handleAddVehicle = () => {
     this.setState({ showModal: true });
+
   }
   handleLogin = () => {
     this.setState({ showLogin: true });
@@ -46,10 +48,6 @@ class NavBar extends Component {
       showModal: false,
       showSuccess: true
     });
-  }
-
-  onLogOut = () => {
-    this.props.logout()
   }
 
   renderLogin = () => {
@@ -103,7 +101,7 @@ class NavBar extends Component {
         <AddCar
           showModal={this.state.showModal}
           handleClose={this.handleClose}
-          handleSuccess={this.handleSuccess}
+          onAddCar={this.props.onAddCar}
         />
         <Success
           showSuccess={this.state.showSuccess}
@@ -116,14 +114,16 @@ class NavBar extends Component {
   }
 }
 
+// handleSuccess={this.handleSuccess}
 const mapStateToProps = (state) => ({
   loggedIn: state.auth.loggedIn,
   username: state.auth.username,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => { dispatch(Actions.logout) },
-  loadUserFromToken: () => { dispatch(Actions.loadUserFromToken) }
+  logout: () => { dispatch(authActions.logout) },
+  loadUserFromToken: () => { dispatch(authActions.loadUserFromToken) },
+  onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

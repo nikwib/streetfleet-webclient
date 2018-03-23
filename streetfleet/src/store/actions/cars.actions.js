@@ -7,7 +7,7 @@ const getCars = {
   url: ('/fleet'),
   headers: {
     'Content-Type': 'application/json',
-    'authorization': 'Bearer ' + localStorage.getItem('JWT')  
+    'authorization': 'Bearer ' + localStorage.getItem('JWT')
   }
 };
 
@@ -29,10 +29,9 @@ const deleteCar = (car) => ({
 
 const addCar = (car) => ({
   type: 'ADD_CAR',
-  url: ('/vehicle' + car.vehicle_id),
-  method: 'PUT',
+  url: ('/vehicle'),
+  method: 'POST',
   headers: {
-    'Accept': 'application/json',
     'Content-Type': 'application/json',
     'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
   },
