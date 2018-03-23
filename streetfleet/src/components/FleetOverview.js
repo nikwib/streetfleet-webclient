@@ -18,8 +18,7 @@ class FleetOverview extends Component {
 
   renderCars = (props) =>  {
     if (props.cars.length) {
-      return props.cars.map((car, i) => {
-        i++;
+      return props.cars.map((car) => {
         return (
           <CarItem
             key={car._id}
