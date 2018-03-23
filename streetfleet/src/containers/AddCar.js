@@ -10,7 +10,8 @@ class AddCar extends Component {
       make: '',
       model: '',
       year: '',
-      license: '',
+      license_number: '',
+      mac_address: '',
     };
   }
 
@@ -63,7 +64,14 @@ class AddCar extends Component {
           id="formControlsText"
           type="text"
           label="License Plate"
-          name="license"
+          name="license_number"
+          onChange={this.onChange}
+        />
+        <this.FieldGroup
+          id="formControlsText"
+          type="text"
+          label="Mac Address"
+          name="mac_address"
           onChange={this.onChange}
         />
       </form>

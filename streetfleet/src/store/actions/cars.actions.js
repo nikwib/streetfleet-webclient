@@ -13,7 +13,7 @@ const getCars = {
 
 const getCar = (car) => ({
   type: 'GET_CAR',
-  url: ('/vehicle/' + car.vehicle_id),
+  url: ('/vehicle/' + car),
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
@@ -23,7 +23,7 @@ const getCar = (car) => ({
 
 const deleteCar = (car) => ({
   type: 'DELETE_CAR',
-  url: ('/vehicle/' + car.vehicle_id),
+  url: ('/vehicle/' + car._id),
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
