@@ -9,7 +9,6 @@ const cancelSignUp = {
   type: 'CANCEL_SIGN_UP',
 };
 
-
 const createAccount = (body) => ({
   type: 'CREATE_ACCOUNT',
   url: '/company/sign-up',
@@ -20,8 +19,29 @@ const createAccount = (body) => ({
   body,
 });
 
+const login = (b64encode) => ({
+  type: 'LOGIN',
+  url: '/company/sign-in',
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': 'Basic ' + b64encode,
+  },
+});
+
+const logout = {
+  type: 'LOGOUT',  
+}
+
+const loadUserFromToken = {
+  type: 'LOAD_USER_FROM_TOKEN',
+};
+
 export default {
   showSignUp,
   cancelSignUp,
   createAccount,
+  login,
+  logout,
+  loadUserFromToken,
 };
