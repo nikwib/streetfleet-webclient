@@ -6,22 +6,22 @@ import { Link } from 'react-router-dom';
 export const CarItem = (props) => (
   <tr>
     <td className="text-uppercase">
-      <Link to={"/CarLog/" + props.car.license_number} license_number={props.car.license_number}>
+      <Link to={"/CarLog/" + props.car._id} _id={props.car._id}>
         {props.car.license_number}
       </Link>
     </td>
     <td>
-      <Link to={"/CarLog/" + props.car.license_number} license_number={props.car.license_number}>
+      <Link to={"/CarLog/" + props.car._id} _id={props.car._id}>
         {props.car.model}
       </Link>
     </td>
     <td>
-      <Link to={"/CarLog/" + props.car.license_number} license_number={props.car.license_number}>
+      <Link to={"/CarLog/" + props.car._id} _id={props.car._id}>
         {moment(props.car.total_driving_time).format('HH:mm')}
       </Link>
     </td>
     <td>
-      <Link to={"/CarLog/" + props.car.license_number} license_number={props.car.license_number}>
+      <Link to={"/CarLog/" + props.car._id} _id={props.car._id}>
         {props.car.total_miles_driven + " miles"}
       </Link>
     </td>
