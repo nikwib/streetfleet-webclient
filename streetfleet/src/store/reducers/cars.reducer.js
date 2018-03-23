@@ -23,6 +23,23 @@ export default (state = defaultState, action) => {
         fetching: false,
       }
 
+    case 'GET_CAR_SUCCESS':
+      return {
+        ...state,
+        cars: action.response,
+        fetching: false,
+      }
+    case 'GET_CAR_REQUEST':
+      return {
+        ...state,
+        fetching: true,
+      }
+    case 'GET_CAR_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+      }
+
     case 'DELETE_CAR_SUCCESS':
       return {
         ...state,

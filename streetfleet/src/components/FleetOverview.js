@@ -16,22 +16,26 @@ class FleetOverview extends Component {
     this.props.deleteCar(car);
   }
 
-  renderCars = (props) => props.cars.map((car, i) => {
-    i++;
-    return (
-      <CarItem
-        key={car._id}
-        car={car}
-        onClickDelete={this.deleteCar}
-      //onClickEdit={props.onClickEdit(car)}
-      />
-    );
-  });
+  renderCars = (props) =>  {
+    if (props.cars.length) {
+      return props.cars.map((car, i) => {
+        i++;
+        return (
+          <CarItem
+            key={car._id}
+            car={car}
+            onClickDelete={this.deleteCar}
+          //onClickEdit={props.onClickEdit(car)}
+          />
+        );
+      });
+    }
+  }
 
   render() {
     return (
       <Grid>
-        <Row className="show-grid CarLog">
+        <Row className="show-grid text-capitalize">
           <Col md={10} mdOffset={1} className="FleetOverview">
             <h2 className="text-success">Fleet Overview</h2>
             <Table striped bordered condensed hover>

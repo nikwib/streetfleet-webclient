@@ -1,12 +1,30 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
 export const CarItem = (props) => (
   <tr>
-    <td className="text-uppercase">{props.car.license_number}</td>
-    <td>{props.car.model}</td>
-    <td>{props.car.total_driving_time}</td>
-    <td>{props.car.total_miles_driven}</td>
+    <td className="text-uppercase">
+      <Link to={"/CarLog/" + props.car.license_number} license_number={props.car.license_number}>
+        {props.car.license_number}
+      </Link>
+    </td>
+    <td>
+      <Link to={"/CarLog/" + props.car.license_number} license_number={props.car.license_number}>
+        {props.car.model}
+      </Link>
+    </td>
+    <td>
+      <Link to={"/CarLog/" + props.car.license_number} license_number={props.car.license_number}>
+        {moment(props.car.total_driving_time).format('HH:mm')}
+      </Link>
+    </td>
+    <td>
+      <Link to={"/CarLog/" + props.car.license_number} license_number={props.car.license_number}>
+        {props.car.total_miles_driven + " miles"}
+      </Link>
+    </td>
     <td className="OverviewButtons">
       <Button bsStyle="link" onClick={() => props.onClickEdit}><i className="fas fa-pencil-alt text-success"></i></Button>
       <Button bsStyle="link" onClick={() => props.onClickDelete(props.car)}><i className="fas fa-trash-alt text-success"></i></Button>

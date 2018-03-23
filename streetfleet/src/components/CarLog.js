@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Tabs, Tab, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import moment from 'moment';
 
 import config from '../config';
 import MapContainer from './MapContainer';
-import SingleDate from './SingleDate';
+import SingleVehicle from './SingleVehicle';
 import Actions from './../store/actions/cars.actions';
 import '../css/Map.css';
 import '../css/CarLog.css';
@@ -12,8 +13,12 @@ import '../css/CarLog.css';
 class CarLog extends Component {
 
   componentWillMount = async () => {
-    const trip = this.props.match.params.id;
-    this.props.getTrips(trip);
+    this.props.getTrips(this.props.match.params.id);
+    this.props.getCar(this.props.match.params.id);
+  }
+
+  deleteCar = (car) => {
+    this.props.deleteCar(car);
   }
 
   renderDates = (props) => {
@@ -22,7 +27,7 @@ class CarLog extends Component {
         i++;
         return (
           <div>
-          <SingleDate
+          <SingleVehicle
             key={i}
             trip={trip}
           />
@@ -32,12 +37,27 @@ class CarLog extends Component {
     }
   }
 
+  renderInfo = (props) => {
+    return (
+      <div className="CarInfo">
+      <p className="text-uppercase"><span className="text-capitalize">License Plate: </span>{props.cars.license_number}</p>
+      <p className="text-capitalize"><span>Type: </span>{props.cars.vType}</p>
+      <p className="text-capitalize"><span>Make: </span>{props.cars.make}</p>
+      <p className="text-capitalize"><span>Model: </span>{props.cars.model}</p>
+      <p className="text-capitalize"><span>Year: </span>{props.cars.year}</p>
+      <p className="text-capitalize"><span>Total Time: </span>{moment(props.cars.total_driving_time).format('HH:mm')}</p>
+      <p className="text-capitalize"><span>Total Distance: </span>{props.cars.total_miles_driven + " miles"}</p>
+      <p className="text-capitalize"><span>Mac Address: </span>{props.cars.mac_address}</p>
+      </div>
+    )
+  }
+
   render() {
     const trips = this.props.trips;
     return (
       <Grid>
         <Row className="show-grid CarLog">
-          <Col className="LogLeft" md={4}>
+          <Col md={4}>
             <MapContainer
               googleMapURL={config.googleMapURL}
               loadingElement={<div style={{ height: `100%` }} />}
@@ -45,29 +65,16 @@ class CarLog extends Component {
               mapElement={<div style={{ height: `100%` }} />}
             />
             <div className="InfoSummary">
-              <p><span>Date: </span>DD/MM/AAAA<br/>
-              <span>Driving Time: </span>HH hours. MM minutes<br/>
-              <span>Distance Driven: </span>## Km</p>
+              {this.renderInfo(this.props)}
             </div>
           </Col>
-          <Col md={8} className="LogRight">
-            <h2 className="text-success text-uppercase">{trips.license_number}</h2>
+          <Col md={8}>
+            <h2 className="text-success">Vehicle Summary</h2>
             <div className="logButtons pull-right">
               <Button bsStyle="link"><i className="fas fa-pencil-alt text-success"></i></Button>
-              <Button bsStyle="link"><i className="fas fa-trash-alt text-success"></i></Button>
+              <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt text-success"></i></Button>
             </div>
-            <Tabs className="InfoOverview" defaultActiveKey={1} id="uncontrolled-tab-example">
-              <Tab eventKey={1} title="Trips">
-                {this.renderDates(this.props)}
-              </Tab>
-              <Tab eventKey={2} title="Vehicle Info" className="VehicleInfo">
-                <p><span>Type: </span></p>
-                <p><span>Make: </span></p>
-                <p><span>Model: </span></p>
-                <p><span>Year: </span></p>
-                <p><span>License Plate: </span></p>
-              </Tab>
-            </Tabs>
+            {this.renderDates(this.props)}
           </Col>
         </Row>
       </Grid>
@@ -77,10 +84,12 @@ class CarLog extends Component {
 
 const mapStateToProps = (state) => ({
   trips: state.cars.trips,
+  cars: state.cars.cars,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getTrips: (trip) => { dispatch(Actions.getTrips(trip)) },
+  getCar: (car) => { dispatch(Actions.getCar(car)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarLog);

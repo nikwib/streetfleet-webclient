@@ -45,7 +45,7 @@ class NavBar extends Component {
   }
 
   render() {
-    const msg = "Your new vehicle has been added. Please go to your mobile and enter the lisence plate to start tracking the trips."
+    const msg = "Your new vehicle has been added. Please go to your mobile and enter the license plate to start tracking the trips."
     return (
       <Navbar>
         <Navbar.Header>

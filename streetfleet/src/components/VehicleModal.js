@@ -12,16 +12,20 @@ class VehicleModal extends Component {
   componentWillMount = async () => {
     this.props.getCars();
   }
-  renderCars = (props) => props.cars.map((car, i) => {
-    i++;
-    const Url = "/CarLog/" + car.license_number;
-    return (
-      <Link to={Url} key={car._id} license_number={car.license_number}>
-        <div className="vColor" style={{backgroundColor:colors[i-1]}}></div>
-        <div key={i} className="vInfo">{car.license_number.toUpperCase()}</div>
-      </Link>
-    );
-  });
+
+  renderCars = (props) => {
+    if (props.cars.length) {
+      return props.cars.map((car, i) => {
+        i++;
+        return (
+          <Link to={"/CarLog/" + car.license_number} key={car._id} license_number={car.license_number}>
+            <div className="vColor" style={{backgroundColor:colors[i-1]}}></div>
+            <div key={i} className="vInfo">{car.license_number.toUpperCase()}</div>
+          </Link>
+        );
+      });
+    }
+  }
 
   render() {
     return (
