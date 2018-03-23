@@ -5,7 +5,7 @@ class AddCar extends Component {
 
   constructor(props, context) {
     super(props, context);
-    this.state = {
+    this.car = {
       vType: '',
       make: '',
       model: '',
@@ -15,7 +15,7 @@ class AddCar extends Component {
   }
 
   onChange = (e) => {
-    this.setState[e.target.name] = e.target.value;
+    this.car[e.target.name] = e.target.value;
   }
 
   FieldGroup = ({ id, label, ...props }) => {
@@ -83,7 +83,7 @@ class AddCar extends Component {
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.handleClose}>Cancel</Button>
-          <Button type="submit" onClick={() => this.props.onAddCar(this.state)}>Submit</Button>
+          <Button type="submit" onClick={() => this.props.onAddCar(this.car)}>Submit</Button>
         </Modal.Footer>
       </Modal>
     );
