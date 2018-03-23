@@ -14,6 +14,11 @@ const getCars = {
 const getCar = (car) => ({
   type: 'GET_CAR',
   url: ('/vehicle/' + car.vehicle_id),
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  },
+
 });
 
 const deleteCar = (car) => ({
@@ -22,7 +27,7 @@ const deleteCar = (car) => ({
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
+    'Authorization': 'Bearer '+ localStorage.getItem('JWT'),
   },
   car: car,
 });
@@ -33,7 +38,7 @@ const addCar = (car) => ({
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer n4hu234gJSON_tokeh3u%T£$%£gyu',
+    'authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
   body: car,
 });
@@ -45,6 +50,10 @@ const addCar = (car) => ({
 const getTrips = (trip) => ({
   type: 'GET_TRIPS',
   url: ('/vehicle/trips/' + trip.vehicle_id),
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  },
 });
 
 export default {
