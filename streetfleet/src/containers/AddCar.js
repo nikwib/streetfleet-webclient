@@ -1,14 +1,21 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 class AddCar extends Component {
 
   constructor(props, context) {
     super(props, context);
-
     this.state = {
-      value: ''
+      vType: '',
+      make: '',
+      model: '',
+      year: '',
+      license: '',
     };
+  }
+
+  onChange = (e) => {
+    this.setState[e.target.name] = e.target.value;
   }
 
   FieldGroup = ({ id, label, ...props }) => {
@@ -27,27 +34,37 @@ class AddCar extends Component {
           id="formControlsText"
           type="text"
           label="Vehicle Type"
+          name="vType"
+          onChange={this.onChange}
           placeholder="E.g. Car, truck, van..."
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="Make"
+          name="make"
+          onChange={this.onChange}
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="Model"
+          name="model"
+          onChange={this.onChange}
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="Year"
+          name="year"
+          onChange={this.onChange}
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="License Plate"
+          name="license"
+          onChange={this.onChange}
         />
       </form>
     );
@@ -65,8 +82,8 @@ class AddCar extends Component {
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
-        <Button onClick={this.props.handleClose}>Cancel</Button>
-          <Button type="submit" onClick={this.props.handleSuccess}>Submit</Button>
+          <Button onClick={this.props.handleClose}>Cancel</Button>
+          <Button type="submit" onClick={() => this.props.onAddCar(this.state)}>Submit</Button>
         </Modal.Footer>
       </Modal>
     );
