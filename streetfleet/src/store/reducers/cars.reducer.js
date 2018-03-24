@@ -43,7 +43,7 @@ export default (state = defaultState, action) => {
     case 'DELETE_CAR_SUCCESS':
       return {
         ...state,
-        cars: state.cars.filter(car => car.license_number !== action.car.license_number),
+        cars: state.cars.filter(car => car._id !== action.car._id),
         fetching: false,
       }
     case 'DELETE_CAR_REQUEST':
@@ -60,7 +60,7 @@ export default (state = defaultState, action) => {
     case 'ADD_CAR_SUCCESS':
       return {
         ...state,
-        //        cars: state.cars.concat(action.car),
+        cars: state.cars.concat(action.response),
         fetching: false,
       }
     case 'ADD_CAR_REQUEST':
