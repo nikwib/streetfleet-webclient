@@ -42,6 +42,20 @@ class NavBar extends Component {
     });
   }
 
+  onAddCar = (car) => {
+    this.props.onAddCar(car);
+    this.props.getCars();
+    this.handleClose();
+
+  }
+  handleClose = () => {
+    this.setState({
+      showLogin: false,
+      showModal: false,
+      showSuccess: false
+    });
+  }
+
   handleSuccess = () => {
     this.setState({
       showLogin: false,
@@ -101,7 +115,7 @@ class NavBar extends Component {
         <AddCar
           showModal={this.state.showModal}
           handleClose={this.handleClose}
-          onAddCar={this.props.onAddCar}
+          onAddCar={this.onAddCar}
         />
         <Success
           showSuccess={this.state.showSuccess}
@@ -124,6 +138,8 @@ const mapDispatchToProps = (dispatch) => ({
   logout: () => { dispatch(authActions.logout) },
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken) },
   onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
+  getCars: () => { dispatch(carsActions.getCars) },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

@@ -27,7 +27,7 @@ const deleteCar = (car) => ({
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer '+ localStorage.getItem('JWT'),
+    'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
   car: car,
 });
@@ -41,6 +41,7 @@ const addCar = (car) => ({
     'authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
   body: car,
+  car: car,
 });
 
 //=======================

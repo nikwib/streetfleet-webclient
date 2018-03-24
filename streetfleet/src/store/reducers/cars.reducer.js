@@ -51,28 +51,46 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: true,
       }
-      case 'DELETE_CAR_FAILURE':
+    case 'DELETE_CAR_FAILURE':
       return {
         ...state,
         fetching: false,
       }
 
-      case 'GET_TRIPS_SUCCESS':
-        return {
-          ...state,
-          trips: action.response,
-          fetching: false,
-        }
-      case 'GET_TRIPS_REQUEST':
-        return {
-          ...state,
-          fetching: true,
-        }
-      case 'GET_TRIPS_FAILURE':
-        return {
-          ...state,
-          fetching: false,
-        }
+    case 'ADD_CAR_SUCCESS':
+      return {
+        ...state,
+        //        cars: state.cars.concat(action.car),
+        fetching: false,
+      }
+    case 'ADD_CAR_REQUEST':
+      return {
+        ...state,
+        fetching: true,
+      }
+    case 'ADD_CAR_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+      }
+
+
+    case 'GET_TRIPS_SUCCESS':
+      return {
+        ...state,
+        trips: action.response,
+        fetching: false,
+      }
+    case 'GET_TRIPS_REQUEST':
+      return {
+        ...state,
+        fetching: true,
+      }
+    case 'GET_TRIPS_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+      }
 
       break;
     default:
