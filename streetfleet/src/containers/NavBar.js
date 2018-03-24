@@ -7,8 +7,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import authActions from './../store/actions/auth.actions';
 import carsActions from './../store/actions/cars.actions';
 
-import Login from './Login';
-import AddCar from './AddCar';
+import Login from '../components/Login';
+import AddCar from './../components/AddCar';
 import Success from '../components/Success';
 import Logo from '../img/street-fleet-logo.svg';
 import '../css/NavBar.css';
@@ -30,7 +30,7 @@ class NavBar extends Component {
     this.setState({ showModal: true });
 
   }
-  handleLogin = () => {
+  handleLogin = (encode64) => {
     this.setState({ showLogin: true });
   }
 
@@ -47,6 +47,12 @@ class NavBar extends Component {
     this.handleClose();
 
   }
+  onLogin = (b64encode) => {
+    this.props.login(b64encode);
+    this.handleClose();
+  }
+
+
   handleClose = () => {
     this.setState({
       showLogin: false,
@@ -110,6 +116,7 @@ class NavBar extends Component {
           className="Test"
           showLogin={this.state.showLogin}
           handleClose={this.handleClose}
+          onLogin={this.onLogin}
         />
         <AddCar
           showModal={this.state.showModal}
@@ -138,6 +145,7 @@ const mapDispatchToProps = (dispatch) => ({
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken) },
   onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
   getCars: () => { dispatch(carsActions.getCars) },
+  login: (b64encode) => { dispatch(authActions.login(b64encode)) },
 
 });
 

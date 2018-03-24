@@ -27,6 +27,7 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         fetching: false,
+        showSignUp: false,
         signUpSuccess: true,
         signUpFailure: false,
       }
@@ -39,17 +40,30 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         fetching: false,
+        showSignUp: false,
         signUpSuccess: false,
         signUpFailure: true,
       }
+    case 'CLOSE_SIGN_UP_SUCCESS':
+      return {
+        ...state,
+        signUpSuccess: false,
+      }
+    case 'CLOSE_SIGN_UP_FAILURE':
+      return {
+        ...state,
+        signUpFailure: false,
+      }
+
+
 
     case 'LOGIN_SUCCESS':
-    // sessionStorage.setItem('JWT', action.response.json_token);
-    // sessionStorage.setItem('username', action.response.username);
-    
-   localStorage.setItem('JWT', action.response.json_token);
-   localStorage.setItem('username', action.response.username);
-    return {
+      // sessionStorage.setItem('JWT', action.response.json_token);
+      // sessionStorage.setItem('username', action.response.username);
+
+      localStorage.setItem('JWT', action.response.json_token);
+      localStorage.setItem('username', action.response.username);
+      return {
         ...state,
         username: localStorage.getItem('username'),
         loggedIn: true,
@@ -68,17 +82,17 @@ export default (state = defaultState, action) => {
 
     case 'LOGOUT':
       localStorage.setItem('JWT', '');
-      localStorage.setItem('username', '');      
+      localStorage.setItem('username', '');
       return {
         ...state,
-        loggedIn: false,   
-        username: '',     
+        loggedIn: false,
+        username: '',
       }
 
-      case 'LOAD_USER_FROM_TOKEN':
+    case 'LOAD_USER_FROM_TOKEN':
       const username = localStorage.getItem('username');
       if (username) {
-        return{
+        return {
           ...state,
           username: username,
           loggedIn: true,

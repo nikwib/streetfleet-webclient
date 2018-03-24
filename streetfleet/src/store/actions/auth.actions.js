@@ -9,6 +9,14 @@ const cancelSignUp = {
   type: 'CANCEL_SIGN_UP',
 };
 
+const closeSignUpSuccess = {
+  type: 'CLOSE_SIGN_UP_SUCCESS',
+};
+
+const closeSignUpFailure = {
+  type: 'CLOSE_SIGN_UP_FAILURE',
+};
+
 const createAccount = (body) => ({
   type: 'CREATE_ACCOUNT',
   url: '/company/sign-up',
@@ -44,4 +52,6 @@ export default {
   login,
   logout,
   loadUserFromToken,
+  closeSignUpSuccess,
+  closeSignUpFailure,
 };

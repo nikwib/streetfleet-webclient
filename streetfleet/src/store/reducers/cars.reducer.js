@@ -60,7 +60,7 @@ export default (state = defaultState, action) => {
     case 'ADD_CAR_SUCCESS':
       return {
         ...state,
-        cars: state.cars.concat(action.response),
+        cars: [...state.cars, action.response],
         fetching: false,
       }
     case 'ADD_CAR_REQUEST':

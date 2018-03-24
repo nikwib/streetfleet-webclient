@@ -40,3 +40,10 @@ button:focus {
   pointer-events: none;
   cursor: default;
 }
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+}
