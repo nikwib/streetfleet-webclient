@@ -8,13 +8,14 @@ export default (baseUrl) => {
       headers: action.headers,
       body: JSON.stringify(action.body),
     })
+      // TEMP WORKAROUND UNTIL BACKEND CHANGE
       .then(response => {
         console.log('first response', response);
         return response.json()
           .then(response => response)
           .catch(e => console.log('JSON error', e));
       })
-      //      .then(response => response.json())
+      // .then(response => response.json())
       .then(response => {
         next({
           ...action,

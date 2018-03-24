@@ -41,7 +41,6 @@ const addCar = (car) => ({
     'authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
   body: car,
-  car: car,
 });
 
 //=======================

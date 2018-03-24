@@ -16,7 +16,7 @@ class FleetOverview extends Component {
     this.props.deleteCar(car);
   }
 
-  renderCars = (props) =>  {
+  renderCars = (props) => {
     if (props.cars.length) {
       return props.cars.map((car) => {
         return (

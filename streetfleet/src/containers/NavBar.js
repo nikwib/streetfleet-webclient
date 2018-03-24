@@ -44,7 +44,6 @@ class NavBar extends Component {
 
   onAddCar = (car) => {
     this.props.onAddCar(car);
-    this.props.getCars();
     this.handleClose();
 
   }
@@ -90,7 +89,7 @@ class NavBar extends Component {
           <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
           <MenuItem className="MenuItem" onClick={this.handleAddVehicle}>Add Vehicle</MenuItem>
           <MenuItem divider />
-          <MenuItem className="MenuItem" onClick={this.onLogOut}>Sign Out</MenuItem>
+          <LinkContainer to="/"><MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem></LinkContainer>
         </NavDropdown>
       </Nav>
     )
