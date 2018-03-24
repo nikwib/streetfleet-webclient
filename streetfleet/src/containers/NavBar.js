@@ -94,7 +94,6 @@ class NavBar extends Component {
         </Navbar.Header>
         {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
         <Login
-          className="Test"
           showLogin={this.state.showLogin}
           handleClose={this.handleClose}
         />
