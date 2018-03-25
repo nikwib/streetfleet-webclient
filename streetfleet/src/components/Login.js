@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { connect } from 'react-redux';
+
+import authActions from './../store/actions/auth.actions';
 
 class Login extends Component {
 
@@ -18,8 +21,8 @@ class Login extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const b64encode = window.btoa(this.login.username + ':' + this.login.password)
-    this.props.onLogin(b64encode);
-    this.props.handleClose();
+    this.props.login(b64encode);
+//    this.props.onCancelLogin();
   }
 
   render() {
@@ -44,11 +47,22 @@ class Login extends Component {
           </form>
         </Modal.Body>
         <Button bsSize="small" type="submit" onClick={this.onSubmit}>Submit</Button>
-        <Button bsSize="small" onClick={this.props.handleClose}>Cancel</Button>
+        <Button bsSize="small" onClick={this.props.onCancelLogin}>Cancel</Button>
       </Modal>
     );
   }
 }
 
-export default Login;
+// handleSuccess={this.handleSuccess}
+const mapStateToProps = (state) => ({
+  showLogin: state.auth.showLogin,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCancelLogin: () => { dispatch(authActions.onCancelLogin) },
+  login: (b64encode) => { dispatch(authActions.login(b64encode)) },
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
 

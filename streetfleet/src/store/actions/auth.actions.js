@@ -27,6 +27,18 @@ const createAccount = (body) => ({
   body,
 });
 
+//====================
+// LOGIN
+//====================
+
+const onShowLogin = {
+  type: 'ON_SHOW_LOGIN',
+}
+
+const onCancelLogin = {
+  type: 'ON_CANCEL_LOGIN',
+}
+
 const login = (b64encode) => ({
   type: 'LOGIN',
   url: '/company/sign-in',
@@ -54,4 +66,6 @@ export default {
   loadUserFromToken,
   closeSignUpSuccess,
   closeSignUpFailure,
+  onShowLogin,
+  onCancelLogin,
 };

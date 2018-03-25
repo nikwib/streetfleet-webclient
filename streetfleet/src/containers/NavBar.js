@@ -75,7 +75,7 @@ class NavBar extends Component {
         className="LoginButton pull-right"
         bsSize="small"
         bsStyle="primary"
-        onClick={this.handleLogin}
+        onClick={this.props.onShowLogin}
       >
         Login
         </Button>
@@ -114,9 +114,7 @@ class NavBar extends Component {
         {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
         <Login
           className="Test"
-          showLogin={this.state.showLogin}
-          handleClose={this.handleClose}
-          onLogin={this.onLogin}
+          showLogin={this.props.showLogin}
         />
         <AddCar
           showModal={this.state.showModal}
@@ -136,16 +134,17 @@ class NavBar extends Component {
 
 // handleSuccess={this.handleSuccess}
 const mapStateToProps = (state) => ({
+  showLogin: state.auth.showLogin,
   loggedIn: state.auth.loggedIn,
   username: state.auth.username,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onShowLogin: () => { dispatch(authActions.onShowLogin) },
   logout: () => { dispatch(authActions.logout) },
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken) },
   onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
   getCars: () => { dispatch(carsActions.getCars) },
-  login: (b64encode) => { dispatch(authActions.login(b64encode)) },
 
 });
 

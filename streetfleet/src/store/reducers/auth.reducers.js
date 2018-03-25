@@ -1,13 +1,12 @@
 
 const defaultState = {
-
-  authentication: {},
   username: '',
   loggedIn: false,
   fetching: false,
   showSignUp: false,
   signUpFailure: false,
   signUpSuccess: false,
+  showLogin: false,
 }
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -55,12 +54,22 @@ export default (state = defaultState, action) => {
         signUpFailure: false,
       }
 
+    ///////////////
+    // LOGIN
+    ///////////////
 
+    case 'ON_SHOW_LOGIN':
+      return {
+        ...state,
+        showLogin: true,
+      }
+    case 'ON_CANCEL_LOGIN':
+      return {
+        ...state,
+        showLogin: false,
+      }
 
     case 'LOGIN_SUCCESS':
-      // sessionStorage.setItem('JWT', action.response.json_token);
-      // sessionStorage.setItem('username', action.response.username);
-
       localStorage.setItem('JWT', action.response.json_token);
       localStorage.setItem('username', action.response.username);
       return {
@@ -68,16 +77,19 @@ export default (state = defaultState, action) => {
         username: localStorage.getItem('username'),
         loggedIn: true,
         fetching: false,
+        showLogin: false,
       }
     case 'LOGIN_REQUEST':
       return {
         ...state,
         fetching: true,
+        showLogin: false,
       }
     case 'LOGIN_FAILURE':
       return {
         ...state,
         fetching: false,
+        showLogin: false,
       }
 
     case 'LOGOUT':

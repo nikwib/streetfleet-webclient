@@ -92,7 +92,6 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  //showSignUp: () => { dispatch(Actions.showSignUp) },
   cancelSignUp: () => { dispatch(Actions.cancelSignUp) },
   createAccount: (newAccount) => { dispatch(Actions.createAccount(newAccount)) },
 
