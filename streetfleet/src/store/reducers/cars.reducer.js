@@ -2,6 +2,9 @@ const defaultState = {
   cars: [],
   trips: [],
   fetching: false,
+  showAddVehicle: false,
+  showAddVehicleSuccess: false,
+  showAddVehicleFailure: false,
 }
 
 export default (state = defaultState, action) => {
@@ -62,6 +65,7 @@ export default (state = defaultState, action) => {
         ...state,
         cars: [...state.cars, action.response],
         fetching: false,
+        showAddVehicleSuccess: true,
       }
     case 'ADD_CAR_REQUEST':
       return {
@@ -72,9 +76,20 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         fetching: false,
+        showAddVehicleFailure: true,
       }
-
-
+    case 'ON_SHOW_ADD_VEHICLE':
+      return {
+        ...state,
+        showAddVehicle: true,
+      }
+    case 'ON_CANCEL':
+      return {
+        ...state,
+        showAddVehicle: false,
+        showAddVehicleFailure: false,
+        showAddVehicleSuccess: false,
+      }
     case 'GET_TRIPS_SUCCESS':
       return {
         ...state,

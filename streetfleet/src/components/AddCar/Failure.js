@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 
-import Actions from '../../store/actions/auth.actions';
+import carsActions from '../../store/actions/cars.actions';
 
 
 class Failure extends Component {
   render() {
     return (
       <Modal bsSize="small"
-        onHide={this.props.closeSignUpFailure}
-        show={this.props.signUpFailure}>
+        onHide={this.props.onCancel}
+        show={this.props.showAddVehicleFailure}>
         <Modal.Header closeButton>
           <Modal.Title>Ohh no!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Pardon us. Account creation failed, please try again!</p>
+          <p> Something went wrong, please try again. </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.closeSignUpFailure}>Ok</Button>
+          <Button onClick={this.props.onCancel}>Ok</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -26,11 +26,11 @@ class Failure extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  signUpFailure: state.auth.signUpFailure,
+  showAddVehicleFailure: state.cars.showAddVehicleFailure,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeSignUpFailure: () => { dispatch(Actions.closeSignUpFailure) }
+  onCancel: () => { dispatch(carsActions.onCancel) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Failure);

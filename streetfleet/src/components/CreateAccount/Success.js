@@ -12,7 +12,7 @@ class Success extends Component {
         onHide={this.props.closeSignUpSuccess}
         show={this.props.signUpSuccess}>
         <Modal.Header closeButton>
-          <Modal.Title>Yes!</Modal.Title>
+          <Modal.Title>Welcome!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <p>Account successfully created, please login to get started</p>

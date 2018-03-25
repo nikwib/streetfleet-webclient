@@ -2,23 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 
-import Actions from '../../store/actions/auth.actions';
+import carsActions from '../../store/actions/cars.actions';
 
 
 class Success extends Component {
   render() {
     return (
       <Modal bsSize="small"
-        onHide={this.props.closeSignUpSuccess}
-        show={this.props.signUpSuccess}>
+        onHide={this.props.onCancel}
+        show={this.props.showAddVehicleSuccess}>
         <Modal.Header closeButton>
           <Modal.Title>Yes!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p>Account successfully created, please login to get started</p>
+          <p> Your new vehicle has been added. </p>
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.closeSignUpSuccess}>Ok</Button>
+          <Button onClick={this.props.onCancel}>Ok</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -26,11 +26,11 @@ class Success extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  signUpSuccess: state.auth.signUpSuccess,
+  showAddVehicleSuccess: state.cars.showAddVehicleSuccess,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeSignUpSuccess: () => { dispatch(Actions.closeSignUpSuccess) }
+  onCancel: () => { dispatch(carsActions.onCancel) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Success);

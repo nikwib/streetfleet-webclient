@@ -32,6 +32,7 @@ const deleteCar = (car) => ({
   car: car,
 });
 
+
 const addCar = (car) => ({
   type: 'ADD_CAR',
   url: ('/vehicle'),
@@ -42,6 +43,14 @@ const addCar = (car) => ({
   },
   body: car,
 });
+
+const onShowAddVehicle = {
+  type: 'ON_SHOW_ADD_VEHICLE',
+}
+
+const onCancel = {
+  type: 'ON_CANCEL',
+}
 
 //=======================
 // TRIPS
@@ -62,4 +71,6 @@ export default {
   deleteCar,
   addCar,
   getTrips,
+  onShowAddVehicle,
+  onCancel
 };

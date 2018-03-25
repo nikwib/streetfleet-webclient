@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { connect } from 'react-redux';
+
+import carsActions from '../../store/actions/cars.actions';
+
 
 class AddCar extends Component {
 
@@ -80,8 +84,8 @@ class AddCar extends Component {
     return (
       <Modal
         bsSize="small"
-        show={this.props.showModal}
-        onHide={this.props.handleClose}
+        show={this.props.showAddVehicle}
+        onHide={this.props.onCancel}
       >
         <Modal.Header closeButton>
           <Modal.Title>Add New Vehicle</Modal.Title>
@@ -90,7 +94,7 @@ class AddCar extends Component {
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.handleClose}>Cancel</Button>
+          <Button onClick={this.props.onCancel}>Cancel</Button>
           <Button type="submit" onClick={() => this.props.onAddCar(this.car)}>Submit</Button>
         </Modal.Footer>
       </Modal>
@@ -98,4 +102,16 @@ class AddCar extends Component {
   }
 }
 
-export default AddCar;
+
+// handleSuccess={this.handleSuccess}
+const mapStateToProps = (state) => ({
+  showAddVehicle: state.cars.showAddVehicle,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCancel: () => { dispatch(carsActions.onCancel) },
+  onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddCar);

@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { Carousel, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import '../css/HomePage.css';
-import fleetBanner from '../img/fleet.jpg';
-import Actions from './../store/actions/auth.actions';
+import '../../css/HomePage.css';
+import fleetBanner from '../../img/fleet.jpg';
+import Actions from './../../store/actions/auth.actions';
 
 class SplashScreen extends Component {
 
