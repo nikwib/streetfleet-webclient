@@ -3,12 +3,12 @@ import { connect } from 'react-redux';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 
 import { CarItem } from './CarItem';
-import Actions from './../store/actions/cars.actions';
-import '../css/FleetOverview.css';
+import Actions from './../../store/actions/cars.actions';
+import '../../css/FleetOverview.css';
 
 class FleetOverview extends Component {
 
-  componentWillMount = async () => {
+  componentWillMount = () => {
     this.props.getCars();
   }
 

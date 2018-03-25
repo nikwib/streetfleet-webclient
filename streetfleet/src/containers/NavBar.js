@@ -4,63 +4,28 @@ import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-boots
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
+// ACTIONS
 import authActions from './../store/actions/auth.actions';
 import carsActions from './../store/actions/cars.actions';
-
-import Login from './Login';
-import AddCar from './AddCar';
-import Success from '../components/Success';
+// CREATE ACCOUNT
+import CreateAccount from '../components/CreateAccount/Create';
+import CreateAccountSuccess from '../components/CreateAccount/Success';
+import CreateAccountFailure from '../components/CreateAccount/Failure';
+// LOGIN
+import Login from '../components/Login/Login';
+import LoginFailure from '../components/Login/Failure';
+// ADD CAR
+import AddCar from './../components/AddCar/AddCar';
+import AddCarSuccess from './../components/AddCar/Success';
+import AddCarFailure from './../components/AddCar/Failure';
+// STYLE
 import Logo from '../img/street-fleet-logo.svg';
 import '../css/NavBar.css';
 
-
 class NavBar extends Component {
 
-  constructor(props) {
-    super(props);
-    this.props.loadUserFromToken();
-    this.state = {
-      showLogin: false,
-      showModal: false,
-      showSuccess: false
-    };
-  }
-
-  handleAddVehicle = () => {
-    this.setState({ showModal: true });
-
-  }
-  handleLogin = () => {
-    this.setState({ showLogin: true });
-  }
-
-  handleClose = () => {
-    this.setState({
-      showLogin: false,
-      showModal: false,
-      showSuccess: false
-    });
-  }
-
-  onAddCar = (car) => {
-    this.props.onAddCar(car);
-    this.handleClose();
-
-  }
-  handleClose = () => {
-    this.setState({
-      showLogin: false,
-      showModal: false,
-      showSuccess: false
-    });
-  }
-
-  handleSuccess = () => {
-    this.setState({
-      showLogin: false,
-      showModal: false,
-      showSuccess: true
-    });
+  componentWillMount = () => {
+    this.props.loadUserFromToken()
   }
 
   renderLogin = () => {
@@ -69,12 +34,10 @@ class NavBar extends Component {
         className="LoginButton pull-right"
         bsSize="small"
         bsStyle="primary"
-        onClick={this.handleLogin}
-      >
-        Login
-        </Button>
+        onClick={this.props.onShowLogin}
+      > Login </Button>
     )
-  }
+  };
 
   renderMenu = () => {
     return (
@@ -87,7 +50,7 @@ class NavBar extends Component {
           <MenuItem divider />
           <LinkContainer to="/MapView"><MenuItem className="MenuItem">Live Map</MenuItem></LinkContainer>
           <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
-          <MenuItem className="MenuItem" onClick={this.handleAddVehicle}>Add Vehicle</MenuItem>
+          <MenuItem className="MenuItem" onClick={this.props.onShowAddVehicle}>Add Vehicle</MenuItem>
           <MenuItem divider />
           <LinkContainer to="/"><MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem></LinkContainer>
         </NavDropdown>
@@ -100,28 +63,23 @@ class NavBar extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/">
-              <img src={Logo} className="sf-logo" alt="StreetFleet Logo" />
-            </Link>
+            <Link to="/"> <img src={Logo} className="sf-logo" alt="StreetFleet" /> </Link>
           </Navbar.Brand>
         </Navbar.Header>
+
         {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
-        <Login
-          className="Test"
-          showLogin={this.state.showLogin}
-          handleClose={this.handleClose}
-        />
-        <AddCar
-          showModal={this.state.showModal}
-          handleClose={this.handleClose}
-          onAddCar={this.onAddCar}
-        />
-        <Success
-          showSuccess={this.state.showSuccess}
-          handleClose={this.handleClose}
-          handleSuccess={this.handleSuccess}
-          message={"Your new vehicle has been added. Please go to your mobile and enter the license plate to start tracking the trips."}
-        />
+
+        <Login show={this.props.showLogin} />
+        <LoginFailure show={this.props.showLoginFailure} />
+
+        <AddCar show={this.props.showAddVehicle} />
+        <AddCarSuccess show={this.props.showAddVehicleSuccess} />
+        <AddCarFailure show={this.props.showAddVehicleFailure} />
+
+        <CreateAccount show={this.props.showSignUp} />
+        <CreateAccountSuccess show={this.props.signUpSuccess} />
+        <CreateAccountFailure show={this.props.signUpFailure} />
+
       </Navbar>
     )
   }
@@ -129,15 +87,29 @@ class NavBar extends Component {
 
 // handleSuccess={this.handleSuccess}
 const mapStateToProps = (state) => ({
+  loading: state.auth.fetching,
+  showSignUp: state.auth.showSignUp,
+  signUpSuccess: state.auth.signUpSuccess,
+  signUpFailure: state.auth.signUpFailure,
+
+
+  showAddVehicle: state.cars.showAddVehicle,
+  showAddVehicleSuccess: state.cars.showAddVehicleSuccess,
+  showAddVehicleFailure: state.cars.showAddVehicleFailure,
+
+  showLogin: state.auth.showLogin,
+  showLoginSuccess: state.auth.showLoginSuccess,
+  showLoginFailure: state.auth.showLoginFailure,
+
   loggedIn: state.auth.loggedIn,
   username: state.auth.username,
 });
 
 const mapDispatchToProps = (dispatch) => ({
+  onShowLogin: () => { dispatch(authActions.onShowLogin) },
   logout: () => { dispatch(authActions.logout) },
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken) },
-  onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
-  getCars: () => { dispatch(carsActions.getCars) },
+  onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle) },
 
 });
 

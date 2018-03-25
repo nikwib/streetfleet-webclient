@@ -8,10 +8,10 @@ const Footer = () => {
         <Link to="/HomePage">Home</Link>
       </li>
       <li>
-        <Link to="/MapView">Live Map</Link>
+        <Link to="/About">About</Link>
       </li>
       <li>
-        <Link to="/FleetOverview">Fleet Overview</Link>
+        <Link to="/Contact">Contact</Link>
       </li>
     </ul>
   )
