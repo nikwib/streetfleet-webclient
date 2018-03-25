@@ -7,7 +7,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 import authActions from './../store/actions/auth.actions';
 import carsActions from './../store/actions/cars.actions';
 
-import Login from '../components/Login';
+import Login from '../components/Login/Login';
+import LoginFailure from '../components/Login/Failure';
 import AddCar from './../components/AddCar';
 import Success from '../components/Success';
 import Logo from '../img/street-fleet-logo.svg';
@@ -93,7 +94,7 @@ class NavBar extends Component {
           <MenuItem divider />
           <LinkContainer to="/MapView"><MenuItem className="MenuItem">Live Map</MenuItem></LinkContainer>
           <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
-          <MenuItem className="MenuItem" onClick={this.handleAddVehicle}>Add Vehicle</MenuItem>
+          <MenuItem className="MenuItem" onClick={this.props.onShowAddVehicle}>Add Vehicle</MenuItem>
           <MenuItem divider />
           <LinkContainer to="/"><MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem></LinkContainer>
         </NavDropdown>
@@ -112,10 +113,8 @@ class NavBar extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
-        <Login
-          className="Test"
-          showLogin={this.props.showLogin}
-        />
+        <Login show={this.props.showLogin}/>
+        <LoginFailure show={this.props.showLoginFailure}/>
         <AddCar
           showModal={this.state.showModal}
           handleClose={this.handleClose}
@@ -135,6 +134,8 @@ class NavBar extends Component {
 // handleSuccess={this.handleSuccess}
 const mapStateToProps = (state) => ({
   showLogin: state.auth.showLogin,
+  showLoginSuccess: state.auth.showLoginSuccess,
+  showLoginFailure: state.auth.showLoginFailure,
   loggedIn: state.auth.loggedIn,
   username: state.auth.username,
 });
@@ -143,8 +144,9 @@ const mapDispatchToProps = (dispatch) => ({
   onShowLogin: () => { dispatch(authActions.onShowLogin) },
   logout: () => { dispatch(authActions.logout) },
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken) },
-  onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
-  getCars: () => { dispatch(carsActions.getCars) },
+  // onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
+  onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle) },
+  // getCars: () => { dispatch(carsActions.getCars) },
 
 });
 

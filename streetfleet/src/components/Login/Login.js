@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import authActions from './../store/actions/auth.actions';
+import authActions from './../../store/actions/auth.actions';
 
 class Login extends Component {
 
@@ -27,7 +27,7 @@ class Login extends Component {
 
   render() {
     return (
-      <Modal className="Login" bsSize="small" show={this.props.showLogin}>
+      <Modal className="Login" bsSize="small" show={this.props.show}>
         <Modal.Body>
           <form>
             <FormControl

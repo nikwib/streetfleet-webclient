@@ -7,6 +7,8 @@ const defaultState = {
   signUpFailure: false,
   signUpSuccess: false,
   showLogin: false,
+  showLoginFailure: false,
+
 }
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -67,6 +69,7 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         showLogin: false,
+        showLoginFailure: false,
       }
 
     case 'LOGIN_SUCCESS':
@@ -90,6 +93,7 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: false,
         showLogin: false,
+        showLoginFailure: true,
       }
 
     case 'LOGOUT':
