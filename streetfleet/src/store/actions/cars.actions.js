@@ -46,11 +46,11 @@ const addCar = (car) => ({
 
 const onShowAddVehicle = {
   type: 'ON_SHOW_ADD_VEHICLE',
-}
+};
 
 const onCancel = {
   type: 'ON_CANCEL',
-}
+};
 
 //=======================
 // TRIPS

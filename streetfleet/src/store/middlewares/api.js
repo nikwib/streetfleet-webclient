@@ -8,7 +8,10 @@ export default (baseUrl) => {
       headers: action.headers,
       body: JSON.stringify(action.body),
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.status !== 204) return response.json();
+        else return response;
+      })
       .then(response => {
         next({
           ...action,
@@ -21,11 +24,11 @@ export default (baseUrl) => {
         return next({
           ...action,
           type: action.type + '_FAILURE',
-        })
+        });
       });
     next({
       ...action,
       type: action.type + '_REQUEST',
-    })
-  }
-}
+    });
+  };
+};

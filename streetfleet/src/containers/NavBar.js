@@ -25,7 +25,7 @@ import '../css/NavBar.css';
 class NavBar extends Component {
 
   componentWillMount = () => {
-    this.props.loadUserFromToken()
+    this.props.loadUserFromToken();
   }
 
   renderLogin = () => {
@@ -36,7 +36,7 @@ class NavBar extends Component {
         bsStyle="primary"
         onClick={this.props.onShowLogin}
       > Login </Button>
-    )
+    );
   };
 
   renderMenu = () => {
@@ -55,7 +55,7 @@ class NavBar extends Component {
           <LinkContainer to="/"><MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem></LinkContainer>
         </NavDropdown>
       </Nav>
-    )
+    );
   }
 
   render() {
@@ -81,17 +81,15 @@ class NavBar extends Component {
         <CreateAccountFailure show={this.props.signUpFailure} />
 
       </Navbar>
-    )
+    );
   }
 }
 
-// handleSuccess={this.handleSuccess}
 const mapStateToProps = (state) => ({
   loading: state.auth.fetching,
   showSignUp: state.auth.showSignUp,
   signUpSuccess: state.auth.signUpSuccess,
   signUpFailure: state.auth.signUpFailure,
-
 
   showAddVehicle: state.cars.showAddVehicle,
   showAddVehicleSuccess: state.cars.showAddVehicleSuccess,
@@ -106,11 +104,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onShowLogin: () => { dispatch(authActions.onShowLogin) },
-  logout: () => { dispatch(authActions.logout) },
-  loadUserFromToken: () => { dispatch(authActions.loadUserFromToken) },
-  onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle) },
-
+  loadUserFromToken: () => { dispatch(authActions.loadUserFromToken); },
+  onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle); },
+  onShowLogin: () => { dispatch(authActions.onShowLogin); },
+  logout: () => { dispatch(authActions.logout); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
