@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 
-import { CarItem } from './CarItem';
+import CarItem from '../containers/CarItem';
 import Actions from './../store/actions/cars.actions';
 import '../css/FleetOverview.css';
 
@@ -24,7 +24,6 @@ class FleetOverview extends Component {
             key={car._id}
             car={car}
             onClickDelete={this.deleteCar}
-          //onClickEdit={props.onClickEdit(car)}
           />
         );
       });
@@ -41,6 +40,7 @@ class FleetOverview extends Component {
               <thead>
                 <tr>
                   <th>License </th>
+                  <th>Make </th>
                   <th>Model </th>
                   <th>Driving time</th>
                   <th>Distance</th>

@@ -18,6 +18,7 @@ class NavBar extends Component {
 
   constructor(props) {
     super(props);
+
     this.props.loadUserFromToken();
     this.state = {
       showLogin: false,
@@ -28,26 +29,18 @@ class NavBar extends Component {
 
   handleAddVehicle = () => {
     this.setState({ showModal: true });
-
   }
+
   handleLogin = () => {
     this.setState({ showLogin: true });
-  }
-
-  handleClose = () => {
-    this.setState({
-      showLogin: false,
-      showModal: false,
-      showSuccess: false
-    });
   }
 
   onAddCar = (car) => {
     this.props.onAddCar(car);
     this.props.getCars();
     this.handleClose();
-
   }
+
   handleClose = () => {
     this.setState({
       showLogin: false,
@@ -90,7 +83,7 @@ class NavBar extends Component {
           <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
           <MenuItem className="MenuItem" onClick={this.handleAddVehicle}>Add Vehicle</MenuItem>
           <MenuItem divider />
-          <MenuItem className="MenuItem" onClick={this.onLogOut}>Sign Out</MenuItem>
+          <MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem>
         </NavDropdown>
       </Nav>
     )
@@ -134,11 +127,10 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  logout: () => { dispatch(authActions.logout) },
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken) },
-  onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
+  logout: () => { dispatch(authActions.logout) },
   getCars: () => { dispatch(carsActions.getCars) },
-
+  onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
