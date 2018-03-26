@@ -20,9 +20,8 @@ class Login extends Component {
 
   onSubmit = (e) => {
     e.preventDefault();
-    const b64encode = window.btoa(this.login.username + ':' + this.login.password)
+    const b64encode = window.btoa(this.login.username + ':' + this.login.password);
     this.props.login(b64encode);
-//    this.props.onCancelLogin();
   }
 
   render() {
@@ -53,14 +52,13 @@ class Login extends Component {
   }
 }
 
-// handleSuccess={this.handleSuccess}
 const mapStateToProps = (state) => ({
   showLogin: state.auth.showLogin,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCancelLogin: () => { dispatch(authActions.onCancelLogin) },
-  login: (b64encode) => { dispatch(authActions.login(b64encode)) },
+  onCancelLogin: () => { dispatch(authActions.onCancelLogin); },
+  login: (b64encode) => { dispatch(authActions.login(b64encode)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

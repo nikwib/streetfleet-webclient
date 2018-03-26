@@ -1,4 +1,5 @@
 {
+    "parser": "babel-eslint",
     "env": {
       "browser": true,
       "es6": true,
@@ -11,11 +12,13 @@
       "sourceType": "module",
       "ecmaVersion": 8,
       "ecmaFeatures": {
+        "ecmaVersion": 2017,
         "jsx": true,
         "experimentalObjectRestSpread": true
       }
     },
     "plugins": [
+      "react",
       "json"
       
     ],

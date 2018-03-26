@@ -29,7 +29,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCancelLogin: () => { dispatch(Actions.onCancelLogin) }
+  onCancelLogin: () => { dispatch(Actions.onCancelLogin); }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Failure);

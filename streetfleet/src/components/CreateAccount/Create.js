@@ -13,7 +13,7 @@ class CreateAccount extends Component {
       username: '',
       email: '',
       password: '',
-    }
+    };
   }
 
   onChange = (e) => {
@@ -92,9 +92,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cancelSignUp: () => { dispatch(Actions.cancelSignUp) },
-  createAccount: (newAccount) => { dispatch(Actions.createAccount(newAccount)) },
-
+  cancelSignUp: () => { dispatch(Actions.cancelSignUp); },
+  createAccount: (newAccount) => { dispatch(Actions.createAccount(newAccount)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);

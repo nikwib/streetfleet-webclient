@@ -30,7 +30,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCancel: () => { dispatch(carsActions.onCancel) },
+  onCancel: () => { dispatch(carsActions.onCancel); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Failure);

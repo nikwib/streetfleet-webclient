@@ -54,7 +54,7 @@ class FleetOverview extends Component {
           </Col>
         </Row>
       </Grid>
-    )
+    );
   }
 }
 
@@ -63,8 +63,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getCars: () => { dispatch(Actions.getCars) },
-  deleteCar: (car) => { dispatch(Actions.deleteCar(car)) },
+  getCars: () => { dispatch(Actions.getCars); },
+  deleteCar: (car) => { dispatch(Actions.deleteCar(car)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FleetOverview);

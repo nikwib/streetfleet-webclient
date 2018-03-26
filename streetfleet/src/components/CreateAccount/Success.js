@@ -30,7 +30,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeSignUpSuccess: () => { dispatch(Actions.closeSignUpSuccess) }
+  closeSignUpSuccess: () => { dispatch(Actions.closeSignUpSuccess); }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Success);

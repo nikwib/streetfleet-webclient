@@ -30,7 +30,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  closeSignUpFailure: () => { dispatch(Actions.closeSignUpFailure) }
+  closeSignUpFailure: () => { dispatch(Actions.closeSignUpFailure); }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Failure);

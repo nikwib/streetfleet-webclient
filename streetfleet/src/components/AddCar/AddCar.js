@@ -4,11 +4,10 @@ import { connect } from 'react-redux';
 
 import carsActions from '../../store/actions/cars.actions';
 
-
 class AddCar extends Component {
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.car = {
       vType: '',
       make: '',
@@ -102,16 +101,13 @@ class AddCar extends Component {
   }
 }
 
-
-// handleSuccess={this.handleSuccess}
 const mapStateToProps = (state) => ({
   showAddVehicle: state.cars.showAddVehicle,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCancel: () => { dispatch(carsActions.onCancel) },
-  onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
-
+  onCancel: () => { dispatch(carsActions.onCancel); },
+  onAddCar: (car) => { dispatch(carsActions.addCar(car)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCar);
