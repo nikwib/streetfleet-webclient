@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 
-import CarItem from '../containers/CarItem';
-import Actions from './../store/actions/cars.actions';
-import '../css/FleetOverview.css';
+import CarItem from './CarItem';
+import Actions from './../../store/actions/cars.actions';
+import '../../css/FleetOverview.css';
 
 class FleetOverview extends Component {
 
-  componentWillMount = async () => {
+  componentWillMount = () => {
     this.props.getCars();
   }
 
@@ -16,7 +16,7 @@ class FleetOverview extends Component {
     this.props.deleteCar(car);
   }
 
-  renderCars = (props) =>  {
+  renderCars = (props) => {
     if (props.cars.length) {
       return props.cars.map((car) => {
         return (

@@ -1,13 +1,14 @@
 
 const defaultState = {
-
-  authentication: {},
   username: '',
   loggedIn: false,
   fetching: false,
   showSignUp: false,
   signUpFailure: false,
   signUpSuccess: false,
+  showLogin: false,
+  showLoginFailure: false,
+
 }
 export default (state = defaultState, action) => {
   switch (action.type) {
@@ -27,6 +28,7 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         fetching: false,
+        showSignUp: false,
         signUpSuccess: true,
         signUpFailure: false,
       }
@@ -39,46 +41,74 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         fetching: false,
+        showSignUp: false,
         signUpSuccess: false,
         signUpFailure: true,
       }
+    case 'CLOSE_SIGN_UP_SUCCESS':
+      return {
+        ...state,
+        signUpSuccess: false,
+      }
+    case 'CLOSE_SIGN_UP_FAILURE':
+      return {
+        ...state,
+        signUpFailure: false,
+      }
+
+    ///////////////
+    // LOGIN
+    ///////////////
+
+    case 'ON_SHOW_LOGIN':
+      return {
+        ...state,
+        showLogin: true,
+      }
+    case 'ON_CANCEL_LOGIN':
+      return {
+        ...state,
+        showLogin: false,
+        showLoginFailure: false,
+      }
 
     case 'LOGIN_SUCCESS':
-    // sessionStorage.setItem('JWT', action.response.json_token);
-    // sessionStorage.setItem('username', action.response.username);
-    
-   localStorage.setItem('JWT', action.response.json_token);
-   localStorage.setItem('username', action.response.username);
-    return {
+      localStorage.setItem('JWT', action.response.json_token);
+      localStorage.setItem('username', action.response.username);
+      return {
         ...state,
         username: localStorage.getItem('username'),
         loggedIn: true,
         fetching: false,
+        showLogin: false,
       }
     case 'LOGIN_REQUEST':
       return {
         ...state,
         fetching: true,
+        showLogin: false,
       }
     case 'LOGIN_FAILURE':
       return {
         ...state,
         fetching: false,
+        showLogin: false,
+        showLoginFailure: true,
       }
 
     case 'LOGOUT':
       localStorage.setItem('JWT', '');
-      localStorage.setItem('username', '');      
+      localStorage.setItem('username', '');
       return {
         ...state,
-        loggedIn: false,   
-        username: '',     
+        loggedIn: false,
+        username: '',
       }
 
-      case 'LOAD_USER_FROM_TOKEN':
+    case 'LOAD_USER_FROM_TOKEN':
       const username = localStorage.getItem('username');
       if (username) {
-        return{
+        return {
           ...state,
           username: username,
           loggedIn: true,

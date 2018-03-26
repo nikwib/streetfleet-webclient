@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 import NavBar from './containers/NavBar';
-import HomePage from './components/HomePage';
-import FleetOverview from './components/FleetOverview';
+import HomePage from './components/HomePage/HomePage';
+import FleetOverview from './components/FleetOverview/FleetOverview';
 import MapView from './components/MapView';
 import CarLog from './components/CarLog';
+
 // import PageNotFound from './components/PageNotFound';
 import './App.css';
 
@@ -17,13 +18,13 @@ class App extends Component {
         <div className="row">
           <NavBar />
         </div>
-        <Route exact path="/" component={HomePage}/>
-        <Route path="/FleetOverview" component={FleetOverview}/>
-        <Route path="/MapView" component={MapView}/>
-        <Route path="/CarLog/:id" component={CarLog}/>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/FleetOverview" component={FleetOverview} />
+        <Route path="/MapView" component={MapView} />
+        <Route path="/CarLog/:id" component={CarLog} />
       </div>
     );
   }
 }
 
-export default App;
+export default App

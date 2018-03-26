@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 import  Carousel  from './Carousel';
 import  Overview  from './Overview';
-import  Footer  from './Footer';
+import  Footer  from '../Footer';
 
 class HomePage extends Component {
   render() {

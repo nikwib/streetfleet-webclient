@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Row, Col, Image } from 'react-bootstrap';
 
-import screenshots from '../img/screenshots.png';
+import screenshots from '../../img/screenshots.png';
 
 const Overview= () => {
   return (

@@ -18,7 +18,6 @@ const getCar = (car_id) => ({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
-
 });
 
 const addCar = (car) => ({
@@ -56,6 +55,14 @@ const deleteCar = (car) => ({
   car: car,
 });
 
+const onShowAddVehicle = {
+  type: 'ON_SHOW_ADD_VEHICLE',
+}
+
+const onCancel = {
+  type: 'ON_CANCEL',
+}
+
 //=======================
 // TRIPS
 //=======================
@@ -76,4 +83,6 @@ export default {
   editCar,
   deleteCar,
   getTrips,
+  onShowAddVehicle,
+  onCancel
 };
