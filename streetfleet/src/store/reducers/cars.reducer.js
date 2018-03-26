@@ -3,8 +3,11 @@ const defaultState = {
   trips: [],
   fetching: false,
   showAddVehicle: false,
-  showAddVehicleSuccess: false,
-  showAddVehicleFailure: false,
+  message: {
+    show: false,
+    title: '',
+    message: '',
+  },
 };
 
 export default (state = defaultState, action) => {
@@ -65,31 +68,44 @@ export default (state = defaultState, action) => {
         ...state,
         cars: [...state.cars, action.response],
         fetching: false,
-        showAddVehicleSuccess: true,
+        message: {
+          show: true,
+          title: 'Success',
+          message: 'Car added to you fleet.',
+        },
       };
     case 'ADD_CAR_REQUEST':
       return {
         ...state,
         fetching: true,
+        showAddVehicle: false,
       };
     case 'ADD_CAR_FAILURE':
       return {
         ...state,
+        message: {
+          show: true,
+          title: 'Alert',
+          message: 'Something went wrong, please try again.',
+        },
         fetching: false,
-        showAddVehicleFailure: true,
       };
     case 'ON_SHOW_ADD_VEHICLE':
       return {
         ...state,
         showAddVehicle: true,
       };
-    case 'ON_CANCEL':
+    case 'ON_CLOSE':
       return {
         ...state,
         showAddVehicle: false,
-        showAddVehicleFailure: false,
-        showAddVehicleSuccess: false,
+        message: {
+          show: false,
+          title: '',
+          message: '',
+        },
       };
+
     case 'GET_TRIPS_SUCCESS':
       return {
         ...state,

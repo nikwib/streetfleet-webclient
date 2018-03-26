@@ -52,6 +52,10 @@ const onCancel = {
   type: 'ON_CANCEL',
 };
 
+const onClose = {
+  type: 'ON_CLOSE',
+};
+
 //=======================
 // TRIPS
 //=======================
@@ -72,5 +76,5 @@ export default {
   addCar,
   getTrips,
   onShowAddVehicle,
-  onCancel
+  onClose
 };

@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import carsActions from '../../store/actions/cars.actions';
+import carsActions from './../store/actions/cars.actions';
 
 class AddCar extends Component {
 
   constructor(props) {
     super(props);
-    this.car = {
+    this.car = { // Is this needed?
       vType: '',
       make: '',
       model: '',
@@ -84,7 +84,7 @@ class AddCar extends Component {
       <Modal
         bsSize="small"
         show={this.props.showAddVehicle}
-        onHide={this.props.onCancel}
+        onHide={this.props.onClose}
       >
         <Modal.Header closeButton>
           <Modal.Title>Add New Vehicle</Modal.Title>
@@ -93,7 +93,7 @@ class AddCar extends Component {
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onCancel}>Cancel</Button>
+          <Button onClick={this.props.onClose}>Cancel</Button>
           <Button type="submit" onClick={() => this.props.onAddCar(this.car)}>Submit</Button>
         </Modal.Footer>
       </Modal>

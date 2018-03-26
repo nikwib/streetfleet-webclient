@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import authActions from './../../store/actions/auth.actions';
+import authActions from './../store/actions/auth.actions';
 
 class Login extends Component {
 
@@ -26,7 +26,9 @@ class Login extends Component {
 
   render() {
     return (
-      <Modal className="Login" bsSize="small" show={this.props.show}>
+      <Modal className="Login" bsSize="small"
+        show={this.props.showLogin}
+        onHide={this.props.onClose} >
         <Modal.Body>
           <form>
             <FormControl
@@ -46,7 +48,7 @@ class Login extends Component {
           </form>
         </Modal.Body>
         <Button bsSize="small" type="submit" onClick={this.onSubmit}>Submit</Button>
-        <Button bsSize="small" onClick={this.props.onCancelLogin}>Cancel</Button>
+        <Button bsSize="small" onClick={this.props.onClose}>Cancel</Button>
       </Modal>
     );
   }
@@ -57,7 +59,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCancelLogin: () => { dispatch(authActions.onCancelLogin); },
+  onClose: () => { dispatch(authActions.onClose); },
   login: (b64encode) => { dispatch(authActions.login(b64encode)); },
 });
 
