@@ -1,15 +1,14 @@
 export default (baseUrl) => {
   return store => next => action => {
-
     if (!action.url) return next(action);
-    const status = 0;
+    //let status = undefined;
     fetch(baseUrl + action.url, {
       method: action.method,
       headers: action.headers,
       body: JSON.stringify(action.body),
     })
       .then(response => {
-        console.log(response);
+        //console.log(response);
         this.status = response.status;
         switch (this.status) {
           case 204:
@@ -19,9 +18,7 @@ export default (baseUrl) => {
         }
       })
       .then(response => {
-        console.log('After json',response);
-        console.log('Status',this.status);
-
+        //console.log('After json', response);
         switch (this.status) {
           case 401:
           case 404:
@@ -36,10 +33,11 @@ export default (baseUrl) => {
               type: action.type + '_SUCCESS',
               response,
             });
+            break;
         }
       })
       .catch(err => {
-        console.log('ERROR: ', err);
+        //console.log('ERROR: ', err);
         return next({
           ...action,
           type: action.type + '_FAILURE',

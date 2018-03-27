@@ -6,15 +6,7 @@ import Actions from './../store/actions/auth.actions';
 
 class CreateAccount extends Component {
 
-  constructor(props) {
-    super(props);
-    this.newAccount = {
-      company_name: '',
-      username: '',
-      email: '',
-      password: '',
-    };
-  }
+  newAccount = {};
 
   onChange = (e) => {
     this.newAccount[e.target.name] = e.target.value;

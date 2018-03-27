@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
-import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Modal, Button, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import authActions from './../store/actions/auth.actions';
 
 class Login extends Component {
-
-  constructor(props) {
-    super(props);
-    this.login = {
-      username: '',
-      password: '',
-    };
-  }
+  
+  login = {};
 
   onChange = (e) => {
     this.login[e.target.name] = e.target.value;

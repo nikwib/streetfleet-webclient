@@ -6,20 +6,10 @@ import carsActions from './../store/actions/cars.actions';
 
 class AddCar extends Component {
 
-  constructor(props) {
-    super(props);
-    this.car = { // Is this needed?
-      vType: '',
-      make: '',
-      model: '',
-      year: '',
-      license_number: '',
-      mac_address: '',
-    };
-  }
+  car = {};
 
   onChange = (e) => {
-    this.car[e.target.name] = e.target.value;
+    this.car[e.target.name] = e.target.value;  
   }
 
   FieldGroup = ({ id, label, ...props }) => {
@@ -106,7 +96,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCancel: () => { dispatch(carsActions.onCancel); },
+  onClose: () => { dispatch(carsActions.onClose); },
   onAddCar: (car) => { dispatch(carsActions.addCar(car)); },
 });
 
