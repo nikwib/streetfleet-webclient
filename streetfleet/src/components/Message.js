@@ -12,7 +12,7 @@ class Message extends Component {
     this.state = {
       title: '',
       message: '',
-    }
+    };
   }
 
   componentWillReceiveProps = (props) => {
@@ -28,7 +28,7 @@ class Message extends Component {
       });
     }
   }
-
+  
   render() {
     return (
       <Modal bsSize='small'

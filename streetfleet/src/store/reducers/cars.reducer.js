@@ -54,7 +54,7 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: true,
         showEditVehicle: false,
-      }
+      };
     case 'EDIT_CAR_SUCCESS':
       return {
         ...state,
@@ -65,7 +65,7 @@ export default (state = defaultState, action) => {
           title: 'Success',
           message: 'Vehicle has been updated.',
         },
-      }
+      };
     case 'EDIT_CAR_FAILURE':
       return {
         ...state,
@@ -75,7 +75,7 @@ export default (state = defaultState, action) => {
           title: 'Alert',
           message: 'Something went wrong, please try again.',
         },
-      }
+      };
     case 'DELETE_CAR_SUCCESS':
       return {
         ...state,
@@ -129,7 +129,7 @@ export default (state = defaultState, action) => {
         ...state,
         showEditVehicle: true,
         car: action.car
-      }
+      };
     case 'ON_CLOSE':
       return {
         ...state,
