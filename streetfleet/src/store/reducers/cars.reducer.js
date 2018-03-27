@@ -36,7 +36,6 @@ export default (state = defaultState, action) => {
         ...state,
         cars: action.response,
         fetching: false,
-
       };
     case 'GET_CAR_REQUEST':
       return {

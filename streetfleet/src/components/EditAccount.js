@@ -10,7 +10,7 @@ class EditAccount extends Component {
   }
 
   componentDidMount () {
-    this.props.getCompany(this.props.username);
+    this.props.getAccount(this.props.username);
   }
 
   componentWillReceiveProps (props) {
@@ -68,9 +68,8 @@ class EditAccount extends Component {
         <this.FieldGroup
           id="formControlsText"
           type="text"
-          label="Password"
+          label="New password"
           name="password"
-          value=''
           onChange={this.onChange}
           className=""
         />
@@ -104,7 +103,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getCompany: (username) => { dispatch(Actions.getCompany(username))},
+  getAccount: (username) => { dispatch(Actions.getAccount(username))},
   onClose: () => { dispatch(Actions.onClose)},
   editAccount: company => { dispatch(Actions.editAccount(company))}
 })

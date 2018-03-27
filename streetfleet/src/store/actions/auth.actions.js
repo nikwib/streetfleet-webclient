@@ -54,8 +54,8 @@ const showEditAccount = {
   type: 'SHOW_EDIT_ACCOUNT'
 }
 
-const getCompany = username => ({
-  type: 'GET_COMPANY',
+const getAccount = username => ({
+  type: 'GET_ACCOUNT',
   url: ('/company/' + username),
   headers: {
     'Content-Type': 'application/json',
@@ -63,14 +63,26 @@ const getCompany = username => ({
   },
 })
 
+const editAccount = company => ({
+  type: 'EDIT_ACCOUNT',
+  url: ('/company/' + company.username),
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  },
+  body: company,
+});
+
 export default {
   onClose,
   showSignUp,
   createAccount,
   login,
   logout,
-  getCompany,
   showEditAccount,
+  getAccount,
+  editAccount,
   loadUserFromToken,
   onShowLogin,
 };

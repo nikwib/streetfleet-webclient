@@ -119,7 +119,7 @@ export default (state = defaultState, action) => {
       // ACCOUNT MANAGEMENT
       /////////////////////
 
-      case 'GET_COMPANY_REQUEST':
+      case 'GET_ACCOUNT_REQUEST':
       if (localStorage.getItem('username')) {
         return {
           ...state,
@@ -127,17 +127,46 @@ export default (state = defaultState, action) => {
         }
       };
 
-      case 'GET_COMPANY_SUCCESS':
+      case 'GET_ACCOUNT_SUCCESS':
         return {
           ...state,
           fetching: false,
           company: action.response
         };
 
-      case 'GET_COMPANY_FAILURE':
+      case 'GET_ACCOUNT_FAILURE':
         return {
           ...state,
           fetching: false
+        }
+
+      case 'EDIT_ACCOUNT_REQUEST':
+        return {
+          ...state,
+          fetching: true
+        }
+
+      case 'EDIT_ACCOUNT_SUCCESS':
+        return {
+          ...state,
+          fetching: false,
+          company: action.response,
+          message: {
+            show: true,
+            title: 'Success',
+            message: 'Account successfully modified.',
+          },
+        }
+
+      case 'EDIT_ACCOUNT_FAILURE':
+        return {
+          ...state,
+          fetching: false,
+          message: {
+            show: true,
+            title: 'Ohh no!',
+            message: 'Pardon us. Account modification failed, please try again!',
+          },
         }
 
       case 'SHOW_EDIT_ACCOUNT':
