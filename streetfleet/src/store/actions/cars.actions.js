@@ -29,7 +29,6 @@ const addCar = (car) => ({
     'authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
   body: car,
-  car: car,
 });
 
 const editCar = (car) => ({
@@ -57,16 +56,16 @@ const deleteCar = (car) => ({
 
 const onShowAddVehicle = {
   type: 'ON_SHOW_ADD_VEHICLE',
-}
+};
 
 const onShowEditVehicle = (car) => ({
   type: 'ON_SHOW_EDIT_VEHICLE',
   car,
 });
 
-const onCancel = {
-  type: 'ON_CANCEL',
-}
+const onClose = {
+  type: 'ON_CLOSE',
+};
 
 //=======================
 // TRIPS
@@ -90,5 +89,5 @@ export default {
   getTrips,
   onShowAddVehicle,
   onShowEditVehicle,
-  onCancel
+  onClose
 };

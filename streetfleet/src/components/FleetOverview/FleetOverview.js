@@ -17,9 +17,8 @@ class FleetOverview extends Component {
     this.props.getCars();
   }
 
-
   componentWillReceiveProps (props) {
-   if (props.showEditVehicleSuccess) this.props.getCars();
+   if (props.editCarSuccess) this.props.getCars();
   }
 
   componentUpdate = () => {
@@ -73,20 +72,20 @@ class FleetOverview extends Component {
         <EditCarSuccess show={this.props.showEditVehicleSuccess} />
         <EditCarFailure show={this.props.showEditVehicleFailure} />
       </Grid>
-    )
+    );
   }
 }
 
 const mapStateToProps = (state) => ({
   cars: state.cars.cars,
   showEditVehicle: state.cars.showEditVehicle,
-  showEditVehicleSuccess: state.cars.showEditVehicleSuccess,
+  editCarSuccess: state.cars.editCarSuccess,
   showEditVehicleFailure: state.cars.showEditVehicleFailure,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  getCars: () => { dispatch(Actions.getCars) },
-  deleteCar: (car) => { dispatch(Actions.deleteCar(car)) },
+  getCars: () => { dispatch(Actions.getCars); },
+  deleteCar: (car) => { dispatch(Actions.deleteCar(car)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FleetOverview);

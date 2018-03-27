@@ -99,7 +99,7 @@ class EditCar extends Component {
       <Modal
         bsSize="small"
         show={this.props.showEditVehicle}
-        onHide={this.props.onCancel}
+        onHide={this.props.onClose}
       >
         <Modal.Header closeButton>
           <Modal.Title>Edit Vehicle</Modal.Title>
@@ -108,7 +108,7 @@ class EditCar extends Component {
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onCancel}>Cancel</Button>
+          <Button onClick={this.props.onClose}>Cancel</Button>
           <Button type="submit" onClick={() => this.props.onEditCar(this.state.car)}>Submit</Button>
         </Modal.Footer>
       </Modal>
@@ -123,7 +123,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onEditCar: (car) => { dispatch(Actions.editCar(car)) },
-  onCancel: () => { dispatch(Actions.onCancel) },
+  onClose: () => { dispatch(Actions.onClose) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditCar);

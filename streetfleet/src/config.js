@@ -3,5 +3,5 @@ const config = {
   baseUrl: 'https://streetfleet-backend.herokuapp.com/api/v1',
   // baseUrl: 'https://private-anon-bf30266df3-streetfleet.apiary-mock.com/api/v1',
   // baseUrl: 'http://localhost:4000/api/v1',
-}
+};
 export default config;
