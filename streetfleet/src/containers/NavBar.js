@@ -9,6 +9,7 @@ import carsActions from './../store/actions/cars.actions';
 import CreateAccount from '../components/CreateAccount';
 import Login from '../components/Login';
 import AddCar from './../components/AddCar';
+import EditAccount from './../components/EditAccount';
 import EditCar from './../components/EditCar';
 import Message from '../components/Message';
 import Logo from '../img/street-fleet-logo.svg';
@@ -45,6 +46,8 @@ class NavBar extends Component {
           <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
           <MenuItem className="MenuItem" onClick={this.props.onShowAddVehicle}>Add Vehicle</MenuItem>
           <MenuItem divider />
+          <MenuItem className="MenuItem" onClick={this.props.showEditAccount}>Edit Account</MenuItem>
+          <MenuItem divider />
           <LinkContainer to="/"><MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem></LinkContainer>
         </NavDropdown>
       </Nav>
@@ -65,6 +68,7 @@ class NavBar extends Component {
         <EditCar/>
         <CreateAccount />
         <Message />
+        <EditAccount />
       </Navbar>
     );
   }
@@ -80,6 +84,7 @@ const mapDispatchToProps = (dispatch) => ({
 
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken); },
   onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle); },
+  showEditAccount: () => { dispatch(authActions.showEditAccount); },
   onShowLogin: () => { dispatch(authActions.onShowLogin); },
   logout: () => { dispatch(authActions.logout); },
 });

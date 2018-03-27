@@ -46,12 +46,31 @@ const loadUserFromToken = {
   type: 'LOAD_USER_FROM_TOKEN',
 };
 
+//====================
+// ACCOUNT MANAGEMENT
+//====================
+
+const showEditAccount = {
+  type: 'SHOW_EDIT_ACCOUNT'
+}
+
+const getCompany = username => ({
+  type: 'GET_COMPANY',
+  url: ('/company/' + username),
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  },
+})
+
 export default {
   onClose,
   showSignUp,
   createAccount,
   login,
   logout,
+  getCompany,
+  showEditAccount,
   loadUserFromToken,
   onShowLogin,
 };

@@ -1,9 +1,11 @@
 const defaultState = {
   username: '',
+  company: {},
   loggedIn: false,
   fetching: false,
   showSignUp: false,
   showLogin: false,
+  showEditAccount: false,
   message: {
     show: false,
     title: '',
@@ -49,6 +51,7 @@ export default (state = defaultState, action) => {
         ...state,
         showSignUp: false,
         showLogin: false,
+        showEditAccount: false,
         message: {
           show: false,
           title: '',
@@ -111,6 +114,38 @@ export default (state = defaultState, action) => {
           loggedIn: true,
         };
       }
+
+      /////////////////////
+      // ACCOUNT MANAGEMENT
+      /////////////////////
+
+      case 'GET_COMPANY_REQUEST':
+      if (localStorage.getItem('username')) {
+        return {
+          ...state,
+          fetching: true
+        }
+      };
+
+      case 'GET_COMPANY_SUCCESS':
+        return {
+          ...state,
+          fetching: false,
+          company: action.response
+        };
+
+      case 'GET_COMPANY_FAILURE':
+        return {
+          ...state,
+          fetching: false
+        }
+
+      case 'SHOW_EDIT_ACCOUNT':
+        return {
+          ...state,
+          showEditAccount: true
+        }
+
       break;
     default:
   }
