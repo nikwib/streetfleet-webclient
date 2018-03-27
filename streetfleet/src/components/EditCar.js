@@ -11,11 +11,11 @@ class EditCar extends Component {
     super(props);
     this.state = {
       car: props.car
-    }
+    };
   }
 
   componentWillReceiveProps (props) {
-    this.setState({car: props.car})
+    this.setState({car: props.car});
   }
 
   onChange = (e) => {
@@ -122,8 +122,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onEditCar: (car) => { dispatch(Actions.editCar(car)) },
-  onClose: () => { dispatch(Actions.onClose) },
+  onEditCar: (car) => { dispatch(Actions.editCar(car)); },
+  onClose: () => { dispatch(Actions.onClose); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditCar);

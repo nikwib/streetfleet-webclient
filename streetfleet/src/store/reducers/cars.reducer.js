@@ -60,10 +60,11 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: false,
         editCarSuccess: true,
+        cars: state.cars.map(car => (car._id === action.car._id) ? action.car : car),
         message: {
           show: true,
           title: 'Success',
-          message: 'Vehicle has been updated.',
+          message: 'Vehicle ' + action.car.license_number + ' has been updated.',
         },
       };
     case 'EDIT_CAR_FAILURE':

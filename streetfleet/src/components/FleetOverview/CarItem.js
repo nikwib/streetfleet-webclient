@@ -13,47 +13,41 @@ class CarItem extends Component {
     return (
       <tr>
         <td className="text-uppercase">
-          <Link to={"/CarLog/" + this.props.car._id} _id={this.props.car._id}>
+          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
             {this.props.car.license_number}
           </Link>
         </td>
         <td>
-          <Link to={"/CarLog/" + this.props.car._id} _id={this.props.car._id}>
+          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
             {this.props.car.make}
           </Link>
         </td>
         <td>
-          <Link to={"/CarLog/" + this.props.car._id} _id={this.props.car._id}>
+          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
             {this.props.car.model}
           </Link>
         </td>
         <td>
-          <Link to={"/CarLog/" + this.props.car._id} _id={this.props.car._id}>
+          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
             {moment(time).format('HH:mm')}
           </Link>
         </td>
         <td>
-          <Link to={"/CarLog/" + this.props.car._id} _id={this.props.car._id}>
-            {this.props.car.total_miles_driven + " miles"}
+          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
+            {this.props.car.total_miles_driven }
           </Link>
         </td>
         <td className="OverviewButtons">
           <Button bsStyle="link" onClick={() => this.props.onShowEditVehicle(this.props.car)}><i className="fas fa-pencil-alt text-success"></i></Button>
           <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt text-success"></i></Button>
-          </td>
+        </td>
       </tr>
-    )
+    );
   }
 }
-
-const mapStateToProps = (state) => ({
-  showEditVehicle: state.cars.showEditVehicle,
-  showEditVehicleSuccess: state.cars.showEditVehicleSuccess,
-  showEditVehicleFailure: state.cars.showEditVehicleFailure,
-})
 
 const mapDispatchToProps = (dispatch) => ({
   onShowEditVehicle: (car) => { dispatch(Actions.onShowEditVehicle(car)) },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CarItem);
+export default connect(null, mapDispatchToProps)(CarItem);
