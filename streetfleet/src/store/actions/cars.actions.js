@@ -2,6 +2,10 @@ const onClose = {
   type: 'ON_CLOSE',
 };
 
+const logout = {
+  type: 'LOGOUT',
+};
+
 //=======================
 // CAR
 //=======================
@@ -15,13 +19,10 @@ const getCars = {
   }
 };
 
+// Get car from Store
 const getCar = (car_id) => ({
   type: 'GET_CAR',
-  url: ('/vehicle/' + car_id),
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
-  },
+  car_id,
 });
 
 const addCar = (car) => ({
@@ -72,9 +73,9 @@ const onShowEditVehicle = (car) => ({
 // TRIPS
 //=======================
 
-const getTrips = (trip) => ({
+const getTrips = (mac_address) => ({
   type: 'GET_TRIPS',
-  url: ('/trips/' + trip.vehicle_id),
+  url: ('/trips/' + mac_address),
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
@@ -90,5 +91,6 @@ export default {
   getTrips,
   onShowAddVehicle,
   onShowEditVehicle,
-  onClose
+  onClose,
+  logout
 };

@@ -62,7 +62,7 @@ class NavBar extends Component {
         {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
         <Login />
         <AddCar />
-        <EditCar/>
+        <EditCar />
         <CreateAccount />
         <Message />
       </Navbar>
@@ -81,7 +81,10 @@ const mapDispatchToProps = (dispatch) => ({
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken); },
   onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle); },
   onShowLogin: () => { dispatch(authActions.onShowLogin); },
-  logout: () => { dispatch(authActions.logout); },
+  logout: () => {
+    dispatch(authActions.logout);
+    dispatch(carsActions.logout);
+  },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);

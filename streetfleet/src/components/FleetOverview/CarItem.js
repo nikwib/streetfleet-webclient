@@ -13,28 +13,28 @@ class CarItem extends Component {
     return (
       <tr>
         <td className="text-uppercase">
-          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
+          <Link to={'/CarLog/' + this.props.car._id} >
             {this.props.car.license_number}
           </Link>
         </td>
         <td>
-          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
+          <Link to={'/CarLog/' + this.props.car._id} >
             {this.props.car.make}
           </Link>
         </td>
         <td>
-          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
+          <Link to={'/CarLog/' + this.props.car._id} >
             {this.props.car.model}
           </Link>
         </td>
         <td>
-          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
+          <Link to={'/CarLog/' + this.props.car._id} >
             {moment(time).format('HH:mm')}
           </Link>
         </td>
         <td>
-          <Link to={'/CarLog/' + this.props.car._id} _id={this.props.car._id}>
-            {this.props.car.total_miles_driven }
+          <Link to={'/CarLog/' + this.props.car._id} >
+            {this.props.car.total_miles_driven}
           </Link>
         </td>
         <td className="OverviewButtons">
@@ -47,7 +47,10 @@ class CarItem extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  onShowEditVehicle: (car) => { dispatch(Actions.onShowEditVehicle(car)) },
+  onShowEditVehicle: (car) => { dispatch(Actions.onShowEditVehicle(car)); },
+  onShowEditVehicle: (car) => { dispatch(Actions.onShowEditVehicle(car)); },
 });
 
 export default connect(null, mapDispatchToProps)(CarItem);
+
+
