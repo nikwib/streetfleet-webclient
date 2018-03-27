@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Tabs, Tab, Button } from 'react-bootstrap';
+import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
 
@@ -7,10 +7,27 @@ import config from '../config';
 import MapContainer from './MapContainer';
 import SingleVehicle from './SingleVehicle';
 import Actions from './../store/actions/cars.actions';
+import EditCar from './EditCar';
 import '../css/Map.css';
 import '../css/CarLog.css';
 
 class CarLog extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      showEdit: true
+    };
+  }
+
+  handleEdit = () => {
+    this.setState({ showEdit: true })
+  }
+
+  handleClose = () => {
+    this.setState({ showEdit: false })
+  }
 
   componentWillMount = async () => {
     this.props.getTrips(this.props.match.params.id);
@@ -30,6 +47,11 @@ class CarLog extends Component {
           <SingleVehicle
             key={i}
             trip={trip}
+          />
+          <EditCar
+            showEdit={this.state.showEdit}
+            handleClose={this.handleClose}
+            car={this.props.car}
           />
           </div>
         );
@@ -53,7 +75,6 @@ class CarLog extends Component {
   }
 
   render() {
-    const trips = this.props.trips;
     return (
       <Grid>
         <Row className="show-grid CarLog">
@@ -71,7 +92,7 @@ class CarLog extends Component {
           <Col md={8}>
             <h2 className="text-success">Vehicle Summary</h2>
             <div className="logButtons pull-right">
-              <Button bsStyle="link"><i className="fas fa-pencil-alt text-success"></i></Button>
+              <Button bsStyle="link" onClick={this.handleEdit}><i className="fas fa-pencil-alt text-success"></i></Button>
               <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt text-success"></i></Button>
             </div>
             {this.renderDates(this.props)}

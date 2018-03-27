@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col, Table } from 'react-bootstrap';
 
-import { CarItem } from './CarItem';
+import CarItem from './CarItem';
 import Actions from './../../store/actions/cars.actions';
 import '../../css/FleetOverview.css';
+import EditCar from '../EditCar';
 
 class FleetOverview extends Component {
 
   componentWillMount = () => {
+    this.props.getCars();
+  }
+
+  componentWillReceiveProps (props) {
+   if (props.editCarSuccess) this.props.getCars();
+  }
+
+  componentUpdate = () => {
     this.props.getCars();
   }
 
@@ -24,7 +33,6 @@ class FleetOverview extends Component {
             key={car._id}
             car={car}
             onClickDelete={this.deleteCar}
-          //onClickEdit={props.onClickEdit(car)}
           />
         );
       });
@@ -41,6 +49,7 @@ class FleetOverview extends Component {
               <thead>
                 <tr>
                   <th>License </th>
+                  <th>Make </th>
                   <th>Model </th>
                   <th>Driving time</th>
                   <th>Distance</th>
@@ -53,6 +62,9 @@ class FleetOverview extends Component {
             </Table>
           </Col>
         </Row>
+        <EditCar
+          show={this.props.showEditVehicle}
+        />
       </Grid>
     );
   }
@@ -60,6 +72,9 @@ class FleetOverview extends Component {
 
 const mapStateToProps = (state) => ({
   cars: state.cars.cars,
+  showEditVehicle: state.cars.showEditVehicle,
+  editCarSuccess: state.cars.editCarSuccess,
+  showEditVehicleFailure: state.cars.showEditVehicleFailure,
 });
 
 const mapDispatchToProps = (dispatch) => ({

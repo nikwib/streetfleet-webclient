@@ -3,6 +3,9 @@ const defaultState = {
   trips: [],
   fetching: false,
   showAddVehicle: false,
+  car: {},
+  showEditVehicle: false,
+  editCarSuccess: false,
   message: {
     show: false,
     title: '',
@@ -28,12 +31,12 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: false,
       };
-
     case 'GET_CAR_SUCCESS':
       return {
         ...state,
         cars: action.response,
         fetching: false,
+
       };
     case 'GET_CAR_REQUEST':
       return {
@@ -43,9 +46,36 @@ export default (state = defaultState, action) => {
     case 'GET_CAR_FAILURE':
       return {
         ...state,
+        cars: [...state.cars, action.response],
         fetching: false,
       };
-
+    case 'EDIT_CAR_REQUEST':
+      return {
+        ...state,
+        fetching: true,
+        showEditVehicle: false,
+      }
+    case 'EDIT_CAR_SUCCESS':
+      return {
+        ...state,
+        fetching: false,
+        editCarSuccess: true,
+        message: {
+          show: true,
+          title: 'Success',
+          message: 'Vehicle has been updated.',
+        },
+      }
+    case 'EDIT_CAR_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+        message: {
+          show: true,
+          title: 'Alert',
+          message: 'Something went wrong, please try again.',
+        },
+      }
     case 'DELETE_CAR_SUCCESS':
       return {
         ...state,
@@ -62,7 +92,6 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: false,
       };
-
     case 'ADD_CAR_SUCCESS':
       return {
         ...state,
@@ -71,7 +100,7 @@ export default (state = defaultState, action) => {
         message: {
           show: true,
           title: 'Success',
-          message: 'Car added to you fleet.',
+          message: 'Vehicle added to you fleet.',
         },
       };
     case 'ADD_CAR_REQUEST':
@@ -95,17 +124,24 @@ export default (state = defaultState, action) => {
         ...state,
         showAddVehicle: true,
       };
+    case 'ON_SHOW_EDIT_VEHICLE':
+      return {
+        ...state,
+        showEditVehicle: true,
+        car: action.car
+      }
     case 'ON_CLOSE':
       return {
         ...state,
         showAddVehicle: false,
+        showEditVehicle: false,
+        editCarSuccess: false,
         message: {
           show: false,
           title: '',
           message: '',
         },
       };
-
     case 'GET_TRIPS_SUCCESS':
       return {
         ...state,

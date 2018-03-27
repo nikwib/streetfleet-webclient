@@ -59,7 +59,6 @@ class NavBar extends Component {
           </Navbar.Brand>
         </Navbar.Header>
         {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
-
         <Login />
         <AddCar />
         <CreateAccount />
@@ -76,6 +75,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
+
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken); },
   onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle); },
   onShowLogin: () => { dispatch(authActions.onShowLogin); },

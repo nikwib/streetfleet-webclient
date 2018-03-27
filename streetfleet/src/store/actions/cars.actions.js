@@ -11,27 +11,14 @@ const getCars = {
   }
 };
 
-const getCar = (car) => ({
+const getCar = (car_id) => ({
   type: 'GET_CAR',
-  url: ('/vehicle/' + car),
+  url: ('/vehicle/' + car_id),
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
-
 });
-
-const deleteCar = (car) => ({
-  type: 'DELETE_CAR',
-  url: ('/vehicle/' + car._id),
-  method: 'DELETE',
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
-  },
-  car: car,
-});
-
 
 const addCar = (car) => ({
   type: 'ADD_CAR',
@@ -44,9 +31,37 @@ const addCar = (car) => ({
   body: car,
 });
 
+const editCar = (car) => ({
+  type: 'EDIT_CAR',
+  url: ('/vehicle/' + car._id),
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  },
+  body: car,
+  car: car,
+});
+
+const deleteCar = (car) => ({
+  type: 'DELETE_CAR',
+  url: ('/vehicle/' + car._id),
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  },
+  car,
+});
+
 const onShowAddVehicle = {
   type: 'ON_SHOW_ADD_VEHICLE',
 };
+
+const onShowEditVehicle = (car) => ({
+  type: 'ON_SHOW_EDIT_VEHICLE',
+  car,
+});
 
 const onClose = {
   type: 'ON_CLOSE',
@@ -58,7 +73,7 @@ const onClose = {
 
 const getTrips = (trip) => ({
   type: 'GET_TRIPS',
-  url: ('/vehicle/trips/' + trip.vehicle_id),
+  url: ('/trips/' + trip.vehicle_id),
   headers: {
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
@@ -68,9 +83,11 @@ const getTrips = (trip) => ({
 export default {
   getCars,
   getCar,
-  deleteCar,
   addCar,
+  editCar,
+  deleteCar,
   getTrips,
   onShowAddVehicle,
+  onShowEditVehicle,
   onClose
 };

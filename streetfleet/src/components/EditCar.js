@@ -2,14 +2,29 @@ import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import carsActions from './../store/actions/cars.actions';
+import Actions from '../store/actions/cars.actions';
 
-class AddCar extends Component {
 
-  car = {};
+class EditCar extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      car: props.car
+    }
+  }
+
+  componentWillReceiveProps (props) {
+    this.setState({car: props.car})
+  }
 
   onChange = (e) => {
-    this.car[e.target.name] = e.target.value;
+    this.setState({
+      car:{
+        ...this.state.car,
+        [e.target.name]: e.target.value
+      }
+    });
   }
 
   FieldGroup = ({ id, label, ...props }) => {
@@ -29,62 +44,72 @@ class AddCar extends Component {
           type="text"
           label="Vehicle Type"
           name="vType"
+          value={this.state.car.vType}
           onChange={this.onChange}
-          placeholder="E.g. Car, truck, van..."
+          className="text-capitalize"
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="Make"
           name="make"
+          value={this.state.car.make}
           onChange={this.onChange}
+          className="text-capitalize"
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="Model"
           name="model"
+          value={this.state.car.model}
           onChange={this.onChange}
+          className="text-capitalize"
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="Year"
           name="year"
+          value={this.state.car.year}
           onChange={this.onChange}
+          className="text-capitalize"
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="License Plate"
           name="license_number"
+          value={this.state.car.license_number}
           onChange={this.onChange}
+          className="text-uppercase"
         />
         <this.FieldGroup
           id="formControlsText"
           type="text"
           label="Mac Address"
           name="mac_address"
+          value={this.state.car.mac_address}
           onChange={this.onChange}
+          className="text-uppercase"
         />
       </form>
     );
-
     return (
       <Modal
         bsSize="small"
-        show={this.props.showAddVehicle}
+        show={this.props.showEditVehicle}
         onHide={this.props.onClose}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Add New Vehicle</Modal.Title>
+          <Modal.Title>Edit Vehicle</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onClose}>Cancel</Button>
-          <Button type="submit" onClick={() => this.props.onAddCar(this.car)}>Submit</Button>
+          <Button type="submit" onClick={() => this.props.onEditCar(this.state.car)}>Submit</Button>
         </Modal.Footer>
       </Modal>
     );
@@ -92,12 +117,13 @@ class AddCar extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  showAddVehicle: state.cars.showAddVehicle,
+  showEditVehicle: state.cars.showEditVehicle,
+  car: state.cars.car,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onClose: () => { dispatch(carsActions.onClose); },
-  onAddCar: (car) => { dispatch(carsActions.addCar(car)); },
+  onEditCar: (car) => { dispatch(Actions.editCar(car)) },
+  onClose: () => { dispatch(Actions.onClose) },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddCar);
+export default connect(mapStateToProps, mapDispatchToProps)(EditCar);

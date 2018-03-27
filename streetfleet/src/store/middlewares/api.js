@@ -8,7 +8,7 @@ export default (baseUrl) => {
       body: JSON.stringify(action.body),
     })
       .then(response => {
-        //console.log(response);
+        // console.log(response);
         this.status = response.status;
         switch (this.status) {
           case 204:
@@ -18,7 +18,7 @@ export default (baseUrl) => {
         }
       })
       .then(response => {
-        //console.log('After json', response);
+        // console.log('After json', response);
         switch (this.status) {
           case 401:
           case 404:
@@ -37,7 +37,7 @@ export default (baseUrl) => {
         }
       })
       .catch(err => {
-        //console.log('ERROR: ', err);
+        // console.log('ERROR: ', err);
         return next({
           ...action,
           type: action.type + '_FAILURE',
