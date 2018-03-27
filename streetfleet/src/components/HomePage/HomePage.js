@@ -12,7 +12,7 @@ class HomePage extends Component {
         <Overview />
         <Footer />
       </div>
-    )
+    );
   }
 }
 

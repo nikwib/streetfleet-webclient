@@ -17,7 +17,7 @@ const Overview= () => {
         </Col>
       </Row>
     </Grid>
-  )
-}
+  );
+};
 
 export default Overview;

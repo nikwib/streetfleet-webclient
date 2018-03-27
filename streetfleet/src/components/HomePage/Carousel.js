@@ -21,7 +21,7 @@ class SplashScreen extends Component {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-    )
+    );
   }
 }
 
@@ -30,7 +30,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  showSignUp: () => { dispatch(Actions.showSignUp) },
+  showSignUp: () => { dispatch(Actions.showSignUp); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);

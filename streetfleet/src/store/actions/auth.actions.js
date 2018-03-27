@@ -1,20 +1,12 @@
+const onClose = {
+  type: 'ON_CLOSE',
+};
+
 //========================
 // ACCOUNT / Authorization
 //========================
 const showSignUp = {
   type: 'SHOW_SIGN_UP',
-};
-
-const cancelSignUp = {
-  type: 'CANCEL_SIGN_UP',
-};
-
-const closeSignUpSuccess = {
-  type: 'CLOSE_SIGN_UP_SUCCESS',
-};
-
-const closeSignUpFailure = {
-  type: 'CLOSE_SIGN_UP_FAILURE',
 };
 
 const createAccount = (body) => ({
@@ -35,9 +27,6 @@ const onShowLogin = {
   type: 'ON_SHOW_LOGIN',
 }
 
-const onCancelLogin = {
-  type: 'ON_CANCEL_LOGIN',
-}
 
 const login = (b64encode) => ({
   type: 'LOGIN',
@@ -50,7 +39,7 @@ const login = (b64encode) => ({
 });
 
 const logout = {
-  type: 'LOGOUT',  
+  type: 'LOGOUT',
 }
 
 const loadUserFromToken = {
@@ -58,14 +47,11 @@ const loadUserFromToken = {
 };
 
 export default {
+  onClose,
   showSignUp,
-  cancelSignUp,
   createAccount,
   login,
   logout,
   loadUserFromToken,
-  closeSignUpSuccess,
-  closeSignUpFailure,
   onShowLogin,
-  onCancelLogin,
 };

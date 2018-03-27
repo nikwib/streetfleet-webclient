@@ -2,19 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
-import Actions from '../../store/actions/auth.actions';
+import Actions from './../store/actions/auth.actions';
 
 class CreateAccount extends Component {
 
-  constructor(props) {
-    super(props);
-    this.newAccount = {
-      company_name: '',
-      username: '',
-      email: '',
-      password: '',
-    }
-  }
+  newAccount = {};
 
   onChange = (e) => {
     this.newAccount[e.target.name] = e.target.value;
@@ -71,7 +63,9 @@ class CreateAccount extends Component {
       </form>
     );
     return (
-      <Modal bsSize="small" onHide={this.props.cancelSignUp} show={this.props.showSignUp}>
+      <Modal bsSize="small"
+        show={this.props.showSignUp}
+        onHide={this.props.onClose} >
         <Modal.Header closeButton>
           <Modal.Title>Create New Account</Modal.Title>
         </Modal.Header>
@@ -79,7 +73,7 @@ class CreateAccount extends Component {
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.cancelSignUp}>Cancel</Button>
+          <Button onClick={this.props.onClose}>Cancel</Button>
           <Button type="submit" onClick={this.onSubmit}>Submit</Button>
         </Modal.Footer>
       </Modal>
@@ -92,9 +86,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  cancelSignUp: () => { dispatch(Actions.cancelSignUp) },
-  createAccount: (newAccount) => { dispatch(Actions.createAccount(newAccount)) },
-
+  onClose: () => { dispatch(Actions.onClose); },
+  createAccount: (newAccount) => { dispatch(Actions.createAccount(newAccount)); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);
