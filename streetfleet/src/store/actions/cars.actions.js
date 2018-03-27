@@ -1,3 +1,7 @@
+const onClose = {
+  type: 'ON_CLOSE',
+};
+
 //=======================
 // CAR
 //=======================
@@ -40,7 +44,7 @@ const editCar = (car) => ({
     'authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
   body: car,
-  car: car,
+  car,
 });
 
 const deleteCar = (car) => ({
@@ -63,9 +67,6 @@ const onShowEditVehicle = (car) => ({
   car,
 });
 
-const onClose = {
-  type: 'ON_CLOSE',
-};
 
 //=======================
 // TRIPS

@@ -9,6 +9,7 @@ import carsActions from './../store/actions/cars.actions';
 import CreateAccount from '../components/CreateAccount';
 import Login from '../components/Login';
 import AddCar from './../components/AddCar';
+import EditCar from './../components/EditCar';
 import Message from '../components/Message';
 import Logo from '../img/street-fleet-logo.svg';
 import '../css/NavBar.css';
@@ -61,6 +62,7 @@ class NavBar extends Component {
         {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
         <Login />
         <AddCar />
+        <EditCar/>
         <CreateAccount />
         <Message />
       </Navbar>
