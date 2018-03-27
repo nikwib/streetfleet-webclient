@@ -6,9 +6,23 @@ import CarItem from './CarItem';
 import Actions from './../../store/actions/cars.actions';
 import '../../css/FleetOverview.css';
 
+// EDIT CAR
+import EditCar from '../EditCar/EditCar';
+import EditCarSuccess from '../EditCar/Success';
+import EditCarFailure from '../EditCar/Failure';
+
 class FleetOverview extends Component {
 
   componentWillMount = () => {
+    this.props.getCars();
+  }
+
+
+  componentWillReceiveProps (props) {
+   if (props.showEditVehicleSuccess) this.props.getCars();
+  }
+
+  componentUpdate = () => {
     this.props.getCars();
   }
 
@@ -53,6 +67,11 @@ class FleetOverview extends Component {
             </Table>
           </Col>
         </Row>
+        <EditCar
+          show={this.props.showEditVehicle}
+        />
+        <EditCarSuccess show={this.props.showEditVehicleSuccess} />
+        <EditCarFailure show={this.props.showEditVehicleFailure} />
       </Grid>
     )
   }
@@ -60,6 +79,9 @@ class FleetOverview extends Component {
 
 const mapStateToProps = (state) => ({
   cars: state.cars.cars,
+  showEditVehicle: state.cars.showEditVehicle,
+  showEditVehicleSuccess: state.cars.showEditVehicleSuccess,
+  showEditVehicleFailure: state.cars.showEditVehicleFailure,
 });
 
 const mapDispatchToProps = (dispatch) => ({

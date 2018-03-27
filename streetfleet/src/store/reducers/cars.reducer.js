@@ -5,6 +5,10 @@ const defaultState = {
   showAddVehicle: false,
   showAddVehicleSuccess: false,
   showAddVehicleFailure: false,
+  car: {},
+  showEditVehicle: false,
+  showEditVehicleSuccess: false,
+  showEditVehicleFailure: false,
 }
 
 export default (state = defaultState, action) => {
@@ -15,23 +19,54 @@ export default (state = defaultState, action) => {
         cars: action.response,
         fetching: false,
       }
+    case 'GET_CAR_SUCCESS':
+      return {
+        ...state,
+        cars: action.response,
+        fetching: false,
+      }
+    case 'ADD_CAR_SUCCESS':
+      return {
+        ...state,
+        cars: [...state.cars, action.response],
+        fetching: false,
+        showAddVehicleSuccess: true,
+      }
+    case 'ADD_CAR_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+        showAddVehicleFailure: true,
+      }
+    case 'EDIT_CAR_SUCCESS':
+      return {
+        ...state,
+        // cars: [...state.cars, state.car],
+        fetching: false,
+        showEditVehicleSuccess: true,
+      }
+    case 'EDIT_CAR_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+        showEditVehicleFailure: true,
+      }
     case 'DELETE_CAR_SUCCESS':
       return {
         ...state,
         cars: state.cars.filter(car => car._id !== action.car._id),
         fetching: false,
       }
-    case 'GET_CAR_SUCCESS':
-      return {
-        ...state,
-        cars: action.response,
-        fetching: false,
-        showAddVehicleFailure: true,
-      }
     case 'ON_SHOW_ADD_VEHICLE':
       return {
         ...state,
         showAddVehicle: true,
+      }
+    case 'ON_SHOW_EDIT_VEHICLE':
+      return {
+        ...state,
+        showEditVehicle: true,
+        car: action.car
       }
     case 'ON_CANCEL':
       return {
@@ -39,6 +74,9 @@ export default (state = defaultState, action) => {
         showAddVehicle: false,
         showAddVehicleFailure: false,
         showAddVehicleSuccess: false,
+        showEditVehicle: false,
+        showEditVehicleSuccess: false,
+        showEditVehicleFailure: false,
       }
     case 'GET_TRIPS_SUCCESS':
       return {
@@ -58,10 +96,6 @@ export default (state = defaultState, action) => {
       }
     case 'GET_CARS_FAILURE':
     case 'GET_CAR_FAILURE':
-    case 'ADD_CAR_SUCCESS':
-    case 'ADD_CAR_FAILURE':
-    case 'EDIT_CAR_SUCCESS':
-    case 'EDIT_CAR_FAILURE':
     case 'DELETE_CAR_FAILURE':
     case 'GET_TRIPS_FAILURE':
       return {

@@ -24,47 +24,6 @@ import '../css/NavBar.css';
 
 class NavBar extends Component {
 
-//   constructor(props) {
-//     super(props);
-//
-//     this.props.loadUserFromToken();
-//     this.state = {
-//       showLogin: false,
-//       showModal: false,
-//       showSuccess: false
-//     };
-//   }
-//
-//   handleAddVehicle = () => {
-//     this.setState({ showModal: true });
-//   }
-//
-//   handleLogin = () => {
-//     this.setState({ showLogin: true });
-//   }
-//
-//   onAddCar = (car) => {
-//     this.props.onAddCar(car);
-//     this.props.getCars();
-//     this.handleClose();
-//   }
-//
-//   handleClose = () => {
-//     this.setState({
-//       showLogin: false,
-//       showModal: false,
-//       showSuccess: false
-//     });
-//   }
-//
-//   handleSuccess = () => {
-//     this.setState({
-//       showLogin: false,
-//       showModal: false,
-//       showSuccess: true
-//     });
-
-
   componentWillMount = () => {
     this.props.loadUserFromToken()
   }
@@ -107,20 +66,15 @@ class NavBar extends Component {
             <Link to="/"> <img src={Logo} className="sf-logo" alt="StreetFleet" /> </Link>
           </Navbar.Brand>
         </Navbar.Header>
-
         {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
-
         <Login show={this.props.showLogin} />
         <LoginFailure show={this.props.showLoginFailure} />
-
         <AddCar show={this.props.showAddVehicle} />
         <AddCarSuccess show={this.props.showAddVehicleSuccess} />
         <AddCarFailure show={this.props.showAddVehicleFailure} />
-
         <CreateAccount show={this.props.showSignUp} />
         <CreateAccountSuccess show={this.props.signUpSuccess} />
         <CreateAccountFailure show={this.props.signUpFailure} />
-
       </Navbar>
     )
   }
@@ -132,7 +86,6 @@ const mapStateToProps = (state) => ({
   showSignUp: state.auth.showSignUp,
   signUpSuccess: state.auth.signUpSuccess,
   signUpFailure: state.auth.signUpFailure,
-
 
   showAddVehicle: state.cars.showAddVehicle,
   showAddVehicleSuccess: state.cars.showAddVehicleSuccess,

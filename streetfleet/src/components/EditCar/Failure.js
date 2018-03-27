@@ -2,20 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Modal, Button } from 'react-bootstrap';
 
-import carsActions from '../../store/actions/cars.actions';
+import Actions from '../../store/actions/cars.actions';
 
 
-class Success extends Component {
+class Failure extends Component {
   render() {
     return (
       <Modal bsSize="small"
         onHide={this.props.onCancel}
-        show={this.props.showAddVehicleSuccess}>
+        show={this.props.showEditVehicleFailure}>
         <Modal.Header closeButton>
-          <Modal.Title>Yes!</Modal.Title>
+          <Modal.Title>Ohh no!</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <p> Your new vehicle has been added. </p>
+          <p> Something went wrong, please try again. </p>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onCancel}>Ok</Button>
@@ -26,11 +26,11 @@ class Success extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  showAddVehicleSuccess: state.cars.showAddVehicleSuccess,
+  showEditVehicleFailure: state.cars.showEditVehicleFailure,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCancel: () => { dispatch(carsActions.onCancel) },
+  onCancel: () => { dispatch(Actions.onCancel) },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Success);
+export default connect(mapStateToProps, mapDispatchToProps)(Failure);

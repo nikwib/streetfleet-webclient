@@ -7,7 +7,7 @@ import config from '../config';
 import MapContainer from './MapContainer';
 import SingleVehicle from './SingleVehicle';
 import Actions from './../store/actions/cars.actions';
-import EditCar from '../containers/EditCar';
+import EditCar from './EditCar/EditCar';
 import '../css/Map.css';
 import '../css/CarLog.css';
 

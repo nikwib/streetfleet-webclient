@@ -102,16 +102,13 @@ class AddCar extends Component {
   }
 }
 
-
-// handleSuccess={this.handleSuccess}
 const mapStateToProps = (state) => ({
   showAddVehicle: state.cars.showAddVehicle,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onCancel: () => { dispatch(carsActions.onCancel) },
   onAddCar: (car) => { dispatch(carsActions.addCar(car)) },
-
+  onCancel: () => { dispatch(carsActions.onCancel) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddCar);

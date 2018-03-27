@@ -1,14 +1,21 @@
 import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
-import Actions from './../store/actions/cars.actions';
 import { connect } from 'react-redux';
+
+import Actions from '../../store/actions/cars.actions';
+
+
 class EditCar extends Component {
 
-  constructor(props, context) {
-    super(props, context);
+  constructor(props) {
+    super(props);
     this.state = {
-      car: this.props.car
+      car: props.car
     }
+  }
+
+  componentWillReceiveProps (props) {
+    this.setState({car: props.car})
   }
 
   onChange = (e) => {
@@ -37,9 +44,9 @@ class EditCar extends Component {
           type="text"
           label="Vehicle Type"
           name="vType"
-          onChange={this.onChange}
           value={this.state.car.vType}
-          placeholder="E.g. Car, truck, van..."
+          onChange={this.onChange}
+          className="text-capitalize"
         />
         <this.FieldGroup
           id="formControlsText"
@@ -48,6 +55,7 @@ class EditCar extends Component {
           name="make"
           value={this.state.car.make}
           onChange={this.onChange}
+          className="text-capitalize"
         />
         <this.FieldGroup
           id="formControlsText"
@@ -56,6 +64,7 @@ class EditCar extends Component {
           name="model"
           value={this.state.car.model}
           onChange={this.onChange}
+          className="text-capitalize"
         />
         <this.FieldGroup
           id="formControlsText"
@@ -64,6 +73,7 @@ class EditCar extends Component {
           name="year"
           value={this.state.car.year}
           onChange={this.onChange}
+          className="text-capitalize"
         />
         <this.FieldGroup
           id="formControlsText"
@@ -72,6 +82,7 @@ class EditCar extends Component {
           name="license_number"
           value={this.state.car.license_number}
           onChange={this.onChange}
+          className="text-uppercase"
         />
         <this.FieldGroup
           id="formControlsText"
@@ -80,15 +91,15 @@ class EditCar extends Component {
           name="mac_address"
           value={this.state.car.mac_address}
           onChange={this.onChange}
+          className="text-uppercase"
         />
       </form>
     );
-
     return (
       <Modal
         bsSize="small"
-        show={this.props.showEdit}
-        onHide={this.props.handleClose}
+        show={this.props.showEditVehicle}
+        onHide={this.props.onCancel}
       >
         <Modal.Header closeButton>
           <Modal.Title>Edit Vehicle</Modal.Title>
@@ -97,19 +108,22 @@ class EditCar extends Component {
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.handleClose}>Cancel</Button>
+          <Button onClick={this.props.onCancel}>Cancel</Button>
           <Button type="submit" onClick={() => this.props.onEditCar(this.state.car)}>Submit</Button>
-          {console.log("Edit:", this.state.car)}
         </Modal.Footer>
       </Modal>
     );
   }
 }
 
-const mapStateToProps = (state) => ({});
+const mapStateToProps = (state) => ({
+  showEditVehicle: state.cars.showEditVehicle,
+  car: state.cars.car,
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onEditCar: (car) => { dispatch(Actions.editCar(car)) },
+  onCancel: () => { dispatch(Actions.onCancel) },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditCar);
