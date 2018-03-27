@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import Actions from '../../store/actions/cars.actions';
+import Actions from '../store/actions/cars.actions';
 
 
 class EditCar extends Component {

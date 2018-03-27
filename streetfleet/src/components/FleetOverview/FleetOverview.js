@@ -5,11 +5,7 @@ import { Grid, Row, Col, Table } from 'react-bootstrap';
 import CarItem from './CarItem';
 import Actions from './../../store/actions/cars.actions';
 import '../../css/FleetOverview.css';
-
-// EDIT CAR
-import EditCar from '../EditCar/EditCar';
-import EditCarSuccess from '../EditCar/Success';
-import EditCarFailure from '../EditCar/Failure';
+import EditCar from '../EditCar';
 
 class FleetOverview extends Component {
 
@@ -69,8 +65,6 @@ class FleetOverview extends Component {
         <EditCar
           show={this.props.showEditVehicle}
         />
-        <EditCarSuccess show={this.props.showEditVehicleSuccess} />
-        <EditCarFailure show={this.props.showEditVehicleFailure} />
       </Grid>
     );
   }
