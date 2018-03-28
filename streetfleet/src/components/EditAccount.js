@@ -6,7 +6,7 @@ import Actions from '../store/actions/auth.actions';
 
 class EditAccount extends Component {
   state = {
-    company: this.props.company
+    company: {}
   }
 
   componentDidMount () {
@@ -14,7 +14,7 @@ class EditAccount extends Component {
   }
 
   componentWillReceiveProps (props) {
-    this.setState({company: props.company});
+    props.company ? this.setState({company: props.company}) : null;
   }
 
   onChange = (e) => {
@@ -83,6 +83,7 @@ class EditAccount extends Component {
         />
       </form>
     )
+
     return (
       <Modal
         bsSize="small"
