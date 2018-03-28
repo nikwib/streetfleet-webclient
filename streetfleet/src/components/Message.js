@@ -33,7 +33,7 @@ class Message extends Component {
     return (
       <Modal bsSize='small'
         onHide={this.props.onClose}
-        show={(this.props.carsMessage.show || this.props.authMessage.show)}>
+        show={(this.props.carsMessage.show || this.props.authMessage.show || false)}>
         <Modal.Header closeButton>
           <Modal.Title>{this.state.title}</Modal.Title>
         </Modal.Header>

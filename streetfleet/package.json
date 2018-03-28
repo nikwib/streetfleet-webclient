@@ -19,7 +19,10 @@
     "react-router-router": "0.0.24",
     "react-scripts": "1.1.1",
     "redux": "^3.7.2",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^5.9.1",
+    "socket.io-client": "^2.0.4",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

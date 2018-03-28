@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import moment from 'moment';
+import { isEmpty } from 'underscore'
+
 
 import config from './../../config';
 import { CarInfo } from './CarInfo';
@@ -14,13 +16,14 @@ import '../../css/CarLog.css';
 class CarLog extends Component {
   constructor(props) {
     super(props);
-    this.state = {locations: []};
-    
+    this.state = { locations: [] };
   }
 
+  componentDidMount = () => {
+    setTimeout(() => this.props.getTrips(this.props.car.mac_address), 1);
+  }
   componentWillMount = async () => {
     await this.props.getCar(this.props.match.params.id);
-    this.props.getTrips(this.props.car.mac_address);
   }
 
   onShowTrip = (locations) => {
@@ -30,7 +33,7 @@ class CarLog extends Component {
         lng: loc.longitude,
       }
     ));
-    this.setState({locations: this.locations})
+    this.setState({ locations: this.locations })
   }
 
   render() {
@@ -47,7 +50,7 @@ class CarLog extends Component {
               locations={this.state.locations}
             />
             <div className="InfoSummary">
-              <CarInfo car={this.props.car} />
+              {this.props.car ? <CarInfo car={this.props.car} /> : null}
             </div>
           </Col>
           <Col md={8}>

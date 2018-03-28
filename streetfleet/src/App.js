@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import NavBar from './containers/NavBar';
 import HomePage from './components/HomePage/HomePage';
 import FleetOverview from './components/FleetOverview/FleetOverview';
-import MapView from './components/MapView';
+import MapView from './components/MapView/MapView';
 import CarLog from './components/CarLog/CarLog';
 
 // import PageNotFound from './components/PageNotFound';

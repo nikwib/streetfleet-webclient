@@ -2,11 +2,10 @@ import React from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Polyline } from "react-google-maps"
 
 const MapContainer = withScriptjs(withGoogleMap(props => {
-  
   return (
     <GoogleMap
       defaultZoom={14}
-      defaultCenter={(props.locations[0]) ? props.locations[0] : { lat: 41.404082, lng: 2.175017 }}
+      center={props.locations[0] || { lat: 41.404082, lng: 2.175017 }}
     >
       <Polyline
         path={props.locations}
@@ -16,6 +15,5 @@ const MapContainer = withScriptjs(withGoogleMap(props => {
     </GoogleMap>
   )
 }));
-
 
 export default MapContainer;
