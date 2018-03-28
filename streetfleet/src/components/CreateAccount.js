@@ -12,10 +12,10 @@ class CreateAccount extends Component {
     this.newAccount[e.target.name] = e.target.value;
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    this.props.createAccount(this.newAccount);
-  }
+  // onSubmit = (e) => {
+  //   e.preventDefault();
+  //   this.props.createAccount(this.newAccount);
+  // }
 
   FieldGroup = ({ id, label, ...props }) => {
     return (

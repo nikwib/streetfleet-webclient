@@ -4,9 +4,17 @@ import moment from 'moment';
 
 import { Trip } from './Trip';
 
-const renderTrips = (props) => props.trips.map((trip, i) => { return ( <Trip key={i} trip={trip} />); } );
+const renderTrips = (props) => props.trips.map((trip, i) => { 
+  return ( 
+  <Trip 
+  key={i} 
+  trip={trip}
+  onShowTrip={props.onShowTrip}
+   />
+  ); } );
 
 export const Trips = (props) => {
+  console.log('TRIPS PROPS:', props)
   return (
     <div>
       <h3 className="text-success">Trips:</h3>
@@ -16,6 +24,7 @@ export const Trips = (props) => {
             <th>Start Time</th>
             <th>End Time</th>
             <th>Distance</th>
+            <th>Show trip</th>
           </tr>
         </thead>
         <tbody>

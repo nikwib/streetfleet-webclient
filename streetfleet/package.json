@@ -1,4 +1,5 @@
 {
+  "homepage": "http://nikwib.github.io/streetfleet-webclient",
   "name": "streetfleet",
   "version": "0.1.0",
   "private": true,
@@ -22,16 +23,14 @@
   },
   "devDependencies": {
     "eslint": "^4.19.1",
-    "eslint-plugin-json": "^1.2.0",
-    "eslint-plugin-react": "^7.7.0"
+    "gh-pages": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  },
-  "devDependencies": {
-    "eslint": "^4.19.1"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   }
 }
