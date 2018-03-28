@@ -78,9 +78,9 @@ const editAccount = company => ({
   body: company,
 });
 
-const deleteAccount = companyId => ({
+const deleteAccount = username => ({
   type: 'DELETE_ACCOUNT',
-  url: ('/company/' + companyId),
+  url: ('/company/' + username),
   mewthod: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
@@ -95,6 +95,7 @@ export default {
   login,
   logout,
   showEditAccount,
+  showDeleteAccount,
   getAccount,
   editAccount,
   deleteAccount,

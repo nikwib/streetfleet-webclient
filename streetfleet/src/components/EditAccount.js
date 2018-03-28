@@ -107,7 +107,7 @@ class EditAccount extends Component {
 const mapStateToProps = state => ({
   showEditAccount: state.auth.showEditAccount,
   username: state.auth.username,
-  company: state.auth.company
+  company: state.auth.company,
 })
 
 const mapDispatchToProps = dispatch => ({

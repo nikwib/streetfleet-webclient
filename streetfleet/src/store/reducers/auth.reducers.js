@@ -53,6 +53,7 @@ export default (state = defaultState, action) => {
         showSignUp: false,
         showLogin: false,
         showEditAccount: false,
+        showDeleteAccount: false,
         message: {
           show: false,
           title: '',
@@ -137,6 +138,12 @@ export default (state = defaultState, action) => {
           fetching: false
         }
 
+      case 'SHOW_EDIT_ACCOUNT':
+        return {
+          ...state,
+          showEditAccount: true
+        }
+
       case 'EDIT_ACCOUNT_REQUEST':
         return {
           ...state,
@@ -166,16 +173,39 @@ export default (state = defaultState, action) => {
           },
         }
 
-      case 'SHOW_EDIT_ACCOUNT':
-        return {
-          ...state,
-          showEditAccount: true
-        }
-
       case 'SHOW_DELETE_ACCOUNT':
       return {
         ...state,
         showDeleteAccount: true
+      }
+
+      case 'DELETE_ACCOUNT_REQUEST':
+      return {
+        ...state,
+        fetching: true
+      }
+
+      case 'DELETE_ACCOUNT_SUCCESS':
+      return {
+        ...state,
+        fetching: false,
+        username: '',
+        message: {
+          show: true,
+          title: 'Success',
+          message: 'Account successfully deleted.',
+        },
+      }
+
+      case 'DELETE_ACCOUNT_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+        message: {
+          show: true,
+          title: 'Ohh no!',
+          message: 'Pardon us. Account deletion failed, please try again!',
+        },
       }
 
       break;
