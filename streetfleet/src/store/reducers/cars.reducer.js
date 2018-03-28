@@ -31,24 +31,13 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: false,
       };
-    case 'GET_CAR_SUCCESS':
-      return {
-        ...state,
-        cars: action.response,
-        fetching: false,
 
-      };
-    case 'GET_CAR_REQUEST':
+    case 'GET_CAR':
       return {
         ...state,
-        fetching: true,
+        car: state.cars.filter(car => (car._id === action.car_id))[0],
       };
-    case 'GET_CAR_FAILURE':
-      return {
-        ...state,
-        cars: [...state.cars, action.response],
-        fetching: false,
-      };
+
     case 'EDIT_CAR_REQUEST':
       return {
         ...state,
@@ -61,10 +50,11 @@ export default (state = defaultState, action) => {
         fetching: false,
         editCarSuccess: true,
         cars: state.cars.map(car => (car._id === action.car._id) ? action.car : car),
+        car: action.car,
         message: {
           show: true,
           title: 'Success',
-          message: 'Vehicle ' + action.car.license_number + ' has been updated.',
+          message: 'Vehicle ' + action.car.license_number.toUpperCase() + ' has been updated.',
         },
       };
     case 'EDIT_CAR_FAILURE':
@@ -143,6 +133,9 @@ export default (state = defaultState, action) => {
           message: '',
         },
       };
+    case 'LOGOUT':
+      return { defaultState };
+
     case 'GET_TRIPS_SUCCESS':
       return {
         ...state,

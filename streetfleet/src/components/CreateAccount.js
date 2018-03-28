@@ -73,8 +73,8 @@ class CreateAccount extends Component {
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={this.props.onClose}>Cancel</Button>
-          <Button type="submit" onClick={this.onSubmit}>Submit</Button>
+          <Button onClick={this.props.onClose}> Cancel </Button>
+          <Button onClick={() => this.props.createAccount(this.newAccount)}> Submit </Button>
         </Modal.Footer>
       </Modal>
     );

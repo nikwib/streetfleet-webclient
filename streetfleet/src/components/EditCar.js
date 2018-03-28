@@ -14,8 +14,11 @@ class EditCar extends Component {
     };
   }
 
+  // componentWillMount (props) {
+  //   this.setState({car: props.car});
+  // }
   componentWillReceiveProps (props) {
-    this.setState({car: props.car});
+    if (props.car) this.setState({car: props.car});
   }
 
   onChange = (e) => {

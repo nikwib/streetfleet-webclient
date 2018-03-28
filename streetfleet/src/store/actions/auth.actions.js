@@ -40,7 +40,7 @@ const login = (b64encode) => ({
 
 const logout = {
   type: 'LOGOUT',
-}
+};
 
 const loadUserFromToken = {
   type: 'LOAD_USER_FROM_TOKEN',
