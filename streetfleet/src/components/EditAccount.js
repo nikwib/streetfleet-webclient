@@ -35,7 +35,7 @@ class EditAccount extends Component {
     );
   }
 
-  render () {
+  render() {
     const formInstance = (
       <form>
         <this.FieldGroup
@@ -68,8 +68,16 @@ class EditAccount extends Component {
         <this.FieldGroup
           id="formControlsText"
           type="text"
+          label="Old password"
+          name="old_password"
+          onChange={this.onChange}
+          className=""
+        />
+        <this.FieldGroup
+          id="formControlsText"
+          type="text"
           label="New password"
-          name="password"
+          name="new_password"
           onChange={this.onChange}
           className=""
         />
@@ -82,14 +90,14 @@ class EditAccount extends Component {
         onHide={this.props.onClose}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Edit Company</Modal.Title>
+          <Modal.Title>Edit my account</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           {formInstance}
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={this.props.onClose}>Cancel</Button>
-          <Button type="submit" onClick={() => this.props.editAccount(this.state.company)}>Submit</Button>
+          <Button onClick={() => this.props.editAccount(this.state.company)}>Submit</Button>
         </Modal.Footer>
       </Modal>
     )
@@ -103,9 +111,9 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAccount: (username) => { dispatch(Actions.getAccount(username))},
-  onClose: () => { dispatch(Actions.onClose)},
-  editAccount: company => { dispatch(Actions.editAccount(company))}
+  getAccount: (username) => { dispatch(Actions.getAccount(username)) },
+  onClose: () => { dispatch(Actions.onClose) },
+  editAccount: company => { dispatch(Actions.editAccount(company)) }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditAccount);

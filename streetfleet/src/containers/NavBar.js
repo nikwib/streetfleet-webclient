@@ -9,8 +9,9 @@ import carsActions from './../store/actions/cars.actions';
 import CreateAccount from '../components/CreateAccount';
 import Login from '../components/Login';
 import AddCar from './../components/AddCar';
-import EditAccount from './../components/EditAccount';
 import EditCar from './../components/EditCar';
+import EditAccount from './../components/EditAccount';
+import DeleteAccount from './../components/DeleteAccount';
 import Message from '../components/Message';
 import Logo from '../img/street-fleet-logo.svg';
 import '../css/NavBar.css';
@@ -46,7 +47,8 @@ class NavBar extends Component {
           <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
           <MenuItem className="MenuItem" onClick={this.props.onShowAddVehicle}>Add Vehicle</MenuItem>
           <MenuItem divider />
-          <MenuItem className="MenuItem" onClick={this.props.showEditAccount}>Edit Account</MenuItem>
+          <MenuItem className="MenuItem" onClick={this.props.showEditAccount}>Edit My Account</MenuItem>
+          <MenuItem className="MenuItem" onClick={this.props.showDeleteAccount}>Delete My Account</MenuItem>
           <MenuItem divider />
           <LinkContainer to="/"><MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem></LinkContainer>
         </NavDropdown>
@@ -69,6 +71,7 @@ class NavBar extends Component {
         <CreateAccount />
         <Message />
         <EditAccount />
+        <DeleteAccount />
       </Navbar>
     );
   }
@@ -84,7 +87,8 @@ const mapDispatchToProps = (dispatch) => ({
 
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken); },
   onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle); },
-  showEditAccount: () => { dispatch(authActions.showEditAccount); },
+  showEditAccount: () => { dispatch(authActions.showEditAccount) },
+  showDeleteAccount: () => { dispatch(authActions.showDeleteAccount) },
   onShowLogin: () => { dispatch(authActions.onShowLogin); },
   logout: () => { dispatch(authActions.logout); },
 });

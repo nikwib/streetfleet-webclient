@@ -54,6 +54,10 @@ const showEditAccount = {
   type: 'SHOW_EDIT_ACCOUNT'
 }
 
+const showDeleteAccount = {
+  type: 'SHOW_DELETE_ACCOUNT'
+}
+
 const getAccount = username => ({
   type: 'GET_ACCOUNT',
   url: ('/company/' + username),
@@ -74,6 +78,16 @@ const editAccount = company => ({
   body: company,
 });
 
+const deleteAccount = companyId => ({
+  type: 'DELETE_ACCOUNT',
+  url: ('/company/' + companyId),
+  mewthod: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  }
+})
+
 export default {
   onClose,
   showSignUp,
@@ -83,6 +97,7 @@ export default {
   showEditAccount,
   getAccount,
   editAccount,
+  deleteAccount,
   loadUserFromToken,
   onShowLogin,
 };

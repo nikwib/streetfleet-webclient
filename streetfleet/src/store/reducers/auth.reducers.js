@@ -6,6 +6,7 @@ const defaultState = {
   showSignUp: false,
   showLogin: false,
   showEditAccount: false,
+  showDeleteAccount: false,
   message: {
     show: false,
     title: '',
@@ -174,6 +175,12 @@ export default (state = defaultState, action) => {
           ...state,
           showEditAccount: true
         }
+
+      case 'SHOW_DELETE_ACCOUNT':
+      return {
+        ...state,
+        showDeleteAccount: true
+      }
 
       break;
     default:
