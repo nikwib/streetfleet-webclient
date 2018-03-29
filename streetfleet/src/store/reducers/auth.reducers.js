@@ -1,7 +1,11 @@
 const defaultState = {
-  username: '',
+  company: {},
   loggedIn: false,
   fetching: false,
+  showSignUp: false,
+  showLogin: false,
+  showEditAccount: false,
+  showDeleteAccount: false,
   message: {
     show: false,
     title: '',
@@ -47,6 +51,8 @@ export default (state = defaultState, action) => {
         ...state,
         showSignUp: false,
         showLogin: false,
+        showEditAccount: false,
+        showDeleteAccount: false,
         message: {
           show: false,
           title: '',
@@ -70,7 +76,7 @@ export default (state = defaultState, action) => {
       localStorage.setItem('username', action.response.username);
       return {
         ...state,
-        username: action.response.username,
+        company: action.response,
         loggedIn: true,
         fetching: false,
       };
@@ -101,10 +107,112 @@ export default (state = defaultState, action) => {
       if (localStorage.getItem('username')) {
         return {
           ...state,
-          username: localStorage.getItem('username'),
+          company: {
+            ...state.company,
+            username: localStorage.getItem('username')
+          },
           loggedIn: true,
         };
       }
+
+      /////////////////////
+      // ACCOUNT MANAGEMENT
+      /////////////////////
+
+      case 'GET_ACCOUNT_REQUEST':
+      if (localStorage.getItem('username')) {
+        return {
+          ...state,
+          fetching: true
+        }
+      };
+
+      case 'GET_ACCOUNT_SUCCESS':
+        return {
+          ...state,
+          fetching: false,
+          company: action.response
+        };
+
+      case 'GET_ACCOUNT_FAILURE':
+        return {
+          ...state,
+          fetching: false
+        }
+
+      case 'SHOW_EDIT_ACCOUNT':
+        return {
+          ...state,
+          showEditAccount: true
+        }
+
+      case 'EDIT_ACCOUNT_REQUEST':
+        return {
+          ...state,
+          fetching: true
+        }
+
+      case 'EDIT_ACCOUNT_SUCCESS':
+        return {
+          ...state,
+          fetching: false,
+          company: action.response,
+          message: {
+            show: true,
+            title: 'Success',
+            message: 'Account successfully modified.',
+          },
+        }
+
+      case 'EDIT_ACCOUNT_FAILURE':
+        return {
+          ...state,
+          fetching: false,
+          message: {
+            show: true,
+            title: 'Ohh no!',
+            message: 'Pardon us. Account modification failed, please try again!',
+          },
+        }
+
+      case 'SHOW_DELETE_ACCOUNT':
+      return {
+        ...state,
+        showDeleteAccount: true
+      }
+
+      case 'DELETE_ACCOUNT_REQUEST':
+      return {
+        ...state,
+        fetching: true
+      }
+
+      case 'DELETE_ACCOUNT_SUCCESS':
+      return {
+        ...state,
+        fetching: false,
+        company: {
+          ...state.company,
+          username: ''
+        },
+        message: {
+          show: true,
+          title: 'Success',
+          message: 'Account successfully deleted.',
+        },
+      }
+
+      case 'DELETE_ACCOUNT_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+        message: {
+          show: true,
+          title: 'Ohh no!',
+          message: 'Pardon us. Account deletion failed, please try again!',
+        },
+      }
+
       break;
     default:
   }

@@ -20,8 +20,22 @@ export default (baseUrl) => {
       .then(response => {
         console.log('After json', response);
         switch (this.status) {
+          case 400:
+            next({
+              type: action.type + '_FAILURE',
+              response,
+            });
           case 401:
+            next({
+              type: action.type + '_FAILURE',
+              response,
+            });
           case 404:
+            next({
+              type: action.type + '_FAILURE',
+              response,
+            });
+          case 500:
             next({
               type: action.type + '_FAILURE',
               response,
