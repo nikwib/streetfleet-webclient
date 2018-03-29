@@ -16,7 +16,7 @@ const renderTrips = (props) => props.trips.map((trip, i) => {
 export const Trips = (props) => {
   console.log('TRIPS PROPS:', props)
   return (
-    <div className="Modals">
+    <div className="WhiteContainer">
       <h3>Trips:</h3>
       <Table striped bordered condensed hover>
         <thead>
