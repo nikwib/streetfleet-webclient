@@ -134,7 +134,7 @@ export default (state = defaultState, action) => {
         },
       };
     case 'LOGOUT':
-      return { defaultState };
+      return  defaultState ;
 
     case 'GET_TRIPS_SUCCESS':
       return {

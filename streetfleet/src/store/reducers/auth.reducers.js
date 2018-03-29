@@ -70,7 +70,7 @@ export default (state = defaultState, action) => {
       localStorage.setItem('username', action.response.username);
       return {
         ...state,
-        username: localStorage.getItem('username'),
+        username: action.response.username,
         loggedIn: true,
         fetching: false,
       };
@@ -95,7 +95,7 @@ export default (state = defaultState, action) => {
     case 'LOGOUT':
       localStorage.setItem('JWT', '');
       localStorage.setItem('username', '');
-      return { defaultState };
+      return defaultState;
 
     case 'LOAD_USER_FROM_TOKEN':
       if (localStorage.getItem('username')) {
