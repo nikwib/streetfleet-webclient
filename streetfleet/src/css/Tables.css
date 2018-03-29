@@ -1,4 +1,10 @@
-.App table tbody a {
+.TableBackground {
+  background-color: white;
+  box-shadow: 2px 3px 13px rgba(0, 0, 0, 0.25);
+  padding: 35px 45px;
+}
+
+.App table tbody, .App table tbody a {
   color: #9b9b9b;
 }
 
