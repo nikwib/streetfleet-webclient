@@ -21,7 +21,7 @@ class VehicleModal extends Component {
           <li>
             <Link to={"/CarLog/" + car._id} key={car._id} license_number={car.license_number}>
               <div className="vColor" style={{backgroundColor:randomColor({luminosity: 'dark'})}}></div>
-              <div key={i} className="vInfo">{car.license_number.toUpperCase()}</div>
+              <div className="vInfo">{car.license_number.toUpperCase()}</div>
             </Link>
           </li>
         );
