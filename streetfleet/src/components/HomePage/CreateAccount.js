@@ -30,7 +30,7 @@ class CreateAccount extends Component {
     return (
       <div className="Login CreateAccount">
         <h2>Register</h2>
-        <small>You have registered already? <a> Login</a></small>
+        <small>You have registered already? <a onClick={this.props.onToggleLogin}> Login</a></small>
         <form className="FormLeft">
           <FormControl
             id="formControlsCompany"

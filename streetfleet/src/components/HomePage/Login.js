@@ -22,7 +22,7 @@ class Login extends Component {
     return (
       <div className="Login">
         <h2>Login</h2>
-        <small>You don’t have an account?  <a>Register</a></small>
+        <small>You don’t have an account?  <a onClick={this.props.onToggleLogin}>Register</a></small>
         <form>
           <FormControl
             id="formControlsText"
