@@ -82,6 +82,13 @@ const getTrips = (mac_address) => ({
   },
 });
 
+// Get car from Store
+const saveLastLoc = (lastLocation) => ({
+  type: 'SAVE_LAST_LOCATION',
+  lastLocation,
+});
+
+
 export default {
   getCars,
   getCar,
@@ -92,5 +99,6 @@ export default {
   onShowAddVehicle,
   onShowEditVehicle,
   onClose,
-  logout
+  logout,
+  saveLastLoc,
 };

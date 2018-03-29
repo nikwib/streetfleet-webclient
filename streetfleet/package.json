@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "loaders.css": "^0.1.2",
+    "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "react": "^16.2.0",
     "react-bootstrap": "^0.32.1",

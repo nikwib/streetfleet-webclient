@@ -1,6 +1,7 @@
 const defaultState = {
   cars: [],
   trips: [],
+  lastLocations: [],
   fetching: false,
   showAddVehicle: false,
   car: {},
@@ -134,7 +135,7 @@ export default (state = defaultState, action) => {
         },
       };
     case 'LOGOUT':
-      return  defaultState ;
+      return defaultState;
 
     case 'GET_TRIPS_SUCCESS':
       return {
@@ -152,7 +153,23 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: false,
       };
-    default:
+
+    case 'SAVE_LAST_LOCATION':
+         
+      const car = state.lastLocations.find(el => el.car_id === action.lastLocation.car_id);
+      if (!car) {
+        return {
+          ...state,
+          lastLocations: state.lastLocations.concat([action.lastLocation])
+        }
+      } else {
+        return {
+          ...state,
+          lastLocations: state.lastLocations.map((el, i) => {return (el.car_id === action.lastLocation.car_id) ? action.lastLocation : el })
+        }
+      }
+
+      default:
   }
   return state;
 };
