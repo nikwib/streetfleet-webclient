@@ -20,26 +20,8 @@ const MapContainer = withScriptjs(withGoogleMap(props =>
         url:svg
       }}
     />
-    <Marker
-      position={{ lat:props.latitude, lng: 2.910017}}
-      icon={{
-        url:svg2
-      }}
-    />  
-    <Marker
-      position={{ lat:props.latitude, lng: 3.250017}}
-      icon={{
-        url:svg3
-      }}
-    />
-    <Marker
-      position={{ lat:props.latitude, lng: 4.400017}}
-      icon={{
-        url:svg4
-      }} 
-    />  
     <Polyline
-      path={[{lat: 30.34534534, lng: 2.175017},{lat: props.latitude, lng: props.longtitude}]}
+      path={[{lat: props.latitude, lng: props.longtitude},{lat: props.latitude, lng: props.longtitude}]}
       strokeColor= "#FF0000"
       strokeWeight= '2'
     />

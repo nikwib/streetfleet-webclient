@@ -1,12 +1,14 @@
 import openSocket from 'socket.io-client';
 const socket = openSocket('http://localhost:4000', {transports: ['websocket', 'polling', 'flashsocket']});
 
+// import io from 'socket.io-client';
+// const socket = io('http://localhost:4000');
 
 
 function subscribeToTimer (cb) {
-  console.log("cd test", cb);
-  socket.on('timer', data => cb(null, data));
-  socket.emit('subscribeToTimer', 3000);
+  console.log('hey', cb);
+  socket.on('position', (data) => cb(data));
+  socket.emit('fleet_id', 'HELLO SUCKET');
 }
 
-export { subscribeToTimer }
+export default subscribeToTimer;
