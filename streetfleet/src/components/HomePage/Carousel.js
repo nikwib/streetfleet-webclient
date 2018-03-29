@@ -3,18 +3,18 @@ import { Carousel, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import '../../css/HomePage.css';
-import fleetBanner from '../../img/fleet.jpg';
+import fleetBanner from '../../img/fleet.png';
 import Actions from './../../store/actions/auth.actions';
 
 class SplashScreen extends Component {
 
-  signUp = () => (<Button bsStyle="success" bsSize="large" onClick={this.props.showSignUp}>Try it!</Button>);
+  signUp = () => (<Button className="TryIt" bsSize="large" onClick={this.props.showSignUp}>Register</Button>);
 
   render() {
     return (
       <Carousel>
         <Carousel.Item>
-          <img className="bannerImg" width={'100%'} alt="Vehicle Fleet" src={fleetBanner} />
+          <img className="bannerImg" alt="Vehicle Fleet" src={fleetBanner} />
           <Carousel.Caption>
             <h1>Track and manage your vehicles</h1>
             {this.props.loggedIn ? null : this.signUp()}
@@ -34,4 +34,3 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);
-
