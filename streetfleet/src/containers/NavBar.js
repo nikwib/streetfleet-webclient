@@ -38,7 +38,7 @@ class NavBar extends Component {
     return (
       <Nav pullRight>
         <NavItem eventKey={1} href="#">
-          {this.props.username}
+          {this.props.company.username}
         </NavItem>
         <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
           <LinkContainer to="/"><MenuItem className="MenuItem">Home</MenuItem></LinkContainer>
@@ -80,7 +80,7 @@ class NavBar extends Component {
 const mapStateToProps = (state) => ({
   loading: state.auth.fetching,
   loggedIn: state.auth.loggedIn,
-  username: state.auth.username,
+  company: state.auth.company,
 });
 
 const mapDispatchToProps = (dispatch) => ({

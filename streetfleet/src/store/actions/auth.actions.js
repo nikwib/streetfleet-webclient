@@ -72,7 +72,7 @@ const editAccount = company => ({
 const deleteAccount = username => ({
   type: 'DELETE_ACCOUNT',
   url: ('/company/' + username),
-  mewthod: 'DELETE',
+  method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
     'authorization': 'Bearer ' + localStorage.getItem('JWT'),

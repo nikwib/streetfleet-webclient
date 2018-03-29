@@ -1,5 +1,4 @@
 const defaultState = {
-  username: '',
   company: {},
   loggedIn: false,
   fetching: false,
@@ -77,10 +76,9 @@ export default (state = defaultState, action) => {
       localStorage.setItem('username', action.response.username);
       return {
         ...state,
-        username: action.response.username,
+        company: action.response,
         loggedIn: true,
         fetching: false,
-        company: action.response
       };
 
     case 'LOGIN_REQUEST':
@@ -109,7 +107,10 @@ export default (state = defaultState, action) => {
       if (localStorage.getItem('username')) {
         return {
           ...state,
-          username: localStorage.getItem('username'),
+          company: {
+            ...state.company,
+            username: localStorage.getItem('username')
+          },
           loggedIn: true,
         };
       }
@@ -190,7 +191,10 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         fetching: false,
-        username: '',
+        company: {
+          ...state.company,
+          username: ''
+        },
         message: {
           show: true,
           title: 'Success',

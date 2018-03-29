@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
-import Actions from '../store/actions/auth.actions';
+import authActions from '../store/actions/auth.actions';
+import carsActions from '../store/actions/cars.actions';
 
 class DeleteAccount extends Component {
 
@@ -22,7 +23,7 @@ class DeleteAccount extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.props.onClose}>Cancel</Button>
-            <Button onClick={() => this.props.deleteAccount(this.props.username)}>Submit</Button>
+            <Button onClick={() => this.props.deleteAccount(this.props.company.username)}>Submit</Button>
           </Modal.Footer>
         </Modal>
     )
@@ -32,12 +33,16 @@ class DeleteAccount extends Component {
 
 const mapStateToProps = state => ({
   showDeleteAccount: state.auth.showDeleteAccount,
-  username: state.auth.username,
+  company: state.auth.company,
 });
 
 const mapDispatchToProps = dispatch => ({
-  onClose: () => { dispatch(Actions.onClose) },
-  deleteAccount: (username) => { dispatch(Actions.deleteAccount(username)) }
+  onClose: () => { dispatch(authActions.onClose) },
+  deleteAccount: (username) => {
+    dispatch(authActions.deleteAccount(username)),
+    dispatch(authActions.logout);
+    dispatch(carsActions.logout);
+  }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(DeleteAccount);
