@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem, Button } from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown, MenuItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { LinkContainer } from 'react-router-bootstrap';
 
 import authActions from './../store/actions/auth.actions';
 import carsActions from './../store/actions/cars.actions';
-import CreateAccount from '../components/CreateAccount';
-import Login from '../components/Login';
 import AddCar from './../components/AddCar';
 import EditCar from './../components/EditCar';
 import Message from '../components/Message';
@@ -20,34 +18,22 @@ class NavBar extends Component {
     this.props.loadUserFromToken();
   }
 
-  renderLogin = () => {
-    return (
-      <Button
-        className="LoginButton pull-right"
-        bsSize="small"
-        bsStyle="primary"
-        onClick={this.props.onShowLogin}
-      > Login
-      </Button>
-    );
-  };
-
   renderMenu = () => {
     return (
-      <Nav pullRight>
-        <NavItem eventKey={1} href="#">
-          {this.props.username}
-        </NavItem>
-        <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
-          <LinkContainer to="/"><MenuItem className="MenuItem">Home</MenuItem></LinkContainer>
-          <MenuItem divider />
-          <LinkContainer to="/MapView"><MenuItem className="MenuItem">Live Map</MenuItem></LinkContainer>
-          <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
-          <MenuItem className="MenuItem" onClick={this.props.onShowAddVehicle}>Add Vehicle</MenuItem>
-          <MenuItem divider />
-          <LinkContainer to="/"><MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem></LinkContainer>
-        </NavDropdown>
-      </Nav>
+        <div>
+          <span className="UserName">{this.props.username}</span>
+          <Nav pullRight>
+          <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
+            <LinkContainer to="/"><MenuItem className="MenuItem">Home</MenuItem></LinkContainer>
+            <MenuItem divider />
+            <LinkContainer to="/MapView"><MenuItem className="MenuItem">Live Map</MenuItem></LinkContainer>
+            <LinkContainer to="/FleetOverview"><MenuItem className="MenuItem">Fleet Overview</MenuItem></LinkContainer>
+            <MenuItem className="MenuItem" onClick={this.props.onShowAddVehicle}>Add Vehicle</MenuItem>
+            <MenuItem divider />
+            <LinkContainer to="/"><MenuItem className="MenuItem" onClick={this.props.logout}>Sign Out</MenuItem></LinkContainer>
+          </NavDropdown>
+        </Nav>
+      </div>
     );
   }
 
@@ -59,11 +45,9 @@ class NavBar extends Component {
             <Link to="/"> <img src={Logo} className="sf-logo" alt="StreetFleet" /> </Link>
           </Navbar.Brand>
         </Navbar.Header>
-        {(this.props.loggedIn) ? this.renderMenu() : this.renderLogin()}
-        <Login />
+        {(this.props.loggedIn) ? this.renderMenu() : null}
         <AddCar />
         <EditCar />
-        <CreateAccount />
         <Message />
       </Navbar>
     );

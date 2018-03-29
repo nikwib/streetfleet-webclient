@@ -7,7 +7,6 @@ import FleetOverview from './components/FleetOverview/FleetOverview';
 import MapView from './components/MapView/MapView';
 import CarLog from './components/CarLog/CarLog';
 
-// import PageNotFound from './components/PageNotFound';
 import './App.css';
 
 class App extends Component {
@@ -16,7 +15,7 @@ class App extends Component {
     return (
       <div className="App container-fluid">
         <div className="row">
-          <NavBar />
+        <NavBar/>
         </div>
         <Route exact path="/" component={HomePage} />
         <Route path="/FleetOverview" component={FleetOverview} />

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import React from 'react';
+// import { Grid, Row, Col, Button } from 'react-bootstrap';
+// import { connect } from 'react-redux';
 import moment from 'moment';
 
 export const CarInfo = (props) => {
-  
+
   return (
     <div className="CarInfo">
       <p className="text-uppercase"><span className="text-capitalize">License Plate: </span>{props.car.license_number}</p>

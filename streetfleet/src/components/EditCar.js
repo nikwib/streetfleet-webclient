@@ -3,7 +3,7 @@ import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-boots
 import { connect } from 'react-redux';
 
 import Actions from '../store/actions/cars.actions';
-
+import '../css/Modals.css'
 
 class EditCar extends Component {
 
@@ -14,9 +14,6 @@ class EditCar extends Component {
     };
   }
 
-  // componentWillMount (props) {
-  //   this.setState({car: props.car});
-  // }
   componentWillReceiveProps (props) {
     if (props.car) this.setState({car: props.car});
   }
@@ -41,79 +38,78 @@ class EditCar extends Component {
 
   render() {
     const formInstance = (
-      <form>
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Vehicle Type"
-          name="vType"
-          value={this.state.car.vType}
-          onChange={this.onChange}
-          className="text-capitalize"
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Make"
-          name="make"
-          value={this.state.car.make}
-          onChange={this.onChange}
-          className="text-capitalize"
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Model"
-          name="model"
-          value={this.state.car.model}
-          onChange={this.onChange}
-          className="text-capitalize"
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Year"
-          name="year"
-          value={this.state.car.year}
-          onChange={this.onChange}
-          className="text-capitalize"
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="License Plate"
-          name="license_number"
-          value={this.state.car.license_number}
-          onChange={this.onChange}
-          className="text-uppercase"
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Mac Address"
-          name="mac_address"
-          value={this.state.car.mac_address}
-          onChange={this.onChange}
-          className="text-uppercase"
-        />
-      </form>
+      <Modal.Body>
+        <form className="ModalsLeft">
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            label="Vehicle Type"
+            name="vType"
+            value={this.state.car.vType}
+            onChange={this.onChange}
+            className="text-capitalize"
+          />
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            label="Make"
+            name="make"
+            value={this.state.car.make}
+            onChange={this.onChange}
+            className="text-capitalize"
+          />
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            label="Model"
+            name="model"
+            value={this.state.car.model}
+            onChange={this.onChange}
+            className="text-capitalize"
+          />
+        </form>
+        <form className="ModalsRight">
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            label="Year"
+            name="year"
+            value={this.state.car.year}
+            onChange={this.onChange}
+            className="text-capitalize"
+          />
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            label="License Plate"
+            name="license_number"
+            value={this.state.car.license_number}
+            onChange={this.onChange}
+            className="text-uppercase"
+          />
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            label="Mac Address"
+            name="mac_address"
+            value={this.state.car.mac_address}
+            onChange={this.onChange}
+            className="text-uppercase"
+          />
+        </form>
+        <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
+        <Button type="submit" onClick={() => this.props.onEditCar(this.state.car)}>Submit</Button>
+      </Modal.Body>
     );
+
     return (
       <Modal
-        bsSize="small"
+        className="Modals"
         show={this.props.showEditVehicle}
         onHide={this.props.onClose}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Edit Vehicle</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {formInstance}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.props.onClose}>Cancel</Button>
-          <Button type="submit" onClick={() => this.props.onEditCar(this.state.car)}>Submit</Button>
-        </Modal.Footer>
+        <h1>Edit</h1>
+        {formInstance}
       </Modal>
     );
   }

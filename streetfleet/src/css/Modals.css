@@ -1,0 +1,48 @@
+.Modals {
+
+}
+
+.modal-dialog {
+  margin-top: 150px;
+}
+
+.modal-sm {
+  width: 600px;
+}
+
+.ModalsLeft, .ModalsRight {
+  width: 48%;
+  display: inline-block;
+}
+
+.ModalsLeft {
+  margin-right: 20px;
+}
+
+.modal-body {
+  padding: 30px 45px 24px;
+}
+
+.Modals input {
+  font-size: 12px;
+  height: 32px;
+  border-radius: 0;
+  margin-top: 3px;
+  margin-bottom: 17px;
+  box-shadow: none;
+}
+
+.Modals button {
+  margin-right: 15px;
+  margin-top: 10px;
+}
+
+.Modals h1 {
+  color: #178FE7;
+  font-size: 10em;
+  position: absolute;
+  right: 0;
+  top: -145px;
+  z-index: -1;
+  font-weight: 600;
+}

@@ -1,53 +1,53 @@
 .navbar {
-  background-color: #f2f2f2;
-  border-color: #ddd;
+  background-color: transparent;
   background-image: none;
-  margin-bottom: -1px;
-  height: 62px;
+  box-shadow: none;
+  border: none;
 }
-.navbar .container { margin: 5px auto; }
+.navbar .container {
+  margin: 0 auto;
+  padding: 0px 65px;
+}
 
-.navbar-brand { padding-top: 5px; }
+.navbar .caret {
+  display: none;
+}
 
-.sf-logo { height: 40px; }
+.navbar-nav li a {
+  color: #fff!important;
+}
+.navbar-brand {
+  padding-top: 14px;
+  height: auto;
+}
+
+.sf-logo { height: 45px; }
+
+.navbar-right {
+  padding-top: 10px;
+  height: auto;
+  font-size: 16px;
+}
+
+.dropdown .fa-bars:hover {
+  color: #D1D1D1;
+}
+
+.navbar-right .open a {
+  background-color: #fff !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.UserName {
+  color: #fff;
+  padding-top: 15px;
+  padding-right: 0;
+  cursor: default;
+}
 
 .navbar .dropdown { font-size: 1.5em; }
 
-.LoginButton { margin-top: 10px; }
-
-.Login .modal-dialog{
-  position: absolute;
-  right: 0;
-}
-
-.Login .form-group { margin: 0; }
-
-.Login .modal-content {
-  padding: 10px 15px;
-  line-height: 0.3;
-  position: absolute;
-  box-shadow: none;
-  top: 25px;
-  background-color: #dfdfdf;
-}
-
-.Login .modal-body {
-  padding: 0;
-  width: 200px;
-}
-
-.Login button {
-  float: right;
-  margin-top: 8px;
-  margin-left: 8px;
-}
-
-.Login .modal-backdrop { opacity: 0; }
-
-.Login input {
-  font-size: 12px;
-  height: 32px;
-}
 .dropdown-menu li a {
   color: #7e7e7e !important;
   padding: 7px 12px;
