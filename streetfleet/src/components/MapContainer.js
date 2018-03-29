@@ -8,7 +8,7 @@ import svg4 from '../img/map-car-marker4.svg'
 
 
 
-const MapContainer = withScriptjs(withGoogleMap(props =>
+const MapContainer = withScriptjs(withGoogleMap(props => 
   <GoogleMap
     defaultZoom={7}
     defaultCenter={{ lat: props.latitude, lng: props.longtitude }}
