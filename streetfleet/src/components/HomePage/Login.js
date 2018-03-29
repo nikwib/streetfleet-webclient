@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Button, FormControl } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 import authActions from './../../store/actions/auth.actions';
 
@@ -40,7 +41,7 @@ class Login extends Component {
           />
         </form>
         <Button bsSize="small" className="cancel" onClick={this.props.onClose}>Cancel</Button>
-        <Button bsSize="small" type="submit" onClick={this.onSubmit}>Submit</Button>
+        <Button bsSize="small" type="submit" onClick={this.onSubmit}><Link to="/FleetOverview">Submit</Link></Button>
       </div>
     );
   }
