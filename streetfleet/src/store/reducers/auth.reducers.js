@@ -80,6 +80,7 @@ export default (state = defaultState, action) => {
         username: action.response.username,
         loggedIn: true,
         fetching: false,
+        company: action.response
       };
 
     case 'LOGIN_REQUEST':

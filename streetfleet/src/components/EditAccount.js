@@ -10,7 +10,7 @@ class EditAccount extends Component {
   }
 
   componentDidMount () {
-    this.props.getAccount(this.props.username);
+    // this.props.getAccount(this.props.username);
   }
 
   componentWillReceiveProps (props) {
@@ -112,7 +112,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  getAccount: (username) => { dispatch(Actions.getAccount(username)) },
+  // getAccount: (username) => { dispatch(Actions.getAccount(username)) },
   onClose: () => { dispatch(Actions.onClose) },
   editAccount: company => { dispatch(Actions.editAccount(company)) }
 })
