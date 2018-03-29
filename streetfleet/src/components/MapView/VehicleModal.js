@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import Color from 'randomcolor';
+import randomColor from 'randomcolor';
 
 import Actions from './../../store/actions/cars.actions';
 import '../../css/Map.css';
@@ -19,7 +19,7 @@ class VehicleModal extends Component {
         return (
           <li>
             <Link to={"/CarLog/" + car.license_number} key={car._id} license_number={car.license_number}>
-              <div className="vColor" style={{backgroundColor:Color()}}></div>
+              <div className="vColor" style={{backgroundColor:randomColor({luminosity: 'dark'})}}></div>
               <div key={i} className="vInfo">{car.license_number.toUpperCase()}</div>
             </Link>
           </li>

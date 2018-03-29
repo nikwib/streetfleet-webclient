@@ -5,6 +5,7 @@ import { Grid, Row, Col, Table } from 'react-bootstrap';
 import CarItem from './CarItem';
 import Actions from './../../store/actions/cars.actions';
 import '../../css/FleetOverview.css';
+import '../../css/Tables.css';
 
 class FleetOverview extends Component {
 
