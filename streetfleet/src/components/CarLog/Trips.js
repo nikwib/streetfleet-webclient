@@ -4,10 +4,10 @@ import { Table } from 'react-bootstrap';
 
 import { Trip } from './Trip';
 
-const renderTrips = (props) => props.trips.map((trip, i) => { 
-  return ( 
-  <Trip 
-  key={i} 
+const renderTrips = (props) => props.trips.map((trip, i) => {
+  return (
+  <Trip
+  key={i}
   trip={trip}
   onShowTrip={props.onShowTrip}
    />
@@ -16,7 +16,7 @@ const renderTrips = (props) => props.trips.map((trip, i) => {
 export const Trips = (props) => {
   console.log('TRIPS PROPS:', props)
   return (
-    <div>
+    <div className="Modals">
       <h3>Trips:</h3>
       <Table striped bordered condensed hover>
         <thead>

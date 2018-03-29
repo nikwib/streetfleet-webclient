@@ -1,0 +1,11 @@
+.App table tbody a {
+  color: #9b9b9b;
+}
+
+.OverviewTable thead tr {
+  border-bottom: 4px solid #178FE7;
+}
+
+.OverviewTable th, .OverviewTable td {
+  padding: 12px !important;
+}

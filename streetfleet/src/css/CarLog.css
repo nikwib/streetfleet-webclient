@@ -4,11 +4,14 @@
   text-align: left;
 }
 
-.CarLog h2 { margin-top: 5px; }
+.CarLog h2 {
+  margin-top: 5px;
+  margin-left: 15px;
+}
 
 .CarLog span {
-  color: #3c763d;
   font-weight: 600;
+  color: #626262;
 }
 
 .CarInfo {
@@ -17,25 +20,38 @@
 }
 
 .InfoSummary {
-  margin: 10px auto;
-  width: 320px;
+  margin-left: 25px;
+  color: #9c9c9c;
 }
 
 .logButtons {
   position: absolute;
   right: 30px;
-  top: 5px;
+  bottom: 85px;
 }
 
-.logButtons .btn {
+.App .logButtons .btn-link {
   font-size: 24px;
-  padding-left: 0;
+  padding-right: 0;
+  background: none;
+  box-shadow: none;
 }
 
-.nav-tabs { margin: 10px 0; }
+.App .logButtons .btn-link:hover {
+  color: #d8d8d8;
+  background: none;
+  box-shadow: none;
+}
+
+.CarLogTrips {
+  padding: 0;
+  z-index: -1;
+}
+
+/* .nav-tabs { margin: 10px 0; }
 
 .nav-tabs li a { line-height: 0.9; }
 
 .tab-content { padding: 0 20px; }
 
-.tab-content h3 { font-size: 21px; }
+.tab-content h3 { font-size: 21px; } */
