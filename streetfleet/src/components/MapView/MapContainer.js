@@ -1,11 +1,34 @@
-import React from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
+import React, { Component } from 'react';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, Polyline } from "react-google-maps"
+import { connect } from 'react-redux';
+
+import Actions from '../../store/actions/cars.actions';
+
+const renderCarMarkers = (props) => {
+  return props.lastLocations.map(location => {
+    return (
+      <Marker
+        key={location.car_id}
+        className="svg"
+        position={{ lat: location.latitude, lng: location.longitude }}
+      />)
+  })
+}
 
 const MapContainer = withScriptjs(withGoogleMap(props =>
-  <GoogleMap
-    defaultZoom={16}
-    defaultCenter={{ lat: 41.404082, lng: 2.175017 }}
-  ></GoogleMap>
+  <GoogleMap defaultZoom={14} defaultCenter={{ lat: 41.3948878, lng: 2.1976607 }}   >
+    {renderCarMarkers(props)}
+  </GoogleMap>
 ))
 
-export default MapContainer;
+const mapStateToProps = (state) => ({
+
+  //lastLocations: state.cars.lastLocations,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);
+
