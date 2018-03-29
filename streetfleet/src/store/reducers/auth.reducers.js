@@ -4,7 +4,7 @@ const defaultState = {
   fetching: false,
   showSignUp: false,
   showLogin: false,
-  showEditAccount: false,
+  showEditAccount: true,
   showDeleteAccount: false,
   message: {
     show: false,
