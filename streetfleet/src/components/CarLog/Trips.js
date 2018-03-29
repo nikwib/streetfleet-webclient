@@ -17,8 +17,8 @@ export const Trips = (props) => {
   return (
     <div className="TableBackground">
       <div className="DetailsButtons">
-        <Button bsStyle="link" onClick={() => this.props.onShowEditVehicle(this.props.car)}><i className="fas fa-pencil-alt"></i></Button>
-        <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt"></i></Button>
+        <Button bsStyle="link" onClick={() => props.onShowEditVehicle(props.car)}><i className="fas fa-pencil-alt"></i></Button>
+        <Button bsStyle="link" onClick={() => props.onClickDelete(props.car)}><i className="fas fa-trash-alt"></i></Button>
       </div>
       <h3>Trips</h3>
       <Table hover className="OverviewTable">

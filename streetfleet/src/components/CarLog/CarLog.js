@@ -60,6 +60,7 @@ class CarLog extends Component {
             <Trips
               trips={this.props.trips}
               onShowTrip={this.onShowTrip}
+              onShowEditVehicle={() => {this.props.onShowEditVehicle(this.props.car)}}
             />
           </Col>
         </Row>
@@ -76,6 +77,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getCar: (car_id) => { dispatch(Actions.getCar(car_id)); },
   getTrips: (mac_address) => { dispatch(Actions.getTrips(mac_address)); },
+  onShowEditVehicle:(car) => {dispatch(Actions.onShowEditVehicle(car))}
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CarLog);
