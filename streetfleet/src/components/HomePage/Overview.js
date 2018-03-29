@@ -16,7 +16,7 @@ const Overview= () => {
             <p>StreetFleet is a platform that helps you manage every vehicle in your fleet in real time.</p>
             <p>It records the position at every time and allows you to see their distance traveled and routs in an friendly way that is easy to understand.</p>
           </Col>
-          <Col className="Modals">
+          <Col className="OvRight WhiteContainer">
             <CreateAccount/>
             <Login/>
           </Col>

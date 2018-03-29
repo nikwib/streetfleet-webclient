@@ -5,8 +5,8 @@
 }
 
 .CarLog h2 {
-  margin-top: 5px;
-  margin-left: 15px;
+  margin: 5px 10px 0 15px;
+  display: inline-block;
 }
 
 .CarLog span {
@@ -16,7 +16,10 @@
 
 .CarInfo {
   line-height: 1;
-  margin-top: 20px;
+}
+
+.MapSmall {
+  z-index: 100;
 }
 
 .InfoSummary {
@@ -24,28 +27,26 @@
   color: #9c9c9c;
 }
 
-.logButtons {
-  position: absolute;
-  right: 30px;
-  bottom: 85px;
+.DetailsButtons {
+  display: inline-block;
 }
 
-.App .logButtons .btn-link {
+.App .DetailsButtons .btn-link {
+  color: #178FE7;
   font-size: 24px;
-  padding-right: 0;
   background: none;
   box-shadow: none;
+  padding: 0 0 15px 10px;
 }
 
-.App .logButtons .btn-link:hover {
-  color: #d8d8d8;
+.App .DetailsButtons .btn-link:hover {
+  color: #0a76c5;
   background: none;
   box-shadow: none;
 }
 
 .CarLogTrips {
   padding: 0;
-  z-index: -1;
 }
 
 /* .nav-tabs { margin: 10px 0; }

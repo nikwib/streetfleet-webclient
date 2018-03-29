@@ -22,3 +22,8 @@
   box-shadow: none;
   padding: 0 5px;
 }
+
+.App .OverviewButtons .btn-link:hover {
+  color: #0a76c5;
+  background: none;
+}
