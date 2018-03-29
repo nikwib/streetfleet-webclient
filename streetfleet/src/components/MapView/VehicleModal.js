@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Modal } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Color from 'randomcolor';
 
-import { colors } from './colors';
-import Actions from './../store/actions/cars.actions';
-import '../css/Map.css';
+import Actions from './../../store/actions/cars.actions';
+import '../../css/Map.css';
 
 class VehicleModal extends Component {
 
@@ -18,10 +17,12 @@ class VehicleModal extends Component {
       return props.cars.map((car, i) => {
         i++;
         return (
-          <Link to={"/CarLog/" + car.license_number} key={car._id} license_number={car.license_number}>
-            <div className="vColor" style={{backgroundColor:colors[i-1]}}></div>
-            <div key={i} className="vInfo">{car.license_number.toUpperCase()}</div>
-          </Link>
+          <li>
+            <Link to={"/CarLog/" + car.license_number} key={car._id} license_number={car.license_number}>
+              <div className="vColor" style={{backgroundColor:Color()}}></div>
+              <div key={i} className="vInfo">{car.license_number.toUpperCase()}</div>
+            </Link>
+          </li>
         );
       });
     }
@@ -30,11 +31,10 @@ class VehicleModal extends Component {
   render() {
     return (
       <div className="VehicleModal">
-        <Modal.Dialog>
-          <Modal.Body>
-            {this.renderCars(this.props)}
-          </Modal.Body>
-        </Modal.Dialog>
+        <h2>Your Fleet</h2>
+        <ul className="VehicleList">
+          {this.renderCars(this.props)}
+        </ul>
       </div>
     )
   }
