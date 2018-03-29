@@ -46,12 +46,49 @@ const loadUserFromToken = {
   type: 'LOAD_USER_FROM_TOKEN',
 };
 
+//====================
+// ACCOUNT MANAGEMENT
+//====================
+
+const showEditAccount = {
+  type: 'SHOW_EDIT_ACCOUNT'
+}
+
+const showDeleteAccount = {
+  type: 'SHOW_DELETE_ACCOUNT'
+}
+
+const editAccount = company => ({
+  type: 'EDIT_ACCOUNT',
+  url: ('/company/' + company.username),
+  method: 'PUT',
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  },
+  body: company,
+});
+
+const deleteAccount = username => ({
+  type: 'DELETE_ACCOUNT',
+  url: ('/company/' + username),
+  method: 'DELETE',
+  headers: {
+    'Content-Type': 'application/json',
+    'authorization': 'Bearer ' + localStorage.getItem('JWT'),
+  }
+})
+
 export default {
   onClose,
   showSignUp,
   createAccount,
   login,
   logout,
+  showEditAccount,
+  showDeleteAccount,
+  editAccount,
+  deleteAccount,
   loadUserFromToken,
   onShowLogin,
 };

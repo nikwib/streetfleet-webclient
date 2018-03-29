@@ -31,7 +31,7 @@ export default (state = defaultState, action) => {
         ...state,
         fetching: false,
       };
-
+      
     case 'GET_CAR':
       return {
         ...state,
