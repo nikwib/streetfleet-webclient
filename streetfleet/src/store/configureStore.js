@@ -16,17 +16,6 @@ const persistedReducer = persistReducer(persistConfig, reducer)
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-
-// export default () => {
-//   const store = createStore(
-//     persistedReducer,
-//     composeEnhancers(applyMiddleware(api(config.baseUrl),logger)),
-//   );
-//   //let store = createStore(persistedReducer)
-//   let persistor = persistStore(store)
-//   return { store, persistor }
-// }
-
 const configureStore = () => {
   const logger = createLogger();
   const store = createStore( persistedReducer, composeEnhancers(applyMiddleware(api(config.baseUrl), logger)));

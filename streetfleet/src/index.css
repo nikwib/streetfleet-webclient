@@ -1,6 +1,11 @@
 body {
+  background-image: url("img/background.png");
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 650px auto;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: 300;
   color: #3c3c3c;
 }

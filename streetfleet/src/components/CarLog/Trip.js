@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import React from 'react';
 import moment from 'moment';
 
 export const Trip = (props) => {
@@ -16,4 +15,3 @@ export const Trip = (props) => {
     </tr>
   )
 };
-

@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import moment from 'moment';
-import { isEmpty } from 'underscore'
-
 
 import config from './../../config';
 import { CarInfo } from './CarInfo';
@@ -54,10 +51,10 @@ class CarLog extends Component {
             </div>
           </Col>
           <Col md={8}>
-            <h2 className="text-success">Vehicle Summary</h2>
+            <h2>Vehicle Summary</h2>
             <div className="logButtons pull-right">
-              <Button bsStyle="link" onClick={this.handleEdit}><i className="fas fa-pencil-alt text-success"></i></Button>
-              <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt text-success"></i></Button>
+              <Button bsStyle="link" onClick={this.handleEdit}><i className="fas fa-pencil-alt"></i></Button>
+              <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt"></i></Button>
             </div>
             <Trips
               trips={this.props.trips}

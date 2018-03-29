@@ -35,10 +35,10 @@ class FleetOverview extends Component {
       <Grid>
         <Row className="show-grid text-capitalize">
           <Col md={10} mdOffset={1} className="FleetOverview">
-            <h2 className="text-success">Fleet Overview</h2>
-            <Table striped bordered condensed hover>
+            <h2>Fleet Overview</h2>
+            <Table hover className="OverviewTable">
               <thead>
-                <tr>
+                <tr className="BlueBorder">
                   <th>License </th>
                   <th>Make </th>
                   <th>Model </th>
