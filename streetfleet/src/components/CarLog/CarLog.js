@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Grid, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 
 import config from './../../config';
@@ -36,10 +36,9 @@ class CarLog extends Component {
 
   render() {
     const style = {
-      height: `75vh`,
+      height: `32vh`,
       boxShadow: `0 3px 15px rgba(0,0,0,.3)`,
     }
-
 
     return (
       <Grid>
@@ -52,16 +51,12 @@ class CarLog extends Component {
               mapElement={<div style={{ height: `100%` }} />}
               locations={this.state.locations}
             />
-          </Col>
-          <Col md={7} className="CarLogTrips">
             <h2>Details</h2>
-            <div className="DetailsButtons">
-              <Button bsStyle="link" onClick={() => this.props.onShowEditVehicle(this.props.car)}><i className="fas fa-pencil-alt"></i></Button>
-              <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt"></i></Button>
-            </div>
             <div className="InfoSummary">
               {this.props.car ? <CarInfo car={this.props.car} /> : null}
             </div>
+          </Col>
+          <Col md={7} className="CarLogTrips">
             <Trips
               trips={this.props.trips}
               onShowTrip={this.onShowTrip}

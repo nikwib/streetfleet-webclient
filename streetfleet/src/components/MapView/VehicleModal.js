@@ -13,12 +13,13 @@ class VehicleModal extends Component {
   }
 
   renderCars = (props) => {
+    console.log("VM:", props)
     if (props.cars.length) {
       return props.cars.map((car, i) => {
         i++;
         return (
           <li>
-            <Link to={"/CarLog/" + car.license_number} key={car._id} license_number={car.license_number}>
+            <Link to={"/CarLog/" + car._id} key={car._id} license_number={car.license_number}>
               <div className="vColor" style={{backgroundColor:randomColor({luminosity: 'dark'})}}></div>
               <div key={i} className="vInfo">{car.license_number.toUpperCase()}</div>
             </Link>

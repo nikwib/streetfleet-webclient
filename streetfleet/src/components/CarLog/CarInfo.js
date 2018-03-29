@@ -1,6 +1,4 @@
 import React from 'react';
-// import { Grid, Row, Col, Button } from 'react-bootstrap';
-// import { connect } from 'react-redux';
 import moment from 'moment';
 
 export const CarInfo = (props) => {

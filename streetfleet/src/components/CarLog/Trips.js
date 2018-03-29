@@ -1,8 +1,8 @@
 import React from 'react';
-import { Table } from 'react-bootstrap';
-// import moment from 'moment';
+import { Table, Button } from 'react-bootstrap';
 
 import { Trip } from './Trip';
+import '../../css/Tables.css';
 
 const renderTrips = (props) => props.trips.map((trip, i) => {
   return (
@@ -14,17 +14,20 @@ const renderTrips = (props) => props.trips.map((trip, i) => {
   ); } );
 
 export const Trips = (props) => {
-  console.log('TRIPS PROPS:', props)
   return (
-    <div className="WhiteContainer">
-      <h3>Trips:</h3>
-      <Table striped bordered condensed hover>
+    <div className="TableBackground">
+      <div className="DetailsButtons">
+        <Button bsStyle="link" onClick={() => this.props.onShowEditVehicle(this.props.car)}><i className="fas fa-pencil-alt"></i></Button>
+        <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt"></i></Button>
+      </div>
+      <h3>Trips</h3>
+      <Table hover className="OverviewTable">
         <thead>
           <tr>
             <th>Start Time</th>
             <th>End Time</th>
             <th>Distance</th>
-            <th>Show trip</th>
+            <th>Trip</th>
           </tr>
         </thead>
         <tbody>
