@@ -39,10 +39,12 @@ class CarLog extends Component {
       height: `75vh`,
       boxShadow: `0 3px 15px rgba(0,0,0,.3)`,
     }
+
+
     return (
       <Grid>
         <Row className="show-grid CarLog">
-          <Col md={3} className="MapView">
+          <Col md={3} className="MapView MapSmall">
             <MapTrip
               googleMapURL={config.googleMapURL}
               loadingElement={<div style={{ height: `100%` }} />}
@@ -53,12 +55,12 @@ class CarLog extends Component {
           </Col>
           <Col md={7} className="CarLogTrips">
             <h2>Details</h2>
+            <div className="DetailsButtons">
+              <Button bsStyle="link" onClick={() => this.props.onShowEditVehicle(this.props.car)}><i className="fas fa-pencil-alt"></i></Button>
+              <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt"></i></Button>
+            </div>
             <div className="InfoSummary">
               {this.props.car ? <CarInfo car={this.props.car} /> : null}
-            </div>
-            <div className="logButtons pull-right">
-              <Button bsStyle="link" onClick={this.handleEdit}><i className="fas fa-pencil-alt"></i></Button>
-              <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt"></i></Button>
             </div>
             <Trips
               trips={this.props.trips}
