@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Table } from 'react-bootstrap';
-import moment from 'moment';
+// import moment from 'moment';
 
 import { Trip } from './Trip';
 
@@ -9,7 +9,7 @@ const renderTrips = (props) => props.trips.map((trip, i) => { return ( <Trip key
 export const Trips = (props) => {
   return (
     <div>
-      <h3 className="text-success">Trips:</h3>
+      <h3>Trips:</h3>
       <Table striped bordered condensed hover>
         <thead>
           <tr>
@@ -25,4 +25,3 @@ export const Trips = (props) => {
     </div>
   );
 };
-

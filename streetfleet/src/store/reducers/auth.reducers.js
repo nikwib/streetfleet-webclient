@@ -2,8 +2,6 @@ const defaultState = {
   username: '',
   loggedIn: false,
   fetching: false,
-  showSignUp: false,
-  showLogin: false,
   message: {
     show: false,
     title: '',

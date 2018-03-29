@@ -1,6 +1,7 @@
 .FleetOverview {
-  text-align: left;
-  margin-top: 35px;
+  background-color: white;
+  box-shadow: 2px 3px 13px rgba(0, 0, 0, 0.25);
+  padding: 35px 45px;
 }
 
 .FleetOverview h2 {
@@ -15,6 +16,9 @@
 
 .OverviewButtons { width: 70px; }
 
-.OverviewButtons { text-align: center; }
-
-.OverviewButtons button { padding: 0 4px; }
+.App .OverviewButtons .btn-link {
+  background: none;
+  color: #178FE7;
+  box-shadow: none;
+  padding: 0 5px;
+}

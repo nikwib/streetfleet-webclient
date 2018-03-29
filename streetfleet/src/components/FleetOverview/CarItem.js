@@ -38,8 +38,8 @@ class CarItem extends Component {
           </Link>
         </td>
         <td className="OverviewButtons">
-          <Button bsStyle="link" onClick={() => this.props.onShowEditVehicle(this.props.car)}><i className="fas fa-pencil-alt text-success"></i></Button>
-          <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt text-success"></i></Button>
+          <Button bsStyle="link" onClick={() => this.props.onShowEditVehicle(this.props.car)}><i className="fas fa-pencil-alt"></i></Button>
+          <Button bsStyle="link" onClick={() => this.props.onClickDelete(this.props.car)}><i className="fas fa-trash-alt"></i></Button>
         </td>
       </tr>
     );
@@ -48,9 +48,7 @@ class CarItem extends Component {
 
 const mapDispatchToProps = (dispatch) => ({
   onShowEditVehicle: (car) => { dispatch(Actions.onShowEditVehicle(car)); },
-  onShowEditVehicle: (car) => { dispatch(Actions.onShowEditVehicle(car)); },
+  // onShowEditVehicle: (car) => { dispatch(Actions.onShowEditVehicle(car)); },
 });
 
 export default connect(null, mapDispatchToProps)(CarItem);
-
-

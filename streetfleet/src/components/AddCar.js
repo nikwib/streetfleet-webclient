@@ -3,6 +3,7 @@ import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-boots
 import { connect } from 'react-redux';
 
 import carsActions from './../store/actions/cars.actions';
+import '../css/Modals.css'
 
 class AddCar extends Component {
 
@@ -21,71 +22,72 @@ class AddCar extends Component {
     );
   }
 
+  handleSubmit = () => {
+    this.props.onAddCar(this.car)
+  }
+
   render() {
     const formInstance = (
-      <form>
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Vehicle Type"
-          name="vType"
-          onChange={this.onChange}
-          placeholder="E.g. Car, truck, van..."
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Make"
-          name="make"
-          onChange={this.onChange}
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Model"
-          name="model"
-          onChange={this.onChange}
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Year"
-          name="year"
-          onChange={this.onChange}
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="License Plate"
-          name="license_number"
-          onChange={this.onChange}
-        />
-        <this.FieldGroup
-          id="formControlsText"
-          type="text"
-          label="Mac Address"
-          name="mac_address"
-          onChange={this.onChange}
-        />
-      </form>
+      <Modal.Body>
+        <form className="ModalsLeft">
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            placeholder="Vehicle Type"
+            name="vType"
+            onChange={this.onChange}
+          />
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            placeholder="Make"
+            name="make"
+            onChange={this.onChange}
+          />
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            placeholder="Model"
+            name="model"
+            onChange={this.onChange}
+          />
+        </form>
+        <form className="ModalsRight">
+          <this.FieldGroup
+            id="formControlsText"
+            type="number"
+            placeholder="Year"
+            name="year"
+            onChange={this.onChange}
+          />
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            placeholder="License Plate"
+            name="license_number"
+            onChange={this.onChange}
+          />
+          <this.FieldGroup
+            id="formControlsText"
+            type="text"
+            placeholder="Mac Address"
+            name="mac_address"
+            onChange={this.onChange}
+          />
+        </form>
+        <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
+        <Button type="submit" onClick={this.handleSubmit}>Submit</Button>
+      </Modal.Body>
     );
 
     return (
       <Modal
-        bsSize="small"
+        className="Modals"
         show={this.props.showAddVehicle}
         onHide={this.props.onClose}
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Add New Vehicle</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          {formInstance}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={this.props.onClose}>Cancel</Button>
-          <Button type="submit" onClick={() => this.props.onAddCar(this.car)}>Submit</Button>
-        </Modal.Footer>
+        <h1>Add</h1>
+        {formInstance}
       </Modal>
     );
   }

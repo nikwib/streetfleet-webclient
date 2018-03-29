@@ -1,46 +1,143 @@
-/* Carousel */
+/* Logo */
 
-.carousel { box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.35); }
-
-.carousel .item {
-  overflow:hidden;
-  width: 100%;
-  height: 75vh;
+.home-logo {
+  margin: 35px 9% 20px;
+  width: 30%;
 }
 
+/* Carousel */
+
 .carousel-caption {
-  bottom: 7%;
-  text-shadow: 0 1px 2px rgba(0,0,0,.8);
+  text-shadow: none;
+  color: #000;
+  text-align: left;
+  left: 10%;
+  position: relative;
+  font-size: 32px;
+}
+
+.carousel-caption h1 {
+  font-size: 28px;
+  margin: 15px 0;
 }
 
 .bannerImg {
-  max-width: 100%;
-  position: absolute;
-  bottom: 0;
+  padding-top: 15px;
+  width: 85%;
+  margin: auto;
 }
 
 .carousel-indicators, .carousel-control, .glyphicon { visibility: hidden; }
 
-.btn-success {
-  margin-top: 50px;
-  padding: 15px 30px;
-  font-size: 24px;
+.TryIt {
+  font-size: 20px;
+  font-weight: 100;
+  padding: 10px 35px;
 }
-
-.btn-success:hover { background-color: #419641; }
 
 /* Overview */
-
-.Overview { padding: 45px 0; }
-
-.OvImg { width: 375px; }
-
-.Overview h2 { margin-bottom: 20px; }
-
-.OvTxt {
-  text-align: left;
-  margin-top: 5%;
+.Overview {
+  display : flex;
+  align-items : center;
 }
+
+.Overview h2 {
+  font-weight: 600;
+  font-size: 35px;
+  font-style: italic;
+}
+
+.OvLeft {
+  text-align: left;
+  margin: 20px 0;
+  background-color: #178FE7;
+  color: #fff;
+  padding: 20px 30px;
+  box-shadow: 2px 5px 25px rgba(0,0,0,.25);
+  z-index: 100;
+}
+
+.OvImg {
+  width: 100%;
+  padding: 15px 30px;
+}
+
+.OvLeft h2 {
+  color: #fff;
+}
+
+.OvRight {
+  text-align: left;
+  margin: 20px 0;
+  background-color: #fff;
+  color: #d6d6d6;
+  padding: 20px 30px;
+  box-shadow: 2px 5px 25px rgba(0,0,0,.25);
+  z-index: 1;
+}
+
+.OvRight h2 {
+  font-size: 30px;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.OvRight small {
+  float: right;
+  padding-left: 25px;
+}
+
+
+.OvRight small a {
+  color: #178FE7;
+  text-decoration: underline;
+}
+
+/* Login */
+
+.Login {
+  width: 100%;
+}
+
+.LoginButton { margin-top: 10px; }
+
+.Login .modal-content {
+  padding: 10px 15px;
+  line-height: 0.3;
+  position: absolute;
+  box-shadow: none;
+  top: 25px;
+  background-color: #dfdfdf;
+}
+
+.Login .modal-body {
+  padding: 0;
+  width: 200px;
+}
+
+.Login input {
+  font-size: 12px;
+  height: 32px;
+  border-radius: 0;
+  margin-bottom: 25px;
+  box-shadow: none;
+}
+
+.Login button {
+  margin-right: 8px;
+}
+
+.Login .modal-backdrop { opacity: 0; }
+
+/* Create Account */
+
+.CreateAccount form {
+  display: inline-block;
+  width: 48%;
+}
+
+.FormLeft { margin-right: 2% }
+.FormRight { margin-left: 2% }
 
 /* Footer */
 
@@ -48,6 +145,7 @@
   background-color: #3a3a3a;
   margin: 0;
   padding: 15px;
+  text-align: center;
 }
 
 .Footer li {

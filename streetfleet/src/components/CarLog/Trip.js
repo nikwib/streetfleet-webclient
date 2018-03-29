@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import React from 'react';
+// import { Table } from 'react-bootstrap';
 import moment from 'moment';
 
 export const Trip = (trip) => (
@@ -9,4 +9,3 @@ export const Trip = (trip) => (
     <td>{trip.distance}</td>
   </tr>
 );
-

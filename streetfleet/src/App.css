@@ -1,10 +1,5 @@
 .App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .App-header {
@@ -22,18 +17,44 @@
   font-size: large;
 }
 
+h2, h3 {
+  color: #178FE7
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
 
-button {
-  background-image: none !important;
-  box-shadow: none !important;
+.App .btn, .Modals .btn {
+  background-image: none;
+  box-shadow: 2px 3px 13px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  border: none;
+  background-color: #178FE7;
+  text-shadow: none;
+  color: #fff;
+  font-weight: 200;
+  text-shadow: none;
+  padding: 6px 25px;
+  font-size: 14px;
 }
 
-button:focus {
-  outline: none !important;
+.App .btn:hover, .Modals .btn:hover {
+  color: #fff;
+  background-color: #0a76c5;
+}
+
+.App .btn:focus , .Modals .btn:focus {
+  outline: none;
+}
+
+.App .cancel, .Modals .cancel {
+  background-color: #c1c1c1;
+}
+
+.App .cancel:hover, .Modals .cancel:hover {
+  background-color: #b1b1b1;
 }
 
 .No-Link {
@@ -46,4 +67,8 @@ button:focus {
 }
 .loader-active {
   display: block;
+}
+
+.table {
+  margin-bottom: 0;
 }
