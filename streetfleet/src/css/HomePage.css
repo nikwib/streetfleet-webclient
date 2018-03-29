@@ -72,6 +72,10 @@
   margin-bottom: 20px;
 }
 
+.OvRight .Login button a {
+  color: #fff;
+}
+
 .OvRight small {
   float: right;
   padding-left: 25px;

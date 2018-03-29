@@ -31,7 +31,6 @@ class Overview extends Component {
             </Col>
             <Col className="OvRight WhiteContainer">
               {this.state.showLogin ? <Login onToggleLogin={this.toggleLogin} /> : <CreateAccount  onToggleLogin={this.toggleLogin} />}
-              {/* <Login/> */}
             </Col>
           </Col>
         </Row>
