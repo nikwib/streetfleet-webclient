@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import moment from 'moment';
-import { isEmpty } from 'underscore'
 
 import config from './../../config';
 import { CarInfo } from './CarInfo';
