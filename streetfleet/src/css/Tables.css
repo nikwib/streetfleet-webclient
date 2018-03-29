@@ -1,0 +1,17 @@
+.TableBackground {
+  background-color: white;
+  box-shadow: 2px 3px 13px rgba(0, 0, 0, 0.25);
+  padding: 35px 45px;
+}
+
+.App table tbody, .App table tbody a {
+  color: #9b9b9b;
+}
+
+.OverviewTable thead tr {
+  border-bottom: 4px solid #178FE7;
+}
+
+.OverviewTable th, .OverviewTable td {
+  padding: 12px !important;
+}

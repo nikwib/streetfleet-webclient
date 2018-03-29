@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import isEmpty from 'lodash/isEmpty';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import Actions from '../../store/actions/cars.actions';
 import config from '../../config';
 import MapContainer from './MapContainer';
-import VehicleModal from './../VehicleModal';
+import VehicleModal from './VehicleModal';
 import '../../css/Map.css';
 
 class MapView extends Component {
@@ -20,10 +21,10 @@ class MapView extends Component {
       latitude: 30.345345,
       longitude: 2.175017
     }
-     setTimeout(() => this.processLocations(), 1000);
+    setTimeout(() => this.processLocations(), 1000);
   }
   componentDidMount = () => {
-    this.props.getCars();  
+    this.props.getCars();
     this.pid = setInterval(() => this.processLocations(), 5000);
   }
 
@@ -44,21 +45,31 @@ class MapView extends Component {
   }
 
   render() {
-    console.log(this.state);
+    const style = {
+      height: `75vh`,
+      boxShadow: `0 3px 15px rgba(0,0,0,.3)`,
+      marginTop: `2.6%`,
+    }
     return (
-      <div className="row MapView">
-        <MapContainer
-          latitude={this.state.latitude}
-          longtitude={this.state.longtitude}
-          googleMapURL={config.googleMapURL}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `calc(100vh - 62px)` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-          lastLocations={this.props.lastLocations}
-          defaultLocation={this.lastLocation}
-        />
-        <VehicleModal cars={this.props.cars} />
-      </div>
+      <Grid>
+        <Row>
+          <Col className="MapView" md={7}>
+            <MapContainer
+              latitude={this.state.latitude}
+              longtitude={this.state.longtitude}
+              googleMapURL={config.googleMapURL}
+              loadingElement={<div style={{ height: `100%` }} />}
+              containerElement={<div style={style} />}
+              mapElement={<div style={{ height: `100%` }} />}
+              lastLocations={this.props.lastLocations}
+              defaultLocation={this.lastLocation}
+            />
+          </Col>
+          <Col className="VehicleView" md={3}>
+          <VehicleModal cars={this.props.cars} />
+          </Col>
+        </Row>
+      </Grid>
     )
   }
 }

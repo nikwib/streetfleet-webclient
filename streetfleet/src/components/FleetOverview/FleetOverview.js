@@ -5,6 +5,7 @@ import { Grid, Row, Col, Table } from 'react-bootstrap';
 import CarItem from './CarItem';
 import Actions from './../../store/actions/cars.actions';
 import '../../css/FleetOverview.css';
+import '../../css/Tables.css';
 
 class FleetOverview extends Component {
 
@@ -34,9 +35,9 @@ class FleetOverview extends Component {
     return (
       <Grid>
         <Row className="show-grid text-capitalize">
-          <Col md={10} mdOffset={1} className="FleetOverview">
+          <Col md={10} mdOffset={1} className="TableBackground">
             <h2>Fleet Overview</h2>
-            <Table bordered hover>
+            <Table hover className="OverviewTable">
               <thead>
                 <tr>
                   <th>License </th>
