@@ -36,9 +36,9 @@ class FleetOverview extends Component {
         <Row className="show-grid text-capitalize">
           <Col md={10} mdOffset={1} className="FleetOverview">
             <h2>Fleet Overview</h2>
-            <Table bordered hover>
+            <Table hover className="OverviewTable">
               <thead>
-                <tr>
+                <tr className="BlueBorder">
                   <th>License </th>
                   <th>Make </th>
                   <th>Model </th>
