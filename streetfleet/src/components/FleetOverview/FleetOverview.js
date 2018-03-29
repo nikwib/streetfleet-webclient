@@ -8,8 +8,8 @@ import '../../css/FleetOverview.css';
 
 class FleetOverview extends Component {
 
-  componentWillMount = () => {
-    this.props.getCars();
+  componentWillMount = async () => {
+    await this.props.getCars();
   }
 
   deleteCar = (car) => {

@@ -2,11 +2,18 @@ import React, { Component } from 'react';
 import { Table } from 'react-bootstrap';
 import moment from 'moment';
 
-export const Trip = (trip) => (
-  <tr>
-    <td>{moment(trip.start_time).format('LT')}</td>
-    <td>{moment(trip.end_time).format('LT')}</td>
-    <td>{trip.distance}</td>
-  </tr>
-);
+export const Trip = (props) => {
+  return (
+    <tr>
+      <td>{moment(props.trip.start_time).format('lll')}</td>
+      <td>{moment(props.trip.end_time).format('lll')}</td>
+      <td>{props.trip.distance}</td>
+      <td>
+        <button onClick={() => props.onShowTrip(props.trip.locations)}>
+          Show
+        </button>
+      </td>
+    </tr>
+  )
+};
 
