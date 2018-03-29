@@ -58,14 +58,14 @@ const showDeleteAccount = {
   type: 'SHOW_DELETE_ACCOUNT'
 }
 
-const getAccount = username => ({
-  type: 'GET_ACCOUNT',
-  url: ('/company/' + username),
-  headers: {
-    'Content-Type': 'application/json',
-    'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
-  },
-})
+// const getAccount = username => ({
+//   type: 'GET_ACCOUNT',
+//   url: ('/company/' + username),
+//   headers: {
+//     'Content-Type': 'application/json',
+//     'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
+//   },
+// })
 
 const editAccount = company => ({
   type: 'EDIT_ACCOUNT',
@@ -96,7 +96,7 @@ export default {
   logout,
   showEditAccount,
   showDeleteAccount,
-  getAccount,
+  // getAccount,
   editAccount,
   deleteAccount,
   loadUserFromToken,
