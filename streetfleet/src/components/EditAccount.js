@@ -82,7 +82,7 @@ class EditAccount extends Component {
           />
         </form>
         <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
-        <Button type="submit" onClick={() => this.props.editAccount(this.state.car)}>Submit</Button>
+        <Button type="submit" onClick={() => this.props.editAccount(this.state.company)}>Submit</Button>
       </Modal.Body>
     );
 

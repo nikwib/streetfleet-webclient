@@ -5,14 +5,9 @@ import { connect } from 'react-redux';
 
 import Actions from '../../store/actions/cars.actions';
 
-//import svg from '../../img/map-car-marker.svg';
-/*      <Marker
-        key={location.car_id}
-        className="svg"
-        position={{ lat: location.latitude, lng: location.longtitude }}
-        icon={{ url: svg }} 
-        />
-*/
+import svg from '../../img/map-car-marker.svg';
+
+
 
 const renderCarMarkers = (props) => {
   return props.lastLocations.map(location => {
@@ -21,7 +16,8 @@ const renderCarMarkers = (props) => {
         key={location.car_id}
         className="svg"
         position={{ lat: location.latitude, lng: location.longitude }}
-      />
+        icon={{ url: svg }} 
+        />
     )
   })
 }

@@ -4,7 +4,7 @@ import { withScriptjs, withGoogleMap, GoogleMap, Polyline } from "react-google-m
 const MapContainer = withScriptjs(withGoogleMap(props => {
   return (
     <GoogleMap
-      defaultZoom={14}
+      defaultZoom={13}
       center={props.locations[0] || { lat: 41.404082, lng: 2.175017 }}
     >
       <Polyline
