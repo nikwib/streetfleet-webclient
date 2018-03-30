@@ -54,9 +54,9 @@ class MapView extends Component {
       <Grid>
         <Row>
           <Col className="MapView" md={7}>
-            <MapContainer
+          <MapContainer
               latitude={this.state.latitude}
-              longtitude={this.state.longtitude}
+              longitude={this.state.longitude}
               googleMapURL={config.googleMapURL}
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={style} />}

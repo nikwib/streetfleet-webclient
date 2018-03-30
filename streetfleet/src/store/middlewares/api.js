@@ -8,7 +8,7 @@ export default (baseUrl) => {
       body: JSON.stringify(action.body),
     })
       .then(response => {
-        console.log(response);
+        console.log('Response:', response);
         this.status = response.status;
         switch (this.status) {
           case 204:

@@ -4,6 +4,12 @@ import { connect } from 'react-redux';
 
 import Actions from '../store/actions/cars.actions';
 import '../css/Modals.css'
+import type from '../img/icons/type.png';
+import make from '../img/icons/make.png';
+import model from '../img/icons/model.png';
+import year from '../img/icons/year.png';
+import license from '../img/icons/license.png';
+import mac from '../img/icons/mac.png';
 
 class EditCar extends Component {
 
@@ -41,13 +47,17 @@ class EditCar extends Component {
       <Modal.Body>
         <form className="ModalsLeft">
           <this.FieldGroup
-            id="formControlsText"
+            id="vTypeField"
             type="text"
             label="Vehicle Type"
             name="vType"
             value={this.state.car.vType}
             onChange={this.onChange}
-            className="text-capitalize"
+            className="text-capitalize"style={{
+              backgroundImage: `url(${type})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <this.FieldGroup
             id="formControlsText"
@@ -56,7 +66,11 @@ class EditCar extends Component {
             name="make"
             value={this.state.car.make}
             onChange={this.onChange}
-            className="text-capitalize"
+            className="text-capitalize"style={{
+              backgroundImage: `url(${make})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <this.FieldGroup
             id="formControlsText"
@@ -65,7 +79,11 @@ class EditCar extends Component {
             name="model"
             value={this.state.car.model}
             onChange={this.onChange}
-            className="text-capitalize"
+            className="text-capitalize"style={{
+              backgroundImage: `url(${model})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
         </form>
         <form className="ModalsRight">
@@ -76,7 +94,11 @@ class EditCar extends Component {
             name="year"
             value={this.state.car.year}
             onChange={this.onChange}
-            className="text-capitalize"
+            className="text-capitalize"style={{
+              backgroundImage: `url(${year})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <this.FieldGroup
             id="formControlsText"
@@ -85,7 +107,11 @@ class EditCar extends Component {
             name="license_number"
             value={this.state.car.license_number}
             onChange={this.onChange}
-            className="text-uppercase"
+            className="text-uppercase"style={{
+              backgroundImage: `url(${license})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <this.FieldGroup
             id="formControlsText"
@@ -94,7 +120,11 @@ class EditCar extends Component {
             name="mac_address"
             value={this.state.car.mac_address}
             onChange={this.onChange}
-            className="text-uppercase"
+            className="text-uppercase"style={{
+              backgroundImage: `url(${mac})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
         </form>
         <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>

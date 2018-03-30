@@ -3,6 +3,10 @@ import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-boots
 import { connect } from 'react-redux';
 
 import Actions from '../store/actions/auth.actions';
+import company from '../img/icons/company.png';
+import user from '../img/icons/user.png';
+import email from '../img/icons/email.png';
+import password from '../img/icons/password.png';
 import '../css/Modals.css'
 
 class EditAccount extends Component {
@@ -43,7 +47,12 @@ class EditAccount extends Component {
             name="company_name"
             value={this.state.company.company_name}
             onChange={this.onChange}
-            className=""
+            className="text-capitalize"
+            style={{
+              backgroundImage: `url(${company})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <this.FieldGroup
             id="formControlsText"
@@ -52,7 +61,12 @@ class EditAccount extends Component {
             name="username"
             value={this.state.company.username}
             onChange={this.onChange}
-            className=""
+            className="text-capitalize"
+            style={{
+              backgroundImage: `url(${user})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
 
           <this.FieldGroup
@@ -62,7 +76,12 @@ class EditAccount extends Component {
             name="email"
             value={this.state.company.email}
             onChange={this.onChange}
-            className=""
+            className="text-lowercase"
+            style={{
+              backgroundImage: `url(${email})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <this.FieldGroup
             id="formControlsText"
@@ -70,7 +89,11 @@ class EditAccount extends Component {
             label="Old password"
             name="old_password"
             onChange={this.onChange}
-            className=""
+            style={{
+              backgroundImage: `url(${password})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <this.FieldGroup
             id="formControlsText"
@@ -78,11 +101,15 @@ class EditAccount extends Component {
             label="New password"
             name="new_password"
             onChange={this.onChange}
-            className=""
+            style={{
+              backgroundImage: `url(${password})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
         </form>
         <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
-        <Button type="submit" onClick={() => this.props.editAccount(this.state.car)}>Submit</Button>
+        <Button type="submit" onClick={() => this.props.editAccount(this.state.company)}>Submit</Button>
       </Modal.Body>
     );
 
