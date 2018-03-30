@@ -10,24 +10,17 @@ import VehicleModal from './VehicleModal';
 import '../../css/Map.css';
 
 class MapView extends Component {
-  constructor(props) {
-    super(props);
-    this.pid;
-    this.lastLocation = {
-      latitude: 41.3948878,
-      longitude: 2.1976607,
-    };
-    this.state = {
-      latitude: 30.345345,
-      longitude: 2.175017
-    }
-    setTimeout(() => this.processLocations(), 1000);
-  }
+
+  lastLocation = {
+    latitude: 41.3948878,
+    longitude: 2.1976607,
+  };
+
   componentDidMount = () => {
     this.props.getCars();
+    setTimeout(() => this.processLocations(), 1000);
     this.pid = setInterval(() => this.processLocations(), 5000);
   }
-
 
   componentWillUnmount = () => {
     clearInterval(this.pid);
@@ -54,9 +47,9 @@ class MapView extends Component {
       <Grid>
         <Row>
           <Col className="MapView" md={7}>
-          <MapContainer
-              latitude={this.state.latitude}
-              longitude={this.state.longitude}
+            <MapContainer
+              latitude={this.lastLocation.latitude}
+              longitude={this.lastLocation.longitude}
               googleMapURL={config.googleMapURL}
               loadingElement={<div style={{ height: `100%` }} />}
               containerElement={<div style={style} />}
@@ -66,13 +59,14 @@ class MapView extends Component {
             />
           </Col>
           <Col className="VehicleView" md={3}>
-          <VehicleModal cars={this.props.cars} />
+            <VehicleModal cars={this.props.cars} />
           </Col>
         </Row>
       </Grid>
     )
   }
 }
+
 const mapStateToProps = (state) => ({
   cars: state.cars.cars,
   trips: state.cars.trips,

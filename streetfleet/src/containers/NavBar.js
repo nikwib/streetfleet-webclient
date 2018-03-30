@@ -47,7 +47,7 @@ class NavBar extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to="/"> <img src={Logo} className="sf-logo" alt="StreetFleet" /> </Link>
+          {(this.props.loggedIn) ? <Link to="/"> <img src={Logo} className="sf-logo" alt="StreetFleet" /> </Link> : null}
           </Navbar.Brand>
         </Navbar.Header>
         {(this.props.loggedIn) ? this.renderMenu() : null}
