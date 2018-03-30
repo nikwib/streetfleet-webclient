@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, Polyline } from "react-google-maps"
 import { connect } from 'react-redux';
+//import ReactSVG from 'react-svg';
 
 import Actions from '../../store/actions/cars.actions';
+
+//import svg from '../../img/map-car-marker.svg';
+/*      <Marker
+        key={location.car_id}
+        className="svg"
+        position={{ lat: location.latitude, lng: location.longtitude }}
+        icon={{ url: svg }} 
+        />
+*/
 
 const renderCarMarkers = (props) => {
   return props.lastLocations.map(location => {
@@ -11,7 +21,8 @@ const renderCarMarkers = (props) => {
         key={location.car_id}
         className="svg"
         position={{ lat: location.latitude, lng: location.longitude }}
-      />)
+      />
+    )
   })
 }
 
