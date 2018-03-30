@@ -5,6 +5,7 @@
   "private": true,
   "dependencies": {
     "loaders.css": "^0.1.2",
+    "lodash": "^4.17.5",
     "moment": "^2.21.0",
     "randomcolor": "^0.5.3",
     "react": "^16.2.0",
@@ -22,8 +23,7 @@
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-persist": "^5.9.1",
-    "socket.io-client": "^2.0.4",
-    "underscore": "^1.8.3"
+    "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
     "eslint": "^4.19.1",

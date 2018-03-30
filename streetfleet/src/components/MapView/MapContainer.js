@@ -1,5 +1,30 @@
-import React from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap } from "react-google-maps"
+import React, { Component } from 'react';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, Polyline } from "react-google-maps"
+import { connect } from 'react-redux';
+//import ReactSVG from 'react-svg';
+
+import Actions from '../../store/actions/cars.actions';
+
+//import svg from '../../img/map-car-marker.svg';
+/*      <Marker
+        key={location.car_id}
+        className="svg"
+        position={{ lat: location.latitude, lng: location.longtitude }}
+        icon={{ url: svg }}
+        />
+*/
+
+const renderCarMarkers = (props) => {
+  return props.lastLocations.map(location => {
+    return (
+      <Marker
+        key={location.car_id}
+        className="svg"
+        position={{ lat: location.latitude, lng: location.longitude }}
+      />
+    )
+  })
+}
 
 const MapContainer = withScriptjs(withGoogleMap(props => {
   const styles = [
@@ -48,11 +73,20 @@ const MapContainer = withScriptjs(withGoogleMap(props => {
     }
   ]
   return <GoogleMap
-      defaultZoom={14}
-      defaultCenter={{ lat: 41.404082, lng: 2.175017 }}
-      defaultOptions={{styles:styles}}
-    ></GoogleMap>
+    defaultZoom={14}
+    defaultCenter={{ lat: 41.3948878, lng: 2.1976607 }}   >
+    defaultOptions={{styles:styles}}
+    {renderCarMarkers(props)}
+  </GoogleMap>
   }
 ))
 
-export default MapContainer;
+const mapStateToProps = (state) => ({
+
+});
+
+const mapDispatchToProps = (dispatch) => ({
+
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(MapContainer);

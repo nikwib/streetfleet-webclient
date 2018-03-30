@@ -18,7 +18,8 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const configureStore = () => {
   const logger = createLogger();
-  const store = createStore( persistedReducer, composeEnhancers(applyMiddleware(api(config.baseUrl), logger)));
+//  const store = createStore( persistedReducer, composeEnhancers(applyMiddleware(api(config.baseUrl), logger)));
+  const store = createStore( reducer, composeEnhancers(applyMiddleware(api(config.baseUrl), logger)));
   const persistor = persistStore(store);
   return { store, persistor };
 };
