@@ -3,6 +3,10 @@ import { connect } from 'react-redux';
 import { Button, FormGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 import Actions from './../../store/actions/auth.actions';
+import company from '../../img/icons/company.png';
+import user from '../../img/icons/user.png';
+import email from '../../img/icons/email.png';
+import password from '../../img/icons/password.png';
 
 class CreateAccount extends Component {
 
@@ -38,6 +42,11 @@ class CreateAccount extends Component {
             name="company_name"
             onChange={this.onChange}
             placeholder="Company"
+            style={{
+              backgroundImage: `url(${company})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <FormControl
             id="formControlsText"
@@ -45,6 +54,11 @@ class CreateAccount extends Component {
             name="username"
             onChange={this.onChange}
             placeholder="User Name"
+            style={{
+              backgroundImage: `url(${user})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
         </form>
         <form className="FormRight">
@@ -54,6 +68,11 @@ class CreateAccount extends Component {
             name="email"
             onChange={this.onChange}
             placeholder="Email address"
+            style={{
+              backgroundImage: `url(${email})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
           <FormControl
             id="formControlsPassword"
@@ -61,6 +80,11 @@ class CreateAccount extends Component {
             name="password"
             onChange={this.onChange}
             placeholder="Password"
+            style={{
+              backgroundImage: `url(${password})`,
+              backgroundRepeat: "no-repeat",
+              paddingLeft: 32
+            }}
           />
         </form>
         <Button bsSize="small" className="cancel" onClick={this.props.onClose}>Cancel</Button>
