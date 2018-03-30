@@ -14,8 +14,7 @@ class Login extends Component {
   }
 
   onSubmit = (e) => {
-    e.preventDefault();
-    const b64encode = window.btoa(this.login.username + ':' + this.login.password);
+    const b64encode = btoa(this.login.username + ':' + this.login.password);
     this.props.login(b64encode);
   }
 
@@ -40,20 +39,14 @@ class Login extends Component {
             placeholder="Password"
           />
         </form>
-        <Button bsSize="small" className="cancel" onClick={this.props.onClose}>Cancel</Button>
-        <Button bsSize="small" type="submit" onClick={this.onSubmit}><Link to="/FleetOverview">Submit</Link></Button>
+        <Button bsSize="small" onClick={this.onSubmit}><Link to="/FleetOverview">Submit</Link></Button>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  showLogin: state.auth.showLogin,
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  onClose: () => { dispatch(authActions.onClose); },
   login: (b64encode) => { dispatch(authActions.login(b64encode)); },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default connect(null, mapDispatchToProps)(Login);

@@ -16,11 +16,6 @@ class CreateAccount extends Component {
     this.newAccount[e.target.name] = e.target.value;
   }
 
-  onSubmit = (e) => {
-    e.preventDefault();
-    this.props.createAccount(this.newAccount);
-  }
-
   FieldGroup = ({ id, label, ...props }) => {
     return (
       <FormGroup controlId={id}>
@@ -34,7 +29,7 @@ class CreateAccount extends Component {
     return (
       <div className="Login CreateAccount">
         <h2>Register</h2>
-        <small>You have registered already? <a onClick={this.props.onToggleLogin}> Login</a></small>
+        <small>Already registered? <a onClick={this.props.onToggleLogin}> Login</a></small>
         <form className="FormLeft">
           <FormControl
             id="formControlsCompany"
@@ -87,20 +82,14 @@ class CreateAccount extends Component {
             }}
           />
         </form>
-        <Button bsSize="small" className="cancel" onClick={this.props.onClose}>Cancel</Button>
-        <Button bsSize="small" type="submit" onClick={this.onSubmit}>Submit</Button>
+        <Button bsSize="small" onClick={() => this.props.createAccount(this.newAccount)}>Submit</Button>
       </div>
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  showSignUp: state.auth.showSignUp,
-});
-
 const mapDispatchToProps = (dispatch) => ({
-  onClose: () => { dispatch(Actions.onClose); },
   createAccount: (newAccount) => { dispatch(Actions.createAccount(newAccount)); },
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateAccount);
+export default connect(null, mapDispatchToProps)(CreateAccount);

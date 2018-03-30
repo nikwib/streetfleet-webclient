@@ -28,10 +28,6 @@ class AddCar extends Component {
     );
   }
 
-  handleSubmit = () => {
-    this.props.onAddCar(this.car)
-  }
-
   render() {
     const formInstance = (
       <Modal.Body>
@@ -112,7 +108,7 @@ class AddCar extends Component {
           />
         </form>
         <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
-        <Button type="submit" onClick={this.handleSubmit}>Submit</Button>
+        <Button onClick={() => this.props.onAddCar(this.car)}>Submit</Button>
       </Modal.Body>
     );
 

@@ -5,7 +5,7 @@ const Footer = () => {
   return (
     <ul className="Footer">
       <li>
-        <Link to="/HomePage">Home</Link>
+        <Link to="/">Home</Link>
       </li>
       <li>
         <Link to="/About">About</Link>

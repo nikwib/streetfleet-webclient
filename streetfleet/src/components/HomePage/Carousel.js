@@ -1,36 +1,20 @@
-import React, { Component } from 'react';
-import { Carousel, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
+import React from 'react';
+import { Carousel } from 'react-bootstrap';
 
 import '../../css/HomePage.css';
 import fleetBanner from '../../img/fleet.png';
-import Actions from './../../store/actions/auth.actions';
 
-class SplashScreen extends Component {
-
-  signUp = () => (<Button className="TryIt" bsSize="large" onClick={this.props.showSignUp}>Register</Button>);
-
-  render() {
-    return (
-      <Carousel>
-        <Carousel.Item>
-          <img className="bannerImg" alt="Vehicle Fleet" src={fleetBanner} />
-          <Carousel.Caption>
-            <h1>Track and manage your vehicles</h1>
-            {this.props.loggedIn ? null : this.signUp()}
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
-    );
-  }
+const SplashScreen = () => {
+  return (
+    <Carousel>
+      <Carousel.Item>
+        <img className="bannerImg" alt="Vehicle Fleet" src={fleetBanner} />
+        <Carousel.Caption>
+          <h1>Track and manage your vehicles</h1>
+        </Carousel.Caption>
+      </Carousel.Item>
+    </Carousel>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  loggedIn: state.auth.loggedIn,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  showSignUp: () => { dispatch(Actions.showSignUp); },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SplashScreen);
+export default SplashScreen;

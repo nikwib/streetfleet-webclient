@@ -10,12 +10,19 @@ import password from '../img/icons/password.png';
 import '../css/Modals.css'
 
 class EditAccount extends Component {
-  state = {
-    company: {}
-  }
 
-  componentWillReceiveProps (props) {
-    props.company ? this.setState({company: props.company}) : null;
+  constructor(props) {
+    super(props);
+    this.state = {
+      company: {
+        username: '',
+        email: '',
+        company_name: ''
+      }
+    };
+  }
+  componentWillReceiveProps(props) {
+    props.company ? this.setState({ company: props.company }) : null;
   }
 
   onChange = (e) => {
@@ -37,11 +44,12 @@ class EditAccount extends Component {
   }
 
   render() {
+    console.log(this.state);
     const formInstance = (
-      <Modal.Body  className="EditModal">
+      <Modal.Body className="EditModal">
         <form>
           <this.FieldGroup
-            id="formControlsText"
+            id="formControlsText1"
             type="text"
             label="Company name"
             name="company_name"
@@ -55,7 +63,7 @@ class EditAccount extends Component {
             }}
           />
           <this.FieldGroup
-            id="formControlsText"
+            id="formControlsText2"
             type="text"
             label="Username"
             name="username"
@@ -70,7 +78,7 @@ class EditAccount extends Component {
           />
 
           <this.FieldGroup
-            id="formControlsText"
+            id="formControlsText3"
             type="text"
             label="Email"
             name="email"
@@ -84,7 +92,7 @@ class EditAccount extends Component {
             }}
           />
           <this.FieldGroup
-            id="formControlsText"
+            id="formControlsText4"
             type="password"
             label="Old password"
             name="old_password"
@@ -96,7 +104,7 @@ class EditAccount extends Component {
             }}
           />
           <this.FieldGroup
-            id="formControlsText"
+            id="formControlsText5"
             type="password"
             label="New password"
             name="new_password"
@@ -109,7 +117,7 @@ class EditAccount extends Component {
           />
         </form>
         <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
-        <Button type="submit" onClick={() => this.props.editAccount(this.state.company)}>Submit</Button>
+        <Button onClick={() => this.props.editAccount(this.state.company)}>Submit</Button>
       </Modal.Body>
     );
 
@@ -120,9 +128,9 @@ class EditAccount extends Component {
         show={this.props.showEditAccount}
         onHide={this.props.onClose}
       >
-      <h1>Edit</h1>
-      {formInstance}
-    </Modal>
+        <h1>Edit</h1>
+        {formInstance}
+      </Modal>
     )
   }
 }

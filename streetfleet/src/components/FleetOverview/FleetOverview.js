@@ -9,22 +9,19 @@ import '../../css/Tables.css';
 
 class FleetOverview extends Component {
 
-  componentWillMount = async () => {
-    await this.props.getCars();
+  componentDidMount = () => {
+    this.props.getCars();
   }
 
-  deleteCar = (car) => {
-    this.props.deleteCar(car);
-  }
-
-  renderCars = (props) => {
-    if (props.cars.length) {
-      return props.cars.map((car) => {
+  renderCars = () => {
+    if (this.props.cars.length) {
+      return this.props.cars.map((car) => {
         return (
           <CarItem
             key={car._id}
             car={car}
-            onClickDelete={this.deleteCar}
+            onClickDelete={() => this.props.deleteCar(car)}
+            onClickEdit={() => this.props.onShowEditVehicle(car)}
           />
         );
       });
@@ -49,7 +46,7 @@ class FleetOverview extends Component {
                 </tr>
               </thead>
               <tbody>
-                {this.renderCars(this.props)}
+                {this.renderCars()}
               </tbody>
             </Table>
           </Col>
@@ -66,6 +63,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getCars: () => { dispatch(Actions.getCars); },
   deleteCar: (car) => { dispatch(Actions.deleteCar(car)); },
+  onShowEditVehicle: (car) => { dispatch(Actions.onShowEditVehicle(car)); },  
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(FleetOverview);
