@@ -6,6 +6,7 @@ import VehicleModal from './VehicleModal';
 import '../css/Map.css';
 
 class MapView extends Component {
+
   render() {
     return (
       <div className="row MapView">
