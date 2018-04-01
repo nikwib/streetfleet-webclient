@@ -1,24 +1,18 @@
 export default (baseUrl) => {
   return store => next => action => {
     if (!action.url) return next(action);
-    //let status = undefined;
     fetch(baseUrl + action.url, {
       method: action.method,
       headers: action.headers,
       body: JSON.stringify(action.body),
     })
       .then(response => {
-        console.log('Response:', response);
+        //console.log('Response:', response);        
         this.status = response.status;
-        switch (this.status) {
-          case 204:
-            return response;
-          default:
-            return response.json();
-        }
+        return (this.status === 204) ? response : response.json(); 
       })
       .then(response => {
-        console.log('After json', response);
+        //console.log('After json', response);
         switch (this.status) {
           case 400:
           case 401:

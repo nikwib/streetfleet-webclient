@@ -1,15 +1,6 @@
-const onClose = {
-  type: 'ON_CLOSE',
-};
-
-const logout = {
-  type: 'LOGOUT',
-};
-
 //=======================
 // CAR
 //=======================
-
 const getCars = {
   type: 'GET_CARS',
   url: ('/fleet'),
@@ -19,13 +10,12 @@ const getCars = {
   }
 };
 
-// Get car from Store
-const getCar = (car_id) => ({
+const getCar = car_id => ({
   type: 'GET_CAR',
   car_id,
 });
 
-const addCar = (car) => ({
+const addCar = car => ({
   type: 'ADD_CAR',
   url: ('/vehicle'),
   method: 'POST',
@@ -36,7 +26,7 @@ const addCar = (car) => ({
   body: car,
 });
 
-const editCar = (car) => ({
+const editCar = car => ({
   type: 'EDIT_CAR',
   url: ('/vehicle/' + car._id),
   method: 'PUT',
@@ -45,10 +35,9 @@ const editCar = (car) => ({
     'authorization': 'Bearer ' + localStorage.getItem('JWT'),
   },
   body: car,
-  car,
 });
 
-const deleteCar = (car) => ({
+const deleteCar = car => ({
   type: 'DELETE_CAR',
   url: ('/vehicle/' + car._id),
   method: 'DELETE',
@@ -63,17 +52,16 @@ const onShowAddVehicle = {
   type: 'ON_SHOW_ADD_VEHICLE',
 };
 
-const onShowEditVehicle = (car) => ({
+const onShowEditVehicle = car => ({
   type: 'ON_SHOW_EDIT_VEHICLE',
   car,
 });
-
 
 //=======================
 // TRIPS
 //=======================
 
-const getTrips = (mac_address) => ({
+const getTrips = mac_address => ({
   type: 'GET_TRIPS',
   url: ('/trips/' + mac_address),
   headers: {
@@ -82,12 +70,20 @@ const getTrips = (mac_address) => ({
   },
 });
 
-// Get car from Store
-const saveLastLoc = (lastLocation) => ({
+const saveLastLoc = lastLocation => ({
   type: 'SAVE_LAST_LOCATION',
   lastLocation,
 });
 
+// Close message dialogs
+const onClose = {
+  type: 'ON_CLOSE',
+};
+
+// Clear any data in the store
+const logout = {
+  type: 'LOGOUT',
+};
 
 export default {
   getCars,
