@@ -4,9 +4,9 @@
 
 StreetFleet is an app that tracks the position of vehicles in real time and provides data about their trips, times, distance traveled and vehicle information.
 
-![App screenshot](https://github.com/nikwib/streetfleet-webclient/screenshots/HomePage.jpg)
-![App screenshot](https://github.com/nikwib/streetfleet-webclient/screenshots/MapView.jpg)
-![App screenshot](https://github.com/nikwib/streetfleet-webclient/screenshots/FleetOverview.jpg)
+![App screenshot](https://github.com/nikwib/streetfleet-webclient/blob/develop/screenshots/HomePage.jpg)
+![App screenshot](https://github.com/nikwib/streetfleet-webclient/blob/develop/screenshots/MapView.jpg)
+![App screenshot](https://github.com/nikwib/streetfleet-webclient/blob/develop/screenshots/FleetOverview.jpg)
 
 ## Getting Started
 To run locally:
