@@ -15,11 +15,33 @@ const defaultState = {
 };
 export default (state = defaultState, action) => {
   switch (action.type) {
+    case 'CREATE_ACCOUNT_REQUEST':
+    case 'EDIT_ACCOUNT_REQUEST':
+    case 'LOGIN_REQUEST':
+    case 'DELETE_ACCOUNT_REQUEST':
+      return {
+        ...state,
+        fetching: true,
+        showSignUp: false,
+        showLogin: false,
+        showEditAccount: false,
+        showDeleteAccount: false,
+      };
+
+    case 'GET_ACCOUNT_REQUEST':
+      if (localStorage.getItem('username')) { // ??? Why the if ???
+        return {
+          ...state,
+          fetching: true
+        }
+      };
+
     case 'SHOW_SIGN_UP':
       return {
         ...state,
         showSignUp: true,
       };
+
     case 'CREATE_ACCOUNT_SUCCESS':
       return {
         ...state,
@@ -30,12 +52,8 @@ export default (state = defaultState, action) => {
           message: 'Account successfully created, please login to get started.',
         },
       };
-    case 'CREATE_ACCOUNT_REQUEST':
-      return {
-        ...state,
-        showSignUp: false,
-        fetching: true,
-      };
+
+
     case 'CREATE_ACCOUNT_FAILURE':
       return {
         ...state,
@@ -46,20 +64,6 @@ export default (state = defaultState, action) => {
           message: 'Pardon us. Account creation failed, please try again!',
         },
       };
-    case 'ON_CLOSE':
-      return {
-        ...state,
-        showSignUp: false,
-        showLogin: false,
-        showEditAccount: false,
-        showDeleteAccount: false,
-        message: {
-          show: false,
-          title: '',
-          message: '',
-        },
-      };
-
 
     ///////////////
     // LOGIN
@@ -81,12 +85,6 @@ export default (state = defaultState, action) => {
         fetching: false,
       };
 
-    case 'LOGIN_REQUEST':
-      return {
-        ...state,
-        fetching: true,
-        showLogin: false,
-      };
     case 'LOGIN_FAILURE':
       return {
         ...state,
@@ -115,79 +113,59 @@ export default (state = defaultState, action) => {
         };
       }
 
-      /////////////////////
-      // ACCOUNT MANAGEMENT
-      /////////////////////
+    /////////////////////
+    // ACCOUNT MANAGEMENT
+    /////////////////////
 
-      case 'GET_ACCOUNT_REQUEST':
-      if (localStorage.getItem('username')) {
-        return {
-          ...state,
-          fetching: true
-        }
+    case 'GET_ACCOUNT_SUCCESS':
+      return {
+        ...state,
+        fetching: false,
+        company: action.response
       };
 
-      case 'GET_ACCOUNT_SUCCESS':
-        return {
-          ...state,
-          fetching: false,
-          company: action.response
-        };
+    case 'GET_ACCOUNT_FAILURE':
+      return {
+        ...state,
+        fetching: false
+      }
 
-      case 'GET_ACCOUNT_FAILURE':
-        return {
-          ...state,
-          fetching: false
-        }
+    case 'SHOW_EDIT_ACCOUNT':
+      return {
+        ...state,
+        showEditAccount: true
+      }
 
-      case 'SHOW_EDIT_ACCOUNT':
-        return {
-          ...state,
-          showEditAccount: true
-        }
+    case 'EDIT_ACCOUNT_SUCCESS':
+      return {
+        ...state,
+        fetching: false,
+        company: action.response,
+        message: {
+          show: true,
+          title: 'Success',
+          message: 'Account successfully modified.',
+        },
+      }
 
-      case 'EDIT_ACCOUNT_REQUEST':
-        return {
-          ...state,
-          fetching: true
-        }
+    case 'EDIT_ACCOUNT_FAILURE':
+      return {
+        ...state,
+        fetching: false,
+        message: {
+          show: true,
+          title: 'Ohh no!',
+          message: 'Pardon us. Account modification failed, please try again!',
+        },
+      }
 
-      case 'EDIT_ACCOUNT_SUCCESS':
-        return {
-          ...state,
-          fetching: false,
-          company: action.response,
-          message: {
-            show: true,
-            title: 'Success',
-            message: 'Account successfully modified.',
-          },
-        }
-
-      case 'EDIT_ACCOUNT_FAILURE':
-        return {
-          ...state,
-          fetching: false,
-          message: {
-            show: true,
-            title: 'Ohh no!',
-            message: 'Pardon us. Account modification failed, please try again!',
-          },
-        }
-
-      case 'SHOW_DELETE_ACCOUNT':
+    case 'SHOW_DELETE_ACCOUNT':
       return {
         ...state,
         showDeleteAccount: true
       }
 
-      case 'DELETE_ACCOUNT_REQUEST':
-      return {
-        ...state,
-        fetching: true
-      }
-
-      case 'DELETE_ACCOUNT_SUCCESS':
+    case 'DELETE_ACCOUNT_SUCCESS':
       return {
         ...state,
         fetching: false,
@@ -202,7 +180,7 @@ export default (state = defaultState, action) => {
         },
       }
 
-      case 'DELETE_ACCOUNT_FAILURE':
+    case 'DELETE_ACCOUNT_FAILURE':
       return {
         ...state,
         fetching: false,
@@ -213,7 +191,21 @@ export default (state = defaultState, action) => {
         },
       }
 
-      break;
+    // For closing dialog messages
+    case 'ON_CLOSE':
+      return {
+        ...state,
+        showSignUp: false,
+        showLogin: false,
+        showEditAccount: false,
+        showDeleteAccount: false,
+        message: {
+          show: false,
+          title: '',
+          message: '',
+        },
+      };
+
     default:
   }
   return state;
