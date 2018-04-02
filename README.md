@@ -4,14 +4,14 @@
 
 StreetFleet is an app that tracks the position of vehicles in real time and provides data about their trips, times, distance traveled and vehicle information.
 
-![App screenshot](https://github.com/streetfleet-webclient/screenshots/HomePage.jpg)
-![App screenshot](https://github.com/streetfleet-webclient/screenshots/MapView.jpg)
-![App screenshot](https://github.com/streetfleet-webclient/screenshots/FleetOverview.jpg)
+![App screenshot](https://github.com/nikwib/streetfleet-webclient/screenshots/HomePage.jpg)
+![App screenshot](https://github.com/nikwib/streetfleet-webclient/screenshots/MapView.jpg)
+![App screenshot](https://github.com/nikwib/streetfleet-webclient/screenshots/FleetOverview.jpg)
 
 ## Getting Started
 To run locally:
 2) Clone && `npm install` from the root file.
-1) Follow the instruction for the [backend](https://github.com/Inkala/streetfleet-webclient) and [mobile](https://github.com/Inkala/streetfleet-mobile)
+1) Follow the instruction for the [backend](https://github.com/nikwib/streetfleet-webclient) and [mobile](https://github.com/nikwib/streetfleet-mobile)
 3) Follow [these instructions](https://developers.google.com/maps/documentation/javascript/get-api-key) to get a Google Maps API key
 4) Run `npm start`
 
