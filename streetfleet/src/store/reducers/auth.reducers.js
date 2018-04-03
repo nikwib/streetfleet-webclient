@@ -35,6 +35,7 @@ export default (state = defaultState, action) => {
           fetching: true
         }
       };
+      break;
 
     case 'SHOW_SIGN_UP':
       return {
@@ -112,6 +113,7 @@ export default (state = defaultState, action) => {
           loggedIn: true,
         };
       }
+      break;
 
     /////////////////////
     // ACCOUNT MANAGEMENT

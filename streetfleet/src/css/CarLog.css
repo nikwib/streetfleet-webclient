@@ -55,7 +55,9 @@
 }
 
 .CarLogTrips .TableBackground {
-  height: 82vh;
+  min-height: 82vh;
+  margin-bottom: 35px;
+  padding-bottom: 15px;
 }
 
 .App .ShowButtons {
