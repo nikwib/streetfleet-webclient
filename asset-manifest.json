@@ -1,9 +1,21 @@
 {
-  "main.css": "static/css/main.a6b756b8.css",
-  "main.css.map": "static/css/main.a6b756b8.css.map",
-  "main.js": "static/js/main.449eca93.js",
-  "main.js.map": "static/js/main.449eca93.js.map",
-  "static/media/fleet.jpg": "static/media/fleet.6b5d6bb7.jpg",
-  "static/media/screenshots.png": "static/media/screenshots.0d6aed0c.png",
-  "static/media/street-fleet-logo.svg": "static/media/street-fleet-logo.5be07e1c.svg"
+  "main.css": "static/css/main.e8ceaafd.css",
+  "main.css.map": "static/css/main.e8ceaafd.css.map",
+  "main.js": "static/js/main.b13e185f.js",
+  "main.js.map": "static/js/main.b13e185f.js.map",
+  "static/media/background.png": "static/media/background.9720a1f8.png",
+  "static/media/company.png": "static/media/company.78212bc6.png",
+  "static/media/email.png": "static/media/email.8dac7ee6.png",
+  "static/media/fleet.png": "static/media/fleet.d13e90e2.png",
+  "static/media/license.png": "static/media/license.8ec2abfd.png",
+  "static/media/mac.png": "static/media/mac.58fe857e.png",
+  "static/media/make.png": "static/media/make.774d4374.png",
+  "static/media/map-car-marker.svg": "static/media/map-car-marker.17234800.svg",
+  "static/media/model.png": "static/media/model.d0b6867b.png",
+  "static/media/password.png": "static/media/password.c617ee07.png",
+  "static/media/street-fleet-logo.svg": "static/media/street-fleet-logo.38082fed.svg",
+  "static/media/type.png": "static/media/type.89b8091c.png",
+  "static/media/user.png": "static/media/user.ef18a6d7.png",
+  "static/media/white-car.png": "static/media/white-car.bf6bcd4b.png",
+  "static/media/year.png": "static/media/year.f50c714e.png"
 }
