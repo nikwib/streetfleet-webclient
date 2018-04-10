@@ -11,7 +11,7 @@ StreetFleet is an app that tracks the position of vehicles in real time and prov
 ## Getting Started
 To run locally:
 2) Clone && `npm install` from the root file.
-1) Follow the instruction for the [backend server](https://github.com/nikwib/streetfleet-webclient) and [microserver queue](https://github.com/nikwib/streetfleet-mq) and [mobile](https://github.com/nikwib/streetfleet-mobile)
+1) Follow the instruction for the [backend server](https://github.com/nikwib/streetfleet-backend) and [microserver queue](https://github.com/nikwib/streetfleet-mq) and [mobile](https://github.com/nikwib/streetfleet-mobile)
 3) Follow [these instructions](https://developers.google.com/maps/documentation/javascript/get-api-key) to get a Google Maps API key
 4) Run `npm start`
 
