@@ -21,6 +21,7 @@ To run locally:
 * [Bootstrap](getbootstrap.com)
 
 ## System Diagram
+The system architecture for streetfleet is build around a main server and a micro sever. The main server serves the location data coming in from the Phones (IoT) and opens a socket to send live location data to be displayed in the web client. The main server also relays the location data to the micro server that tracks each incoming location and fills up a queue (Redis) for each IoT device. After a set time period passed (15 min) and the location data for a device have not changed, its queue is processed to determine distance and travel time. Each received GPS coordinate is saved to the main Mongo database that is used to displaying a detailed travel route in the web client.  
 ![App architecture](https://github.com/nikwib/streetfleet-backend/blob/develop/Architecture.jpg)
 
 ## Future plans
