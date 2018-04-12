@@ -1,27 +1,26 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
+import throttle from 'lodash/throttle'
 import reducer from './reducers/index';
 import api from './middlewares/api';
 import config from './../config';
-import { persistStore, /*persistReducer*/ } from 'redux-persist'
-// import storage from 'redux-persist/lib/storage' // defaults to localStorage for web and AsyncStorage for react-native
 
-
-// const persistConfig = {
-//   key: 'root',
-//   storage,
-// }
-
-// const persistedReducer = persistReducer(persistConfig, reducer)
+import { loadState, saveState } from './localStorage';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const configureStore = () => {
+  const persistedState = loadState();
   const logger = createLogger();
-//  const store = createStore( persistedReducer, composeEnhancers(applyMiddleware(api(config.baseUrl), logger)));
-  const store = createStore( reducer, composeEnhancers(applyMiddleware(api(config.baseUrl), logger)));
-  const persistor = persistStore(store);
-  return { store, persistor };
+  const store = createStore(
+    reducer,
+    persistedState,
+    composeEnhancers(applyMiddleware(api(config.baseUrl), logger))
+  );
+  store.subscribe(throttle(() => {
+    saveState(store.getState());
+  }, 1000));
+  return { store };
 };
 
 export default configureStore;

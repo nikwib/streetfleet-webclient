@@ -23,7 +23,7 @@ class DeleteAccount extends Component {
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={this.props.onClose}>Cancel</Button>
-            <Button onClick={() => this.props.deleteAccount(this.props.company.username)}>Submit</Button>
+            <Button onClick={() => this.props.deleteAccount()}>Submit</Button>
           </Modal.Footer>
         </Modal>
     )
@@ -33,13 +33,12 @@ class DeleteAccount extends Component {
 
 const mapStateToProps = state => ({
   showDeleteAccount: state.auth.showDeleteAccount,
-  company: state.auth.company,
 });
 
 const mapDispatchToProps = dispatch => ({
   onClose: () => { dispatch(authActions.onClose) },
-  deleteAccount: (username) => {
-    dispatch(authActions.deleteAccount(username)),
+  deleteAccount: () => {
+    dispatch(authActions.deleteAccount()),
     dispatch(authActions.logout);
     dispatch(carsActions.logout);
   }

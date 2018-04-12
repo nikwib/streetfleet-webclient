@@ -52,7 +52,7 @@ const showDeleteAccount = {
 
 const editAccount = company => ({
   type: 'EDIT_ACCOUNT',
-  url: ('/company/' + company.username),
+  url: ('/company/'),
   method: 'PUT',
   headers: {
     'Content-Type': 'application/json',
@@ -61,9 +61,9 @@ const editAccount = company => ({
   body: company,
 });
 
-const deleteAccount = username => ({
+const deleteAccount = () => ({
   type: 'DELETE_ACCOUNT',
-  url: ('/company/' + username),
+  url: ('/company/'),
   method: 'DELETE',
   headers: {
     'Content-Type': 'application/json',
