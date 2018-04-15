@@ -2,7 +2,8 @@
 
 > A way of tracking and managing your vehicles.
 
-StreetFleet is an app that tracks the position of vehicles in real time and provides data about their trips, times, distance traveled and vehicle information.
+StreetFleet is an app that tracks the position of vehicles in real time and provides data about their trips, times, distance traveled and vehicle information. [Live Demo](http://streetfleet.s3-website.eu-west-3.amazonaws.com)
+
 
 ![App screenshot](https://github.com/nikwib/streetfleet-webclient/blob/develop/screenshots/HomePage.jpg)
 ![App screenshot](https://github.com/nikwib/streetfleet-webclient/blob/develop/screenshots/MapView.jpg)
