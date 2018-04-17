@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import Actions from '../store/actions/cars.actions';
 import '../css/Modals.css'
-import type from '../img/icons/type.png';
+import vType from '../img/icons/type.png';
 import make from '../img/icons/make.png';
 import model from '../img/icons/model.png';
 import year from '../img/icons/year.png';
@@ -42,90 +42,34 @@ class EditCar extends Component {
     );
   }
 
+  input = (title, name, icon, value, type='text') => (
+    <this.FieldGroup
+    id={name}
+    type={type}
+    label={title}
+    name={name}
+    value={value}
+    onChange={this.onChange}
+    className="text-capitalize"style={{
+      backgroundImage: `url(${icon})`,
+      backgroundRepeat: "no-repeat",
+      paddingLeft: 32
+    }}
+  />
+  )
+
   render() {
     const formInstance = (
       <Modal.Body>
         <form className="ModalsLeft">
-          <this.FieldGroup
-            id="vTypeField"
-            type="text"
-            label="Vehicle Type"
-            name="vType"
-            value={this.state.car.vType}
-            onChange={this.onChange}
-            className="text-capitalize"style={{
-              backgroundImage: `url(${type})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
-          <this.FieldGroup
-            id="formControlsText"
-            type="text"
-            label="Make"
-            name="make"
-            value={this.state.car.make}
-            onChange={this.onChange}
-            className="text-capitalize"style={{
-              backgroundImage: `url(${make})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
-          <this.FieldGroup
-            id="formControlsText"
-            type="text"
-            label="Model"
-            name="model"
-            value={this.state.car.model}
-            onChange={this.onChange}
-            className="text-capitalize"style={{
-              backgroundImage: `url(${model})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
+          { this.input( 'Vehicle Type', 'vType', vType, this.state.car.vType ) }
+          { this.input( 'Make', 'make', make, this.state.car.make ) }
+          { this.input( 'Model', 'model', model, this.state.car.model ) }
         </form>
         <form className="ModalsRight">
-          <this.FieldGroup
-            id="formControlsText"
-            type="text"
-            label="Year"
-            name="year"
-            value={this.state.car.year}
-            onChange={this.onChange}
-            className="text-capitalize"style={{
-              backgroundImage: `url(${year})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
-          <this.FieldGroup
-            id="formControlsText"
-            type="text"
-            label="License Plate"
-            name="license_number"
-            value={this.state.car.license_number}
-            onChange={this.onChange}
-            className="text-uppercase"style={{
-              backgroundImage: `url(${license})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
-          <this.FieldGroup
-            id="formControlsText"
-            type="text"
-            label="Mac Address"
-            name="mac_address"
-            value={this.state.car.mac_address}
-            onChange={this.onChange}
-            className="text-uppercase"style={{
-              backgroundImage: `url(${mac})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
+          { this.input( 'Year', 'year', year, this.state.car.year, 'number' ) }
+          { this.input( 'License Plate', 'license_number', license, this.state.car.license_number ) }
+          { this.input( 'Mac Address', 'mac_address', mac, this.state.car.mac_address ) }
         </form>
         <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
         <Button type="submit" onClick={() => this.props.onEditCar(this.state.car)}>Submit</Button>
