@@ -25,62 +25,33 @@ class CreateAccount extends Component {
     );
   }
 
+  input = (title, name, icon, type = 'text') => (
+    <this.FieldGroup
+      id={name}
+      type={type}
+      name={name}
+      onChange={this.onChange}
+      placeholder={title}
+      style={{
+        backgroundImage: `url(${icon})`,
+        backgroundRepeat: "no-repeat",
+        paddingLeft: 32
+      }}
+    />
+  )
+
   render() {
     return (
       <div className="Login CreateAccount">
         <h2>Register</h2>
         <small>Already registered? <a onClick={this.props.onToggleLogin}> Login</a></small>
         <form className="FormLeft">
-          <FormControl
-            id="formControlsCompany"
-            type="text"
-            name="company_name"
-            onChange={this.onChange}
-            placeholder="Company"
-            style={{
-              backgroundImage: `url(${company})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
-          <FormControl
-            id="formControlsText"
-            type="text"
-            name="username"
-            onChange={this.onChange}
-            placeholder="User Name"
-            style={{
-              backgroundImage: `url(${user})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
+        {this.input('Company', 'company_name', company )}
+        {this.input('Username', 'username', user )}
         </form>
         <form className="FormRight">
-          <FormControl
-            id="formControlsEmail"
-            type="email"
-            name="email"
-            onChange={this.onChange}
-            placeholder="Email address"
-            style={{
-              backgroundImage: `url(${email})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
-          <FormControl
-            id="formControlsPassword"
-            type="password"
-            name="password"
-            onChange={this.onChange}
-            placeholder="Password"
-            style={{
-              backgroundImage: `url(${password})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
+        {this.input('Email', 'email', email )}
+        {this.input('Password', 'password', password )}
         </form>
         <Button bsSize="small" onClick={() => this.props.createAccount(this.newAccount)}>Submit</Button>
       </div>
