@@ -68,16 +68,12 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken); },
   onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle); },
   showEditAccount: () => { dispatch(authActions.showEditAccount) },
   showDeleteAccount: () => { dispatch(authActions.showDeleteAccount) },
   onShowLogin: () => { dispatch(authActions.onShowLogin); },
-  logout: () => {
-    dispatch(authActions.logout);
-    dispatch(carsActions.logout);
-  },
+  logout: () => { dispatch(authActions.logout); },
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
