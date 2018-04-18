@@ -6,12 +6,12 @@ configure({ adapter: new Adapter() });
 
 import Carousel from './Carousel';
 
-describe('Carousel',() => { 
+describe('Carousel', () => {
   let comp = mount(<Carousel />);
-   it ('render the components title', () => {
+  it('render the components title', () => {
     expect(comp.find('h1').text()).toEqual('Track and manage your vehicles');
-  })
-  it ('renders the right image', () => {
+  });
+  it('renders the right image', () => {
     expect(comp.find('img').exists()).toBe(true);
-  })
-})
+  });
+});

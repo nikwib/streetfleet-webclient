@@ -22,9 +22,9 @@ class NavBar extends Component {
 
   renderMenu = () => {
     return (
-        <div>
-          <span className="UserName">{this.props.company.username}</span>
-          <Nav pullRight>
+      <div>
+        <span className="UserName">{this.props.company.username}</span>
+        <Nav pullRight>
           <NavDropdown eventKey={1} className="button" title={<i className="fas fa-bars"></i>} id="basic-nav-dropdown">
             <LinkContainer to="/"><MenuItem className="MenuItem">Home</MenuItem></LinkContainer>
             <MenuItem divider />
@@ -47,10 +47,10 @@ class NavBar extends Component {
       <Navbar>
         <Navbar.Header>
           <Navbar.Brand>
-          {(this.props.loggedIn) ? <Link to="/"> <img src={Logo} className="sf-logo" alt="StreetFleet" /> </Link> : null}
+            {(this.props.loggedIn) ? <Link to="/"> <img src={Logo} className="sf-logo" alt="StreetFleet" /> </Link> : null}
           </Navbar.Brand>
         </Navbar.Header>
-        {(this.props.loggedIn) ? this.renderMenu() : null}
+        {(this.props.loggedIn) && this.renderMenu()}
         <AddCar />
         <EditCar />
         <Message />
@@ -70,8 +70,8 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   loadUserFromToken: () => { dispatch(authActions.loadUserFromToken); },
   onShowAddVehicle: (car) => { dispatch(carsActions.onShowAddVehicle); },
-  showEditAccount: () => { dispatch(authActions.showEditAccount) },
-  showDeleteAccount: () => { dispatch(authActions.showDeleteAccount) },
+  showEditAccount: () => { dispatch(authActions.showEditAccount); },
+  showDeleteAccount: () => { dispatch(authActions.showDeleteAccount); },
   onShowLogin: () => { dispatch(authActions.onShowLogin); },
   logout: () => { dispatch(authActions.logout); },
 });

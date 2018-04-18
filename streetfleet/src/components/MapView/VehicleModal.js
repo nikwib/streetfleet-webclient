@@ -9,26 +9,26 @@ const renderCars = (props) => {
     return props.cars.map((car, i) => {
       i++;
       return (
-        <li>
-          <Link to={"/CarLog/" + car._id} key={car._id} license_number={car.license_number}>
-            <div className="vColor" style={{ backgroundColor: colors[i-1] }}></div>
-            <div className="vInfo">{car.license_number.toUpperCase()}</div>
+        <li key={car._id}>
+          <Link to={'/CarLog/' + car._id} >
+            <div className='vColor' style={{ backgroundColor: colors[i-1] }}></div>
+            <div className='vInfo'>{car.license_number.toUpperCase()}</div>
           </Link>
         </li>
       );
     });
   }
-}
+};
 
 const VehicleModal = (props) => {
   return (
-    <div className="VehicleModal">
+    <div className='VehicleModal'>
       <h2>Your Fleet</h2>
-      <ul className="VehicleList">
+      <ul className='VehicleList'>
         {renderCars(props)}
       </ul>
     </div>
-  )
-}
+  );
+};
 
 export default VehicleModal;

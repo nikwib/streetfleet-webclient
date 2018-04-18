@@ -17,16 +17,23 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch (action.type) {
     case 'ADD_CAR_REQUEST':
-    case 'GET_CARS_REQUEST':
-    case 'EDIT_CAR_REQUEST':
-    case 'GET_TRIPS_REQUEST':
       return {
         ...state,
         fetching: true,
         showAddVehicle: false,
+      };
+    case 'EDIT_CAR_REQUEST':
+      return {
+        ...state,
+        fetching: true,
         showEditVehicle: false,
       };
-
+    case 'GET_CARS_REQUEST':
+    case 'GET_TRIPS_REQUEST':
+      return {
+        ...state,
+        fetching: true,
+      };
     case 'GET_CARS_FAILURE':
     case 'GET_TRIPS_FAILURE':
       return {
@@ -133,20 +140,20 @@ export default (state = defaultState, action) => {
         fetching: false,
       };
 
-    case 'SAVE_LAST_LOCATION':
+    case 'SAVE_LAST_LOCATION': {
       const car = state.lastLocations.find(el => el.car_id === action.lastLocation.car_id);
-      if (!car) {
+      if (!car) { // If no last location found save new location
         return {
           ...state,
           lastLocations: state.lastLocations.concat([action.lastLocation])
-        }
-      } else {
+        };
+      } else { // Uppdate last location
         return {
           ...state,
-          lastLocations: state.lastLocations.map((el, i) => { return (el.car_id === action.lastLocation.car_id) ? action.lastLocation : el })
-        }
+          lastLocations: state.lastLocations.map((el, i) => { return (el.car_id === action.lastLocation.car_id) ? action.lastLocation : el; })
+        };
       }
-
+    }
     case 'ON_CLOSE':
       return {
         ...state,

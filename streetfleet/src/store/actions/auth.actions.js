@@ -4,7 +4,7 @@
 
 const onShowLogin = {
   type: 'ON_SHOW_LOGIN',
-}
+};
 
 const login = b64encode => ({
   type: 'LOGIN',
@@ -44,11 +44,11 @@ const createAccount = body => ({
 
 const showEditAccount = {
   type: 'SHOW_EDIT_ACCOUNT'
-}
+};
 
 const showDeleteAccount = {
   type: 'SHOW_DELETE_ACCOUNT'
-}
+};
 
 const editAccount = company => ({
   type: 'EDIT_ACCOUNT',
@@ -69,7 +69,7 @@ const deleteAccount = () => ({
     'Content-Type': 'application/json',
     'Authorization': 'Bearer ' + localStorage.getItem('JWT'),
   }
-})
+});
 
 const onClose = {
   type: 'ON_CLOSE',

@@ -33,8 +33,8 @@ export default (state = defaultState, action) => {
         return {
           ...state,
           fetching: true
-        }
-      };
+        };
+      }
       break;
 
     case 'SHOW_SIGN_UP':
@@ -130,13 +130,13 @@ export default (state = defaultState, action) => {
       return {
         ...state,
         fetching: false
-      }
+      };
 
     case 'SHOW_EDIT_ACCOUNT':
       return {
         ...state,
         showEditAccount: true
-      }
+      };
 
     case 'EDIT_ACCOUNT_SUCCESS':
       return {
@@ -148,7 +148,7 @@ export default (state = defaultState, action) => {
           title: 'Success',
           message: 'Account successfully modified.',
         },
-      }
+      };
 
     case 'EDIT_ACCOUNT_FAILURE':
       return {
@@ -159,13 +159,13 @@ export default (state = defaultState, action) => {
           title: 'Ohh no!',
           message: 'Pardon us. Account modification failed, please try again!',
         },
-      }
+      };
 
     case 'SHOW_DELETE_ACCOUNT':
       return {
         ...state,
         showDeleteAccount: true
-      }
+      };
 
     case 'DELETE_ACCOUNT_SUCCESS':
       return {
@@ -180,7 +180,7 @@ export default (state = defaultState, action) => {
           title: 'Success',
           message: 'Account successfully deleted.',
         },
-      }
+      };
 
     case 'DELETE_ACCOUNT_FAILURE':
       return {
@@ -191,7 +191,7 @@ export default (state = defaultState, action) => {
           title: 'Ohh no!',
           message: 'Pardon us. Account deletion failed, please try again!',
         },
-      }
+      };
 
     // For closing dialog messages
     case 'ON_CLOSE':

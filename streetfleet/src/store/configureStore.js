@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { createLogger } from 'redux-logger';
-import throttle from 'lodash/throttle'
+import throttle from 'lodash/throttle';
 import reducer from './reducers/index';
 import api from './middlewares/api';
 import config from './../config';
