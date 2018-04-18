@@ -1,5 +1,5 @@
 import React from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, Polyline } from "react-google-maps"
+import { withScriptjs, withGoogleMap, GoogleMap, Polyline } from 'react-google-maps';
 
 const MapContainer = withScriptjs(withGoogleMap(props => {
   return (
@@ -13,7 +13,7 @@ const MapContainer = withScriptjs(withGoogleMap(props => {
         strokeWeight='2'
       />
     </GoogleMap>
-  )
+  );
 }));
 
 export default MapContainer;

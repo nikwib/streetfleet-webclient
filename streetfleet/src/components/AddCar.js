@@ -3,7 +3,7 @@ import { Modal, Button, FormGroup, ControlLabel, FormControl } from 'react-boots
 import { connect } from 'react-redux';
 
 import carsActions from './../store/actions/cars.actions';
-import '../css/Modals.css'
+import '../css/Modals.css';
 import vType from '../img/icons/type.png';
 import make from '../img/icons/make.png';
 import model from '../img/icons/model.png';
@@ -12,18 +12,15 @@ import license from '../img/icons/license.png';
 import mac from '../img/icons/mac.png';
 
 class AddCar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { car: {} };
-  }
+  state = { car: {} }
 
   onChange = (e) => {
-    this.setState({ 
-      car: { 
-        ...this.state.car, 
-        [e.target.name]: e.target.value 
-      } 
-    }) 
+    this.setState({
+      car: {
+        ...this.state.car,
+        [e.target.name]: e.target.value
+      }
+    });
   }
 
   FieldGroup = ({ id, label, ...props }) => {
@@ -35,7 +32,7 @@ class AddCar extends Component {
     );
   }
 
-  input = (title, name, icon, type='text') => (
+  input = (title, name, icon, type = 'text') => (
     <this.FieldGroup
       id={name}
       type={type}
@@ -44,7 +41,7 @@ class AddCar extends Component {
       onChange={this.onChange}
       style={{
         backgroundImage: `url(${icon})`,
-        backgroundRepeat: "no-repeat",
+        backgroundRepeat: 'no-repeat',
         paddingLeft: 32
       }}
     />
@@ -53,24 +50,24 @@ class AddCar extends Component {
   render() {
     const formInstance = (
       <Modal.Body>
-        <form className="ModalsLeft">
-          {this.input('Vehicle Type', 'vType', vType )}
-          {this.input('Make', 'make', make )}
-          {this.input('Model', 'model', model )}
+        <form className='ModalsLeft'>
+          {this.input('Vehicle Type', 'vType', vType)}
+          {this.input('Make', 'make', make)}
+          {this.input('Model', 'model', model)}
         </form>
-        <form className="ModalsRight">
-          {this.input('Year', 'year', year, 'number' )}
-          {this.input('License Plate', 'license_number', license )}
-          {this.input('Mac Address', 'mac_address', mac )}
+        <form className='ModalsRight'>
+          {this.input('Year', 'year', year, 'number')}
+          {this.input('License Plate', 'license_number', license)}
+          {this.input('Mac Address', 'mac_address', mac)}
         </form>
-        <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
+        <Button className='cancel' onClick={this.props.onClose}>Cancel</Button>
         <Button onClick={() => this.props.onAddCar(this.state.car)}>Submit</Button>
       </Modal.Body>
     );
 
     return (
       <Modal
-        className="Modals"
+        className='Modals'
         show={this.props.showAddVehicle}
         onHide={this.props.onClose}
       >

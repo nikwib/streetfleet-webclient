@@ -34,7 +34,7 @@ class CreateAccount extends Component {
       placeholder={title}
       style={{
         backgroundImage: `url(${icon})`,
-        backgroundRepeat: "no-repeat",
+        backgroundRepeat: 'no-repeat',
         paddingLeft: 32
       }}
     />
@@ -42,18 +42,18 @@ class CreateAccount extends Component {
 
   render() {
     return (
-      <div className="Login CreateAccount">
+      <div className='Login CreateAccount'>
         <h2>Register</h2>
         <small>Already registered? <a onClick={this.props.onToggleLogin}> Login</a></small>
-        <form className="FormLeft">
-        {this.input('Company', 'company_name', company )}
-        {this.input('Username', 'username', user )}
+        <form className='FormLeft'>
+          {this.input('Company', 'company_name', company)}
+          {this.input('Username', 'username', user)}
         </form>
-        <form className="FormRight">
-        {this.input('Email', 'email', email )}
-        {this.input('Password', 'password', password )}
+        <form className='FormRight'>
+          {this.input('Email', 'email', email)}
+          {this.input('Password', 'password', password)}
         </form>
-        <Button bsSize="small" onClick={() => this.props.createAccount(this.newAccount)}>Submit</Button>
+        <Button bsSize='small' onClick={() => this.props.createAccount(this.newAccount)}>Submit</Button>
       </div>
     );
   }
