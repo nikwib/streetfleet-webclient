@@ -9,6 +9,12 @@ import email from '../img/icons/email.png';
 import password from '../img/icons/password.png';
 import '../css/Modals.css'
 
+
+const snakeCase = (str) => {
+  str = str[0].toLowerCase() + str.substr(1).toLowerCase()
+  return str.replace(' ', '_');
+}
+
 class EditAccount extends Component {
 
   constructor(props) {
@@ -17,10 +23,13 @@ class EditAccount extends Component {
       company: {
         username: '',
         email: '',
-        company_name: ''
+        company_name: '',
+        old_password: '',
+        new_password: '',
       }
     };
   }
+
   componentWillReceiveProps(props) {
     props.company ? this.setState({ company: props.company }) : null;
   }
@@ -33,7 +42,7 @@ class EditAccount extends Component {
       }
     });
   }
-
+  
   FieldGroup = ({ id, label, ...props }) => {
     return (
       <FormGroup controlId={id}>
@@ -42,55 +51,33 @@ class EditAccount extends Component {
       </FormGroup>
     );
   }
+  
+  input = (title, icon, value, type='text') => (
+    <this.FieldGroup
+    id={snakeCase(title)}
+    type={type}
+    label={title}
+    name={snakeCase(title)}
+    value={value}
+    onChange={this.onChange}
+    className="text-capitalize"style={{
+      backgroundImage: `url(${icon})`,
+      backgroundRepeat: "no-repeat",
+      paddingLeft: 32
+    }}
+  />
+  )
 
-  render() {
-    console.log(this.state);
+  render() {    
     const formInstance = (
       <Modal.Body className="EditModal">
         <form>
-          <this.FieldGroup
-            id="formControlsText1"
-            type="text"
-            label="Company name"
-            name="company_name"
-            value={this.state.company.company_name}
-            onChange={this.onChange}
-            className="text-capitalize"
-            style={{
-              backgroundImage: `url(${company})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
-          <this.FieldGroup
-            id="formControlsText2"
-            type="text"
-            label="Username"
-            name="username"
-            value={this.state.company.username}
-            onChange={this.onChange}
-            className="text-capitalize"
-            style={{
-              backgroundImage: `url(${user})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
-
-          <this.FieldGroup
-            id="formControlsText3"
-            type="text"
-            label="Email"
-            name="email"
-            value={this.state.company.email}
-            onChange={this.onChange}
-            className="text-lowercase"
-            style={{
-              backgroundImage: `url(${email})`,
-              backgroundRepeat: "no-repeat",
-              paddingLeft: 32
-            }}
-          />
+          { this.input( 'Company name', company, this.state.company.company_name ) }
+          { this.input( 'Username', user, this.state.company.username ) }
+          { this.input( 'Email', email, this.state.company.email ) }
+          {/* Why does this give warnings about being uncontrolled??  */}
+          {/* { this.input( 'Old password', password, this.state.company.old_password, 'password' ) } */}
+          {/* { this.input( 'New password', password, this.state.company.new_password, 'password' ) } */}
           <this.FieldGroup
             id="formControlsText4"
             type="password"
@@ -115,6 +102,7 @@ class EditAccount extends Component {
               paddingLeft: 32
             }}
           />
+
         </form>
         <Button className="cancel" onClick={this.props.onClose}>Cancel</Button>
         <Button onClick={() => this.props.editAccount(this.state.company)}>Submit</Button>

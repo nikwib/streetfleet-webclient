@@ -80,10 +80,6 @@ const onClose = {
   type: 'ON_CLOSE',
 };
 
-// Clear any data in the store
-const logout = {
-  type: 'LOGOUT',
-};
 
 export default {
   getCars,
@@ -95,6 +91,5 @@ export default {
   onShowAddVehicle,
   onShowEditVehicle,
   onClose,
-  logout,
   saveLastLoc,
 };
