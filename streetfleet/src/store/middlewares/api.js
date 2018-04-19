@@ -7,9 +7,9 @@ export default (baseUrl) => {
       body: JSON.stringify(action.body),
     })
       .then(response => {
-        //console.log('Response:', response);        
+        //console.log('Response:', response);
         this.status = response.status;
-        return (this.status === 204) ? response : response.json(); 
+        return (this.status === 204) ? response : response.json();
       })
       .then(response => {
         //console.log('After json', response);
@@ -40,6 +40,7 @@ export default (baseUrl) => {
           error: err
         });
       });
+    // so while the above fetch is processing, the control goes to this 'next' where  we fire off this 'REQUEST' action
     next({
       ...action,
       type: action.type + '_REQUEST',

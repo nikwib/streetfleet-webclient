@@ -45,6 +45,11 @@ class MapView extends Component {
       boxShadow: '0 3px 15px rgba(0,0,0,.3)',
       marginTop: '2.6%',
     };
+    if (!this.props.fetching && isEmpty(this.props.cars)) {
+      return (
+        <h2>It seems you have no cars in your fleet.</h2>
+      )
+    }
     return (
       <Grid>
         <Row>
@@ -73,6 +78,7 @@ const mapStateToProps = (state) => ({
   cars: state.cars.cars,
   trips: state.cars.trips,
   lastLocations: state.cars.lastLocations,
+  fetching: state.cars.fetching,
 });
 
 const mapDispatchToProps = (dispatch) => ({
