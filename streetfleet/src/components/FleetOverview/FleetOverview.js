@@ -15,7 +15,7 @@ class FleetOverview extends Component {
   }
 
   renderCars = () => {
-    if (this.props.cars.length) {
+    if (!isEmpty(this.props.cars)) {
       return this.props.cars.map((car) => {
         return (
           <CarItem
@@ -26,16 +26,18 @@ class FleetOverview extends Component {
           />
         );
       });
-    }
-  }
-
-  render() {
-    if (this.props.fetching === false && isEmpty(this.props.cars)) {
+    } else if (this.props.fetching === false && isEmpty(this.props.cars)) {
       return (
         <h2>It seems you have no cars in your fleet.</h2>
       )
     }
-    if (this.props.fetching === false) {
+    // If it is actively fetching, this loading image will render.
+    return (
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loader"/>
+    )
+  }
+
+  render() {
       return (
         <Grid>
           <Row className="show-grid text-capitalize">
@@ -61,13 +63,6 @@ class FleetOverview extends Component {
         </Grid>
       );
     }
-
-
-    // If it is actively fetching, this loading image will render.
-    return (
-      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif" alt="loader"/>
-    )
-  }
 }
 
 const mapStateToProps = (state) => ({
