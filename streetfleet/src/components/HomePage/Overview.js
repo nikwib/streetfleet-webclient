@@ -27,7 +27,7 @@ class Overview extends Component {
               <h2>What is StreetFleet?</h2>
               <Image src={car} className="OvImg" />
               <p>StreetFleet is a platform that helps you manage every vehicle in your fleet in real time.</p>
-              <p>It records the position at every time and allows you to see their distance traveled and routs in an friendly way that is easy to understand.</p>
+              <p>The platform records your fleets vehicles' position at all times, allows fleet managers to track vehicle activity by individual journey or total distance travelled, as well as real time map updating.</p>
             </Col>
             <Col className="OvRight WhiteContainer">
               {this.state.showLogin ? <Login onToggleLogin={this.toggleLogin} /> : <CreateAccount  onToggleLogin={this.toggleLogin} />}
