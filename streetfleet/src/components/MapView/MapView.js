@@ -17,7 +17,8 @@ class MapView extends Component {
 
   componentDidMount = () => {
     this.props.getCars();
-    setTimeout(() => this.processLocations(), 1000);
+    this.processLocations();
+    // Update the live map every 5 secound
     this.pid = setInterval(() => this.processLocations(), 5000);
   }
 
@@ -34,7 +35,6 @@ class MapView extends Component {
           this.lastLocation.car_id = car._id;
           this.props.saveLastLoc(this.lastLocation);
         }
-        return undefined;
       });
     }
   }

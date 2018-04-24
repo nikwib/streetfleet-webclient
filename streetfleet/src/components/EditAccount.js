@@ -9,29 +9,27 @@ import email from '../img/icons/email.png';
 import password from '../img/icons/password.png';
 import '../css/Modals.css';
 
-
 const snakeCase = (str) => {
   str = str[0].toLowerCase() + str.substr(1).toLowerCase();
   return str.replace(' ', '_');
 };
 
 class EditAccount extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      company: {
-        username: '',
-        email: '',
-        company_name: '',
-        old_password: '',
-        new_password: '',
+      company: { 
+        company_name: props.company.company_name,
+        username: props.company.username,
+        email: props.company.email,
       }
     };
   }
 
-  componentWillReceiveProps(props) {
-    props.company && this.setState({ company: props.company });
+  componentWillReceiveProps(nextProps) {
+    if (this.props.company !== nextProps.company) {
+      nextProps.company && this.setState({ company: nextProps.company });
+    }
   }
 
   onChange = (e) => {
@@ -43,29 +41,22 @@ class EditAccount extends Component {
     });
   }
 
-  FieldGroup = ({ id, label, ...props }) => {
-    return (
-      <FormGroup controlId={id}>
-        <ControlLabel>{label}</ControlLabel>
-        <FormControl {...props} />
-      </FormGroup>
-    );
-  }
-
   input = (title, icon, initialValue, type = 'text') => (
-    <this.FieldGroup
-      id={snakeCase(title)}
-      type={type}
-      label={title}
-      name={snakeCase(title)}
-      value={initialValue}
-      onChange={this.onChange}
-      className='text-capitalize' style={{
-        backgroundImage: `url(${icon})`,
-        backgroundRepeat: 'no-repeat',
-        paddingLeft: 32
-      }}
-    />
+    <FormGroup controlId={snakeCase(title)}>
+      <ControlLabel>{title}</ControlLabel>
+      <FormControl
+        type={type}
+        value={initialValue}
+        name={snakeCase(title)}
+        onChange={this.onChange}
+        className='text-capitalize'
+        style={{
+          backgroundImage: `url(${icon})`,
+          backgroundRepeat: 'no-repeat',
+          paddingLeft: 32
+        }}
+      />
+    </FormGroup>
   )
 
   render() {

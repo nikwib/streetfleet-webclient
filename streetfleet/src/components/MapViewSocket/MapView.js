@@ -22,7 +22,7 @@ class MapView extends Component {
         />
         <VehicleModal />
       </div>
-    )
+    );
   }
 }
 
